@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="stemwijzer, kieskompas, verkiezingen, tweede kamer, stemmen, stemadvies, SmartVote, politiek, partijen, TK2025">
+    <meta name="description" content="SmartVote is een online stemhulp voor de Tweede Kamerverkiezingen van 29 Oktober 2025. Beantwoord 30 stellingen en zie welke partij het beste bij u past.">
     <title>SmartVote</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230055a5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h7'%3E%3C/path%3E%3Cpath d='M9 12h6'%3E%3C/path%3E%3Cpath d='m16 19 2 2 4-4'%3E%3C/path%3E%3C/svg%3E" type="image/svg+xml">
     <style>
@@ -27,8 +29,9 @@
             padding: 20px;
             padding-top: 90px; /* Ruimte voor de vaste header */
             display: flex;
-            justify-content: center;
-            align-items: flex-start; /* Zorgt dat container bovenaan start */
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
             min-height: 100vh;
             box-sizing: border-box;
         }
@@ -52,6 +55,14 @@
             display: flex;
             align-items: center;
             gap: 15px;
+            cursor: pointer;
+        }
+        
+        .header-center {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
         }
 
         #main-header .logo {
@@ -65,6 +76,12 @@
             color: var(--primary-color);
             margin: 0;
         }
+        
+        #main-header .subtitle {
+             font-size: 1.1rem;
+            color: var(--dark-gray);
+            margin:0;
+        }
 
         .container {
             background-color: var(--white);
@@ -75,13 +92,7 @@
             max-width: 700px;
             text-align: center;
             transition: all 0.3s ease-in-out;
-        }
-        
-        .subtitle {
-            font-size: 1.1rem;
-            color: var(--dark-gray);
-            margin-top: 0;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
         
         /* Partijlogos */
@@ -264,6 +275,11 @@
             color: black;
             text-decoration: none;
         }
+        
+        .modal-footer {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
 
         .motivatie-item {
             margin-bottom: 1.5rem;
@@ -275,8 +291,22 @@
         .motivatie-item .standpunt.eens { color: var(--green); }
         .motivatie-item .standpunt.neutraal { color: var(--neutral); }
         .motivatie-item .standpunt.oneens { color: var(--red); }
+        
+        footer {
+            margin-top: auto;
+            padding: 1rem;
+            font-size: 0.9rem;
+            color: var(--dark-gray);
+            text-align: center;
+        }
 
         /* Responsive Design */
+        @media (max-width: 600px) {
+            #main-header .subtitle {
+                display: none;
+            }
+        }
+        
         @media (min-width: 600px) {
             .button-group {
                 flex-direction: row;
@@ -288,7 +318,7 @@
 <body>
 
 <header id="main-header">
-    <div class="header-left">
+    <div class="header-left" onclick="location.reload()" style="cursor: pointer;">
         <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h7"></path>
             <path d="M9 12h6"></path>
@@ -296,13 +326,15 @@
         </svg>
         <h1>SmartVote</h1>
     </div>
+    <div class="header-center">
+        <p class="subtitle">Tweede Kamerverkiezingen van 29 Oktober 2025</p>
+    </div>
     <button id="over-knop" class="btn btn-secondary">Over</button>
 </header>
 
 <div class="container">
     <!-- Startscherm -->
     <div id="start-scherm" class="screen">
-        <h2 style="font-size: 1.5rem; min-height: auto;">Tweede Kamerverkiezingen van 29 Oktober 2025</h2>
         <div class="party-logos">
             <a href="https://www.vvd.nl" target="_blank" rel="noopener noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/VVD_logo_%282020%E2%80%93present%29.svg" alt="VVD Logo"></a>
             <a href="https://www.groenlinkspvda.nl" target="_blank" rel="noopener noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/0/07/GroenLinks%E2%80%93PvdA_logo.svg" alt="GroenLinks-PvdA Logo"></a>
@@ -312,8 +344,8 @@
             <a href="https://www.sp.nl" target="_blank" rel="noopener noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Socialistische_Partij_%28nl_2006%29_Logo.svg/400px-Socialistische_Partij_%28nl_2006%29_Logo.svg.png" alt="SP Logo"></a>
             <a href="https://www.partijvoordedieren.nl" target="_blank" rel="noopener noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Party_for_the_Animals_logo.svg/400px-Party_for_the_Animals_logo.svg.png" alt="Partij voor de Dieren Logo"></a>
         </div>
-        <p>Welkom bij de SmartVote. Beantwoord 30 stellingen en ontdek welke politieke partij het dichtst bij uw opvattingen staat. U kunt per stelling ook de standpunten van de partijen bekijken.</p>
-        <button id="start-knop" class="btn btn-start">Start de Stemhulp</button>
+        <p>Welkom bij SmartVote. Beantwoord 30 stellingen en ontdek welke politieke partij het dichtst bij uw opvattingen staat. U kunt per stelling ook de standpunten van de partijen bekijken.</p>
+        <button id="start-knop" class="btn btn-start">Start SmartVote!</button>
     </div>
 
     <!-- Vragenscherm -->
@@ -341,12 +373,19 @@
     </div>
 </div>
 
+<footer>
+    <p>SmartVote &reg; 2025. Alle rechten voorbehouden.</p>
+</footer>
+
 <!-- Modal voor Motivatie -->
 <div id="motivatie-modal" class="modal">
     <div class="modal-content">
         <span class="close-button" id="motivatie-close-button">&times;</span>
         <h3 id="modal-stelling-tekst"></h3>
         <div id="modal-motivatie-body"></div>
+        <div class="modal-footer">
+            <button id="motivatie-sluiten-knop" class="btn btn-secondary">Sluiten</button>
+        </div>
     </div>
 </div>
 
@@ -358,10 +397,10 @@
         <p>SmartVote is een hulp voor verkiezingen door 30 stellingen met 'Eens', 'Neutraal' of 'Oneens' te beantwoorden.</p>
         
         <h3>TK2025</h3>
-        <p>Voor de komende Tweede Kamerverkiezingen van 29 Oktober 2025.</p>
+        <p>Voor de komende Tweede Kamerverkiezing van 29 Oktober 2025.</p>
         
         <h3>Hoe worden de stellingen gemaakt?</h3>
-        <p>Van alle 15 huidige partijen in de tweede kamer worden de verkiezingsprogramma's doorgenomen. Op basis daarvan worden de 30 stellingen gedestilleerd.</p>
+        <p>Van alle 15 huidige partijen in de tweede kamer worden de verkiezingsprogramma's doorgenomen. Er wordt gekeken naar overlappende thema's. Op basis daarvan worden de 30 stellingen gedestilleerd.</p>
         
         <h3>Hoe worden de partijstandpunten bepaald?</h3>
         <p>Op basis van de verkiezingsprogramma's worden de partijstandpunten bepaald.</p>
@@ -372,8 +411,15 @@
         <h3>Hoe komt het resultaat tot stand?</h3>
         <p>De berekening voor het eindresultaat is vrij eenvoudig en transparant. Voor elke stelling waar uw antwoord ('Eens', 'Neutraal' of 'Oneens') exact overeenkomt met het standpunt van een partij, krijgt die partij één punt. Aan het einde worden de punten per partij opgeteld. Het eindresultaat is een percentage dat aangeeft hoeveel van uw antwoorden overeenkomen met de standpunten van die partij.<br><b>Voorbeeld:</b><br>Er zijn 30 stellingen.<br>U bent het bij 20 stellingen eens met Partij X.<br>De score voor Partij X is dan (20 / 30) * 100% = 67%.<br>De partijen worden vervolgens gerangschikt van de hoogste naar de laagste score.</p>
         
-        <h3>Hoe gaat de SmartVote om met mijn privacy?</h3>
+        <h3>Hoe gaat SmartVote om met mijn privacy?</h3>
         <p>Er wordt geen data verwerkt of opgeslagen.</p>
+        
+        <h3>Kloppen er zaken niet of is er sprake van onjuiste informatie?</h3>
+        <p>Mail naar contact@smartvote.nl</p>
+
+        <div class="modal-footer">
+            <button id="over-sluiten-knop" class="btn btn-secondary">Sluiten</button>
+        </div>
     </div>
 </div>
 
@@ -397,6 +443,7 @@
             
             // Thema: Werk & Inkomen
             { id: 4, stelling: "Het wettelijk minimumloon moet fors omhoog naar € 18 per uur.", motivatie: "Een hoger minimumloon kan armoede bestrijden, maar critici vrezen dat dit banen kan kosten en de prijzen verder opdrijft." },
+            { id: 8, stelling: "De overheid moet de winstbelasting voor grote bedrijven verhogen om publieke voorzieningen te financieren.", motivatie: "Grote bedrijven maken soms recordwinsten. Moeten zij meer bijdragen aan de samenleving, of schaadt een hogere belasting het vestigingsklimaat?" },
             { id: 24, stelling: "Flexcontracten moeten sterk worden beperkt; het vaste contract moet weer de norm worden.", motivatie: "Veel mensen hebben een onzeker contract. Meer vaste contracten bieden zekerheid, maar bedrijven willen flexibel kunnen zijn." },
             { id: 25, stelling: "De belasting op arbeid moet omlaag en de belasting op vermogen en vervuiling omhoog.", motivatie: "Deze verschuiving kan werken lonender maken en duurzaam gedrag stimuleren, maar kan ook gevolgen hebben voor spaarders en bedrijven." },
 
@@ -637,7 +684,7 @@
                     21: "Wil een einde maken aan de gokindustrie die mensen in de problemen brengt en steunt een totaalverbod op gokreclames.",
                     22: "Beschermt de privacy van burgers en is tegen het uitbreiden van de bevoegdheden van de politie als dit ten koste gaat van grondrechten.",
                     23: "Wil de wietteelt reguleren om criminaliteit tegen te gaan en de kwaliteit te controleren.",
-                    24: "Wil een einde maken aan de onzekerheid van flexwerk en het vaste contract weer de norm maken.",
+                    24: "Wil een einde maken aan de onzekerheid van flexwerk en het vaste contract weer de norm te maken.",
                     25: "Pleiten voor een eerlijker belastingstelsel waarbij de lasten verschuiven van arbeid naar de hoogste vermogens en winsten.",
                     26: "Is voorstander van gemeentelijke, professionele vuurwerkshows en een verbod op consumentenvuurwerk om overlast en letsel te voorkomen.",
                     27: "Vindt de bio-industrie onhoudbaar en wil deze afschaffen ten gunste van een duurzame en diervriendelijke landbouw.",
@@ -713,6 +760,8 @@
     const overModal = document.getElementById('over-modal');
     const overKnop = document.getElementById('over-knop');
     const overCloseButton = document.getElementById('over-close-button');
+    const motivatieSluitenKnop = document.getElementById('motivatie-sluiten-knop');
+    const overSluitenKnop = document.getElementById('over-sluiten-knop');
 
 
     // Functies
@@ -826,10 +875,12 @@
 
     // Modal listeners
     motivatieKnop.addEventListener('click', toonMotivaties);
-    document.getElementById('motivatie-close-button').addEventListener('click', () => { motivatieModal.style.display = 'none'; });
+    motivatieCloseButton.addEventListener('click', () => { motivatieModal.style.display = 'none'; });
+    motivatieSluitenKnop.addEventListener('click', () => { motivatieModal.style.display = 'none'; });
     
     overKnop.addEventListener('click', () => { overModal.style.display = 'block'; });
     overCloseButton.addEventListener('click', () => { overModal.style.display = 'none'; });
+    overSluitenKnop.addEventListener('click', () => { overModal.style.display = 'none'; });
 
     window.addEventListener('click', (event) => {
         if (event.target == motivatieModal) {
