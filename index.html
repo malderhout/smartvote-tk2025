@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartVote</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230055a5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h7'%3E%3C/path%3E%3Cpath d='M9 12h6'%3E%3C/path%3E%3Cpath d='m16 19 2 2 4-4'%3E%3C/path%3E%3C/svg%3E" type="image/svg+xml">
+    <style>
+        :root {
+            --primary-color: #0055a5;
+            --secondary-color: #f0f8ff;
+            --text-color: #333;
+            --light-gray: #f4f4f4;
+            --dark-gray: #555;
+            --green: #4CAF50;
+            --red: #F44336;
+            --neutral: #FFC107;
+            --white: #ffffff;
+        }
+
+        /* Basis Stijlen */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            padding-top: 90px; /* Ruimte voor de vaste header */
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Zorgt dat container bovenaan start */
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+        
+        #main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 25px;
+            background-color: var(--white);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 1001;
+            box-sizing: border-box;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        #main-header .logo {
+            width: 40px;
+            height: 40px;
+            color: var(--primary-color);
+        }
+
+        #main-header h1 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin: 0;
+        }
+
+        .container {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 700px;
+            text-align: center;
+            transition: all 0.3s ease-in-out;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--dark-gray);
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Partijlogos */
+        .party-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .party-logos a {
+            display: inline-block;
+            line-height: 0;
+        }
+
+        .party-logos img {
+            height: 40px;
+            max-width: 120px;
+            object-fit: contain;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .party-logos a:hover img {
+            transform: scale(1.1);
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+        
+        .stelling-motivatie-tekst {
+            font-size: 0.95rem;
+            color: var(--dark-gray);
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            border-left: 3px solid var(--primary-color);
+            padding-left: 15px;
+            text-align: left;
+        }
+
+        /* Scherm Beheer */
+        .screen {
+            display: none;
+        }
+
+        #start-scherm {
+            display: block;
+        }
+
+        /* Knoppen */
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 1.5rem;
+        }
+        
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 15px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            font-weight: bold;
+        }
+        
+        .btn-start { background-color: var(--primary-color); color: white; }
+        .btn-start:hover { background-color: #004488; }
+        
+        .btn-eens { background-color: var(--green); color: white; }
+        .btn-eens:hover { background-color: #45a049; }
+        
+        .btn-neutraal { background-color: var(--neutral); color: white; }
+        .btn-neutraal:hover { background-color: #e0a800; }
+        
+        .btn-oneens { background-color: var(--red); color: white; }
+        .btn-oneens:hover { background-color: #da190b; }
+        
+        .btn-secondary, .btn-terug {
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+        }
+        .btn-secondary:hover, .btn-terug:hover {
+            background-color: #e0e0e0;
+        }
+
+        #vraag-teller {
+            font-size: 1rem;
+            color: var(--dark-gray);
+            margin-bottom: 1rem;
+        }
+        
+        /* Resultatenlijst */
+        #resultaat-lijst {
+            list-style: none;
+            padding: 0;
+            margin-top: 2rem;
+            text-align: left;
+        }
+        
+        #resultaat-lijst li {
+            background-color: var(--light-gray);
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            font-size: 1.1rem;
+        }
+        
+        .result-logo {
+            height: 30px;
+            width: auto;
+            max-width: 40px;
+            margin-right: 15px;
+            object-fit: contain;
+        }
+
+        #resultaat-lijst li .partij-naam { 
+            font-weight: bold;
+            flex-grow: 1;
+        }
+        #resultaat-lijst li .percentage { 
+            font-weight: bold; 
+            color: var(--primary-color);
+        }
+
+        /* Modal (Popup) */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1000; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 90%;
+            max-width: 600px;
+            border-radius: 12px;
+            text-align: left;
+        }
+
+        .close-button {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: black;
+            text-decoration: none;
+        }
+
+        .motivatie-item {
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary-color);
+            padding-left: 1rem;
+        }
+        .motivatie-item h4 { margin: 0 0 5px 0; }
+        .motivatie-item .standpunt { font-weight: bold; }
+        .motivatie-item .standpunt.eens { color: var(--green); }
+        .motivatie-item .standpunt.neutraal { color: var(--neutral); }
+        .motivatie-item .standpunt.oneens { color: var(--red); }
+
+        /* Responsive Design */
+        @media (min-width: 600px) {
+            .button-group {
+                flex-direction: row;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header id="main-header">
+    <div class="header-left">
+        <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h7"></path>
+            <path d="M9 12h6"></path>
+            <path d="m16 19 2 2 4-4"></path>
+        </svg>
+        <h1>SmartVote</h1>
+    </div>
+    <button id="over-knop" class="btn btn-secondary">Over</button>
+</header>
+
+<div class="container">
+    <!-- Startscherm -->
+    <div id="start-scherm" class="screen">
+        <h2 style="font-size: 1.5rem; min-height: auto;">Tweede Kamerverkiezingen van 29 Oktober 2025</h2>
+        <div class="party-logos">
+            <a href="https://www.vvd.nl" target="_blank" rel="noopener noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/VVD_logo_%282020%E2%80%93present%29.svg" alt="VVD Logo"></a>
+            <a href="https://www.groenlinkspvda.nl" target="_blank" rel="noopener noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/0/07/GroenLinks%E2%80%93PvdA_logo.svg" alt="GroenLinks-PvdA Logo"></a>
+            <a href="https://partijnieuwsociaalcontract.nl" target="_blank" rel="noopener noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/d/db/NSC_partijlogo.svg" alt="NSC Logo"></a>
+            <a href="https://www.christenunie.nl" target="_blank" rel="noopener noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/ChristenUnie_logo.svg/1600px-ChristenUnie_logo.svg.png" alt="ChristenUnie Logo"></a>
+            <a href="https://ja21.nl" target="_blank" rel="noopener noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/JA21_logo.svg/1024px-JA21_logo.svg.png" alt="JA21 Logo"></a>
+            <a href="https://www.sp.nl" target="_blank" rel="noopener noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Socialistische_Partij_%28nl_2006%29_Logo.svg/400px-Socialistische_Partij_%28nl_2006%29_Logo.svg.png" alt="SP Logo"></a>
+            <a href="https://www.partijvoordedieren.nl" target="_blank" rel="noopener noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Party_for_the_Animals_logo.svg/400px-Party_for_the_Animals_logo.svg.png" alt="Partij voor de Dieren Logo"></a>
+        </div>
+        <p>Welkom bij de SmartVote. Beantwoord 30 stellingen en ontdek welke politieke partij het dichtst bij uw opvattingen staat. U kunt per stelling ook de standpunten van de partijen bekijken.</p>
+        <button id="start-knop" class="btn btn-start">Start de Stemhulp</button>
+    </div>
+
+    <!-- Vragenscherm -->
+    <div id="vraag-scherm" class="screen">
+        <p id="vraag-teller"></p>
+        <h2 id="stelling-tekst"></h2>
+        <p id="stelling-motivatie" class="stelling-motivatie-tekst"></p>
+        <div class="button-container">
+            <div class="button-group">
+                <button class="btn btn-eens" data-antwoord="1">Eens</button>
+                <button class="btn btn-neutraal" data-antwoord="0">Neutraal</button>
+                <button class="btn btn-oneens" data-antwoord="-1">Oneens</button>
+            </div>
+            <button id="motivatie-knop" class="btn btn-secondary">Bekijk partijstandpunten</button>
+            <button id="terug-knop" class="btn btn-terug">Vorige vraag</button>
+        </div>
+    </div>
+
+    <!-- Resultaatscherm -->
+    <div id="resultaat-scherm" class="screen">
+        <h2 style="font-size: 1.8rem; min-height: auto;">Eindresultaat</h2>
+        <p>Op basis van uw antwoorden is dit de ranglijst van partijen die het dichtst bij u staan:</p>
+        <ul id="resultaat-lijst"></ul>
+        <button onclick="location.reload()" class="btn btn-start">Opnieuw doen</button>
+    </div>
+</div>
+
+<!-- Modal voor Motivatie -->
+<div id="motivatie-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-button" id="motivatie-close-button">&times;</span>
+        <h3 id="modal-stelling-tekst"></h3>
+        <div id="modal-motivatie-body"></div>
+    </div>
+</div>
+
+<!-- Modal voor Over -->
+<div id="over-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-button" id="over-close-button">&times;</span>
+        <h3>Over SmartVote</h3>
+        <p>SmartVote is een hulp voor verkiezingen door 30 stellingen met 'Eens', 'Neutraal' of 'Oneens' te beantwoorden.</p>
+        
+        <h3>TK2025</h3>
+        <p>Voor de komende Tweede Kamerverkiezingen van 29 Oktober 2025.</p>
+        
+        <h3>Hoe worden de stellingen gemaakt?</h3>
+        <p>Van alle 15 huidige partijen in de tweede kamer worden de verkiezingsprogramma's doorgenomen. Op basis daarvan worden de 30 stellingen gedestilleerd.</p>
+        
+        <h3>Hoe worden de partijstandpunten bepaald?</h3>
+        <p>Op basis van de verkiezingsprogramma's worden de partijstandpunten bepaald.</p>
+        
+        <h3>Hoe moet ik het resultaat lezen?</h3>
+        <p>De partijen worden gerangschikt van de hoogste naar de laagste score.</p>
+        
+        <h3>Hoe komt het resultaat tot stand?</h3>
+        <p>De berekening voor het eindresultaat is vrij eenvoudig en transparant. Voor elke stelling waar uw antwoord ('Eens', 'Neutraal' of 'Oneens') exact overeenkomt met het standpunt van een partij, krijgt die partij één punt. Aan het einde worden de punten per partij opgeteld. Het eindresultaat is een percentage dat aangeeft hoeveel van uw antwoorden overeenkomen met de standpunten van die partij.<br><b>Voorbeeld:</b><br>Er zijn 30 stellingen.<br>U bent het bij 20 stellingen eens met Partij X.<br>De score voor Partij X is dan (20 / 30) * 100% = 67%.<br>De partijen worden vervolgens gerangschikt van de hoogste naar de laagste score.</p>
+        
+        <h3>Hoe gaat de SmartVote om met mijn privacy?</h3>
+        <p>Er wordt geen data verwerkt of opgeslagen.</p>
+    </div>
+</div>
+
+
+<script>
+    // Data van de stellingen, partijstandpunten en motivaties
+    const data = {
+        stellingen: [
+            // Thema: Wonen & Ruimtelijke Ordening
+            { id: 1, stelling: "De overheid moet de regie nemen in de volkshuisvesting door fors te investeren in de bouw van betaalbare woningen.", motivatie: "De woningnood is groot. Starters, gezinnen en ouderen kunnen moeilijk een passende en betaalbare woning vinden. De vraag is welke rol de overheid moet spelen." },
+            { id: 9, stelling: "De hypotheekrenteaftrek moet verder worden beperkt of afgeschaft.", motivatie: "De hypotheekrenteaftrek maakt het kopen van een huis fiscaal aantrekkelijk, maar critici stellen dat het de huizenprijzen opdrijft en de ongelijkheid vergroot." },
+            { id: 26, stelling: "De overheid moet de verkoop van consumentenvuurwerk verbieden.", motivatie: "Elke jaarwisseling leidt tot overlast, letsel en milieuschade. Een landelijk verbod wordt voorgesteld als oplossing, maar tegenstanders wijzen op de traditie en eigen verantwoordelijkheid." },
+
+            // Thema: Klimaat & Energie
+            { id: 2, stelling: "Kernenergie is onmisbaar in de toekomstige energiemix en de overheid moet de bouw van nieuwe centrales actief ondersteunen.", motivatie: "Kernenergie stoot geen CO2 uit, maar er is discussie over de kosten, veiligheid en het kernafval. Is het een noodzakelijke energiebron naast zon en wind?" },
+            { id: 10, stelling: "Er moet een kilometerheffing (rekeningrijden) worden ingevoerd om autogebruik te verminderen en eerlijker te belasten.", motivatie: "Rekeningrijden betekent betalen per gereden kilometer in plaats van een vast bedrag aan wegenbelasting. Voorstanders zien het als een eerlijke manier om files en vervuiling te verminderen." },
+            { id: 11, stelling: "De luchtvaart (Schiphol) moet krimpen om klimaatdoelen en leefbaarheid te garanderen.", motivatie: "De luchtvaart zorgt voor veel CO2-uitstoot en geluidsoverlast. Krimp kan de overlast verminderen, maar heeft mogelijk economische gevolgen." },
+
+            // Thema: Migratie & Asiel
+            { id: 3, stelling: "De asielinstroom moet fors worden beperkt, desnoods door internationale verdragen aan te passen of op te zeggen.", motivatie: "De opvang van asielzoekers legt een grote druk op gemeenten. Sommigen vinden dat de instroom omlaag moet, anderen benadrukken de humanitaire plicht om vluchtelingen op te vangen." },
+            
+            // Thema: Werk & Inkomen
+            { id: 4, stelling: "Het wettelijk minimumloon moet fors omhoog naar € 18 per uur.", motivatie: "Een hoger minimumloon kan armoede bestrijden, maar critici vrezen dat dit banen kan kosten en de prijzen verder opdrijft." },
+            { id: 24, stelling: "Flexcontracten moeten sterk worden beperkt; het vaste contract moet weer de norm worden.", motivatie: "Veel mensen hebben een onzeker contract. Meer vaste contracten bieden zekerheid, maar bedrijven willen flexibel kunnen zijn." },
+            { id: 25, stelling: "De belasting op arbeid moet omlaag en de belasting op vermogen en vervuiling omhoog.", motivatie: "Deze verschuiving kan werken lonender maken en duurzaam gedrag stimuleren, maar kan ook gevolgen hebben voor spaarders en bedrijven." },
+
+            // Thema: Defensie & Buitenland
+            { id: 5, stelling: "Nederland moet de defensie-uitgaven verhogen naar de nieuwe NAVO-norm van 3,5% van het BBP.", motivatie: "Geopolitieke spanningen maken een sterke defensie belangrijk. Hogere uitgaven betekenen mogelijk minder geld voor andere zaken zoals zorg of onderwijs." },
+            { id: 18, stelling: "Nederland moet zich in de EU verzetten tegen verdere politieke integratie (meer macht naar Brussel).", motivatie: "Samenwerking in de EU is belangrijk, maar hoeveel macht moet 'Brussel' krijgen? Dit raakt de nationale soevereiniteit." },
+            { id: 19, stelling: "Ontwikkelingssamenwerking moet primair gericht zijn op het bestrijden van armoede, niet op Nederlandse handelsbelangen.", motivatie: "Moet ontwikkelingshulp puur gericht zijn op het helpen van de armsten, of mag het ook de Nederlandse economie ten goede komen?" },
+
+            // Thema: Zorg
+            { id: 6, stelling: "Het verplichte eigen risico in de zorg moet worden afgeschaft of fors verlaagd.", motivatie: "Het eigen risico kan een drempel zijn om zorg te zoeken. Afschaffing maakt zorg toegankelijker, maar verhoogt waarschijnlijk de premie voor iedereen." },
+            { id: 14, stelling: "Marktwerking in de zorg moet worden teruggedraaid; zorgverzekeraars moeten worden vervangen door een publiek zorgfonds.", motivatie: "Een publiek zorgfonds kan de zorg efficiënter en eerlijker maken, maar het huidige stelsel met concurrentie tussen verzekeraars heeft ook voordelen." },
+            { id: 15, stelling: "De overheid moet de productie van medicijnen weer in eigen hand nemen om tekorten te voorkomen.", motivatie: "Medicijntekorten zijn een groeiend probleem. Nationale productie kan de levering garanderen, maar is complex en kostbaar." },
+
+            // Thema: Democratie & Rechtsstaat
+            { id: 7, stelling: "Er moet een correctief bindend referendum worden ingevoerd om burgers meer directe invloed te geven.", motivatie: "Een referendum kan de kloof tussen burger en politiek verkleinen, maar critici vrezen dat het complexe besluitvorming kan ondermijnen." },
+            { id: 20, stelling: "De AOW-leeftijd moet terug naar 65 jaar.", motivatie: "Veel mensen willen eerder stoppen met werken, zeker in zware beroepen. Een lagere AOW-leeftijd heeft echter grote financiële gevolgen voor de staatskas." },
+            { id: 21, stelling: "Er moet een verbod komen op reclames voor online gokken.", motivatie: "Gokverslaving is een serieus probleem. Een reclameverbod kan kwetsbare mensen beschermen, maar beperkt ook de commerciële vrijheid." },
+            { id: 22, stelling: "De politie moet meer bevoegdheden krijgen om criminaliteit te bestrijden, ook als dit ten koste gaat van privacy.", motivatie: "Een veilige samenleving is een groot goed. De vraag is hoeveel privacy we willen opgeven voor extra veiligheidsmaatregelen." },
+            { id: 23, stelling: "Softdrugs (wiet) moeten volledig worden gelegaliseerd en gereguleerd.", motivatie: "Legalisering kan criminaliteit ondermijnen en de kwaliteit controleren. Tegenstanders wijzen op de gezondheidsrisico's." },
+            { id: 28, stelling: "De overheid moet een actieve rol spelen in het bestrijden van desinformatie online.", motivatie: "Nepnieuws kan de democratie ondermijnen. In hoeverre mag de overheid ingrijpen zonder de vrijheid van meningsuiting te beperken?" },
+            { id: 29, stelling: "De kiesgerechtigde leeftijd moet worden verlaagd naar 16 jaar.", motivatie: "Jongeren hebben ook een stem in hun toekomst. Voorstanders pleiten voor verlaging, tegenstanders twijfelen of 16-jarigen er klaar voor zijn." },
+
+            // Thema: Landbouw & Natuur
+            { id: 12, stelling: "De veestapel moet met minimaal 50% krimpen om de stikstofcrisis op te lossen.", motivatie: "De stikstofuitstoot is schadelijk voor de natuur. Een kleinere veestapel is een effectieve oplossing, maar heeft grote gevolgen voor boeren." },
+            { id: 13, stelling: "Landbouwgif (pesticiden) moet zo snel mogelijk verboden worden.", motivatie: "Pesticiden zijn schadelijk voor de biodiversiteit en mogelijk voor de gezondheid. Een verbod beschermt de natuur, maar boeren zeggen ze nodig te hebben voor de oogst." },
+            { id: 27, stelling: "De bio-industrie moet zo snel mogelijk worden afgeschaft.", motivatie: "De bio-industrie roept veel vragen op over dierenwelzijn en milieu-impact. Afschaffing zou een radicale verandering van ons voedselsysteem betekenen." },
+            { id: 30, stelling: "Er moet een einde komen aan de jacht voor plezier (plezierjacht).", motivatie: "Jacht is een controversieel onderwerp. Tegenstanders vinden het onethisch, terwijl voorstanders wijzen op de rol in natuurbeheer en traditie." },
+
+            // Thema: Onderwijs
+            { id: 16, stelling: "Het leenstelsel moet definitief worden afgeschaft en de basisbeurs moet fors omhoog.", motivatie: "Hoge studieschulden leggen een grote druk op jongeren. Een hogere basisbeurs maakt studeren toegankelijker, maar kost de overheid veel geld." },
+            { id: 17, stelling: "De 'vrijwillige' ouderbijdrage op scholen moet volledig worden afgeschaft.", motivatie: "De ouderbijdrage kan leiden tot ongelijkheid tussen leerlingen. Afschaffing zorgt voor gelijkheid, maar scholen hebben het geld nodig voor extra's." }
+        ],
+        partijen: {
+            'ChristenUnie': {
+                logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/ChristenUnie_logo.svg/1600px-ChristenUnie_logo.svg.png",
+                standpunten: { 1: 1, 2: 1, 3: 0, 4: 0, 5: 1, 6: 0, 7: -1, 8: 0, 9: 0, 10: 1, 11: 1, 12: 1, 13: 1, 14: -1, 15: 0, 16: 1, 17: 0, 18: 0, 19: 1, 20: -1, 21: 1, 22: 0, 23: -1, 24: 1, 25: 1, 26: 1, 27: 0, 28: 1, 29: 0, 30: 0 },
+                motivatie: {
+                    1: "Kiest voor een overheid die regie neemt om betaalbaar en toekomstbestendig te bouwen, met een extra investering van 20 miljard euro voor 100.000 woningen per jaar.",
+                    2: "Ziet kernenergie als een noodzakelijke aanvulling op wind- en zonne-energie en wil twee nieuwe grote kerncentrales bouwen.",
+                    3: "Wil een menswaardig en toekomstbestendig migratiebeleid en steunt het EU-migratiepact, maar legt de nadruk op het nemen van verantwoordelijkheid voor echte vluchtelingen.",
+                    4: "Focust op een nieuw, eenvoudig belastingstelsel waarbij de eerste €30.000 belastingvrij is, wat netto meer loon oplevert, in plaats van een directe verhoging van het bruto minimumloon.",
+                    5: "Wil voldoen aan de nieuwe NAVO-norm van 3,5% van het BBP voor defensie-uitgaven in 2035, omdat de partij kiest voor veiligheid en solidariteit.",
+                    6: "Wil het eigen risico niet verhogen en handhaven op €385, met een tegemoetkoming voor chronisch zieken. Een verlaging wordt niet voorgesteld.",
+                    7: "Is geen voorstander van referenda en gelooft in de kracht van de representatieve democratie, maar wil wel de relatie tussen burger en politiek versterken via andere middelen.",
+                    8: "Focus ligt op het verlagen van de lasten op arbeid, niet per se op het verhogen van de winstbelasting, om het vestigingsklimaat stabiel te houden.",
+                    9: "Wil de woningmarkt stabiel houden en de positie van starters verbeteren, maar pleit niet voor een actieve verdere afbouw van de hypotheekrenteaftrek.",
+                    10: "Is voorstander van het principe 'de gebruiker betaalt' om het wegennet efficiënter te gebruiken en te verduurzamen.",
+                    11: "Vindt dat de luchtvaart moet verduurzamen en dat overlast beperkt moet worden, onder andere door het stoppen van nachtvluchten.",
+                    12: "Erkent dat de stikstofuitstoot omlaag moet en dat dit gevolgen heeft voor de veestapel, maar wil dit doen met oog voor het perspectief van de boeren.",
+                    13: "Wil het gebruik van schadelijke bestrijdingsmiddelen sterk verminderen en toewerken naar een landbouw die in balans is met de natuur.",
+                    14: "Wil het huidige zorgstelsel verbeteren en toegankelijker maken, maar is geen voorstander van de afschaffing van zorgverzekeraars.",
+                    15: "Vindt leveringszekerheid van medicijnen cruciaal en staat open voor maatregelen om dit te verbeteren, maar pleit niet expliciet voor staatsproductie.",
+                    16: "Heeft de terugkeer van de basisbeurs gesteund en wil dat studeren betaalbaar blijft voor iedereen.",
+                    17: "Wil kansengelijkheid bevorderen, maar ziet de vrijwillige ouderbijdrage niet als het grootste probleem en respecteert de autonomie van scholen.",
+                    18: "Is kritisch op de EU en wil geen onnodige machtsoverdracht, maar ziet ook de noodzaak van samenwerking op grensoverschrijdende thema's.",
+                    19: "Ziet ontwikkelingssamenwerking als een morele plicht die gericht moet zijn op het helpen van de allerarmsten, vanuit het principe van naastenliefde.",
+                    20: "Wil een houdbare AOW voor de toekomst en ziet een generieke verlaging naar 65 jaar niet als een realistische optie.",
+                    21: "Wil kwetsbare mensen beschermen tegen de risico's van gokverslaving en steunt daarom een verbod op gokreclames.",
+                    22: "Zoekt een balans tussen het effectief bestrijden van criminaliteit en het beschermen van de privacy van burgers.",
+                    23: "Is tegen de legalisering van softdrugs vanwege de risico's voor de volksgezondheid en de samenleving.",
+                    24: "Vindt dat de balans is doorgeslagen naar te veel flexibiliteit en wil de positie van werkenden versterken met meer vaste contracten.",
+                    25: "Wil dat werken meer loont door de belasting op arbeid te verlagen, en wil vervuiling zwaarder belasten.",
+                    26: "Is voorstander van een landelijk vuurwerkverbod om letsel, overlast en milieuschade te voorkomen.",
+                    27: "Wil de landbouw verduurzamen en de impact op de natuur verminderen, maar pleit niet voor een volledige afschaffing van de bio-industrie.",
+                    28: "Vindt de aanpak van desinformatie belangrijk voor de democratie, maar benadrukt ook het belang van de vrijheid van meningsuiting.",
+                    29: "Staat open voor de discussie over het verlagen van de kiesleeftijd om jongeren meer te betrekken bij de politiek.",
+                    30: "Vindt dat jacht alleen mag plaatsvinden in het kader van noodzakelijk natuur- en faunabeheer, niet voor vermaak."
+                }
+            },
+            'GroenLinks-PvdA': {
+                logo: "https://upload.wikimedia.org/wikipedia/commons/0/07/GroenLinks%E2%80%93PvdA_logo.svg",
+                standpunten: { 1: 1, 2: -1, 3: -1, 4: 1, 5: 1, 6: 1, 7: 1, 8: 1, 9: 1, 10: 1, 11: 1, 12: 1, 13: 1, 14: 1, 15: 1, 16: 1, 17: 1, 18: -1, 19: 1, 20: -1, 21: 1, 22: -1, 23: 1, 24: 1, 25: 1, 26: 1, 27: 1, 28: 1, 29: 1, 30: 1 },
+                motivatie: {
+                    1: "Maakt van volkshuisvesting een topprioriteit met het grootste investeringsprogramma in decennia om meer dan 100.000 betaalbare woningen per jaar te bouwen.",
+                    2: "Is tegen publiek geld voor kerncentrales en wil het gereserveerde budget gebruiken voor snellere en zekere verduurzamingsmaatregelen zoals isolatie en windenergie.",
+                    3: "Staat pal voor het VN Vluchtelingenverdrag en wil een effectief en menswaardig asielbeleid gebaseerd op veilige routes en Europese samenwerking.",
+                    4: "Wil het minimumloon verhogen naar €18 per uur als cruciaal onderdeel van een eerlijke economie waarin werkenden vooruitkomen.",
+                    5: "Steunt de verhoging naar de 3,5% NAVO-norm, maar benadrukt dat dit betaald moet worden door de rijksten en niet ten koste mag gaan van de verzorgingsstaat.",
+                    6: "Wil het eigen risico stapsgewijs volledig afschaffen vanuit het principe van solidariteit, waarbij de kosten voor zorg eerlijk worden gedeeld.",
+                    7: "Steunt de invoering van een correctief referendum om burgers meer directe invloed te geven op de landelijke politiek.",
+                    8: "Wil een eerlijker belastingstelsel waarbij grote bedrijven met hoge winsten een grotere bijdrage leveren aan de samenleving.",
+                    9: "Vindt dat de hypotheekrenteaftrek de ongelijkheid op de woningmarkt vergroot en wil deze versneld afbouwen.",
+                    10: "Ziet rekeningrijden als een eerlijke en effectieve manier om de uitstoot van het verkeer te verminderen en files tegen te gaan.",
+                    11: "Vindt dat de luchtvaart moet krimpen om de klimaatdoelen te halen en de leefbaarheid voor omwonenden te verbeteren.",
+                    12: "Pleiten voor een forse, eerlijke en snelle krimp van de veestapel om de natuur te herstellen en de stikstofcrisis op te lossen.",
+                    13: "Wil de natuur en de gezondheid van mensen beschermen door het gebruik van schadelijke bestrijdingsmiddelen in de landbouw te verbieden.",
+                    14: "Wil een einde maken aan de marktwerking in de zorg en de macht van zorgverzekeraars breken met een Nationaal Zorgfonds.",
+                    15: "Vindt dat medicijnen een publiek goed zijn en wil de afhankelijkheid van de farmaceutische industrie verminderen door publieke productie te stimuleren.",
+                    16: "Wil studeren voor iedereen toegankelijk maken door de basisbeurs fors te verhogen en de schulden van de 'pechgeneratie' te compenseren.",
+                    17: "Vindt dat de vrijwillige ouderbijdrage leidt tot kansenongelijkheid en wil deze daarom volledig afschaffen.",
+                    18: "Is een pro-Europese partij die gelooft in sterke Europese samenwerking om grote uitdagingen als klimaatverandering en ongelijkheid aan te pakken.",
+                    19: "Vindt dat ontwikkelingssamenwerking gebaseerd moet zijn op internationale solidariteit en gericht moet zijn op het bestrijden van armoede en ongelijkheid.",
+                    20: "Wil de AOW-leeftijd niet generiek verlagen, maar een goede regeling voor mensen met zware beroepen zodat zij eerder kunnen stoppen.",
+                    21: "Wil de samenleving beschermen tegen de gevaren van gokverslaving en steunt daarom een totaalverbod op gokreclames.",
+                    22: "Vindt dat de privacy van burgers een groot goed is en dat de bevoegdheden van de politie niet ten koste mogen gaan van dit grondrecht.",
+                    23: "Wil het mislukte drugsbeleid hervormen door softdrugs te legaliseren en reguleren, om zo criminaliteit tegen te gaan en de gezondheid te beschermen.",
+                    24: "Strijdt voor meer baanzekerheid en wil een einde maken aan de doorgeslagen flexibilisering door het vaste contract weer de norm te maken.",
+                    25: "Wil een fundamentele verschuiving in het belastingstelsel: lagere lasten op werk en hogere lasten op vermogen, winst en vervuiling.",
+                    26: "Steunt een landelijk verbod op consumentenvuurwerk om de veiligheid te vergroten en overlast voor mens en dier te beperken.",
+                    27: "Wil een transitie naar een duurzame, diervriendelijke landbouw en vindt dat de bio-industrie in zijn huidige vorm onhoudbaar is.",
+                    28: "Vindt dat de overheid en online platforms een verantwoordelijkheid hebben om de verspreiding van desinformatie en haatzaaien tegen te gaan.",
+                    29: "Wil jongeren meer betrekken bij de democratie en steunt daarom het verlagen van de kiesgerechtigde leeftijd naar 16 jaar.",
+                    30: "Vindt dat dieren niet gedood mogen worden voor vermaak en wil daarom de plezierjacht volledig verbieden."
+                }
+            },
+            'Nieuw Sociaal Contract': {
+                logo: "https://upload.wikimedia.org/wikipedia/commons/d/db/NSC_partijlogo.svg",
+                standpunten: { 1: 1, 2: 1, 3: 1, 4: 1, 5: 1, 6: 1, 7: 1, 8: 0, 9: 0, 10: 0, 11: 0, 12: 0, 13: 0, 14: 0, 15: 1, 16: 1, 17: 0, 18: 0, 19: 0, 20: -1, 21: 1, 22: 0, 23: -1, 24: 1, 25: 1, 26: 0, 27: -1, 28: 1, 29: -1, 30: -1 },
+                motivatie: {
+                    1: "Vindt dat de overheid meer regie moet nemen om de wooncrisis op te lossen en wil jaarlijks 100.000 woningen bouwen, waarvan een groot deel betaalbaar.",
+                    2: "Beschouwt kernenergie als onmisbaar voor een schone en betrouwbare energievoorziening en wil de bouw van ten minste vier nieuwe kerncentrales voorbereiden.",
+                    3: "Staat voor een streng en realistisch migratiebeleid met de nadruk op opvang in de regio en wil internationale verdragen moderniseren.",
+                    4: "Wil het minimumloon stapsgewijs verhogen naar €18 als onderdeel van een bredere stelselvernieuwing om bestaanszekerheid te garanderen.",
+                    5: "Hanteert de nieuwe NAVO-norm van 3,5% voor defensie en 1,5% voor gerelateerde uitgaven om te investeren in een weerbare samenleving.",
+                    6: "Wil de financiële drempel voor zorg verlagen door het eigen risico te beperken tot circa €80 per behandeling, met een maximum van €385 per jaar.",
+                    7: "Steunt de invoering van een correctief wetgevingsreferendum als aanvulling op de representatieve democratie.",
+                    8: "Wil een stabiel en voorspelbaar vestigingsklimaat voor bedrijven en is daarom terughoudend met grote verhogingen van de winstbelasting.",
+                    9: "Focus ligt op de betaalbaarheid van wonen voor starters, maar heeft geen concrete plannen om de hypotheekrenteaftrek verder te beperken.",
+                    10: "Is niet direct voor of tegen, maar wil de effecten van rekeningrijden op de economie en de burger eerst grondig onderzoeken.",
+                    11: "Wil een balans vinden tussen de economische belangen van de luchtvaart en de leefbaarheid voor omwonenden, zonder expliciet voor krimp te pleiten.",
+                    12: "Vindt dat de stikstofdoelen gehaald moeten worden, maar wil dit doen op een manier die boeren perspectief biedt, zonder harde percentages voor krimp te noemen.",
+                    13: "Wil het gebruik van pesticiden verminderen en de landbouw verduurzamen, maar pleit niet voor een direct en volledig verbod.",
+                    14: "Wil het zorgstelsel grondig herzien om het betaalbaar en toegankelijk te houden, maar een publiek zorgfonds is niet het uitgangspunt.",
+                    15: "Vindt dat Nederland strategisch onafhankelijker moet worden in de productie van essentiële goederen zoals medicijnen.",
+                    16: "Wil dat studeren toegankelijk blijft en steunt een hogere basisbeurs om de financiële druk op studenten te verlichten.",
+                    17: "Wil kansengelijkheid in het onderwijs vergroten, maar ziet de afschaffing van de ouderbijdrage niet als de belangrijkste maatregel.",
+                    18: "Is kritisch op de EU en wil dat de macht van Brussel wordt beperkt, maar erkent ook de noodzaak van Europese samenwerking.",
+                    19: "Ziet ontwikkelingssamenwerking als een combinatie van het helpen van mensen in nood en het dienen van Nederlandse belangen.",
+                    20: "Vindt een houdbare AOW belangrijk voor de overheidsfinanciën en is daarom tegen een generieke verlaging van de AOW-leeftijd.",
+                    21: "Wil gokverslaving tegengaan en de consument beschermen, en steunt daarom een verbod op gokreclames.",
+                    22: "Zoekt een zorgvuldige balans tussen de noodzaak van criminaliteitsbestrijding en de bescherming van de privacy van burgers.",
+                    23: "Is terughoudend over de legalisering van softdrugs en wil eerst de resultaten van de huidige experimenten afwachten.",
+                    24: "Wil de doorgeslagen flexibilisering op de arbeidsmarkt aanpakken en de zekerheid van werkenden vergroten.",
+                    25: "Vindt dat de lasten op arbeid te hoog zijn en wil deze verlagen, onder andere door vermogens en vervuiling eerlijker te belasten.",
+                    26: "Wil de overlast en het letsel door vuurwerk beperken en staat open voor lokaal maatwerk, maar is niet voor een landelijk verbod.",
+                    27: "Wil de landbouwsector een duurzaam toekomstperspectief bieden en is daarom tegen een gedwongen afschaffing van de bio-industrie.",
+                    28: "Vindt dat desinformatie een bedreiging vormt voor de democratie en dat de overheid hier een actieve rol in moet spelen.",
+                    29: "Is van mening dat de huidige kiesleeftijd van 18 jaar passend is en is tegen een verlaging naar 16 jaar.",
+                    30: "Ziet de jacht als een noodzakelijk instrument voor faunabeheer en is daarom tegen een verbod op de plezierjacht."
+                }
+            },
+            'VVD': {
+                logo: "https://upload.wikimedia.org/wikipedia/commons/7/7a/VVD_logo_%282020%E2%80%93present%29.svg",
+                standpunten: { 1: -1, 2: 1, 3: 1, 4: -1, 5: 1, 6: -1, 7: -1, 8: -1, 9: -1, 10: -1, 11: -1, 12: -1, 13: -1, 14: -1, 15: -1, 16: 0, 17: -1, 18: 0, 19: -1, 20: -1, 21: -1, 22: 1, 23: 0, 24: -1, 25: 0, 26: -1, 27: -1, 28: 0, 29: -1, 30: -1 },
+                motivatie: {
+                    1: "Wil de woningmarkt juist bevrijden van knellende regels om de bouw te stimuleren. De partij gelooft dat minder bureaucratie en meer ruimte voor de markt de oplossing is.",
+                    2: "Ziet kernenergie als een noodzakelijke, stabiele en schone energiebron. Wil de bouw van vier grote kerncentrales versnellen.",
+                    3: "Wil een fundamentele stelselwijziging naar een systeem van hervestiging en wil verouderde internationale verdragen moderniseren om grip te krijgen op asiel.",
+                    4: "Focust op het lonender maken van werk via lastenverlichting en het loskoppelen van uitkeringen, in plaats van een forse verhoging van het bruto minimumloon.",
+                    5: "Kiest voor de grootste investering ooit in veiligheid en wil een directe investering van 3,5% van het BBP om de krijgsmacht te moderniseren en te versterken.",
+                    6: "Wil de verlaging van het eigen risico terugdraaien en overweegt zelfs een verhoging om de maandelijkse premies betaalbaar te houden.",
+                    7: "Is geen voorstander van referenda en hecht aan de besluitvorming door gekozen volksvertegenwoordigers in het parlement.",
+                    8: "Wil het vestigingsklimaat voor bedrijven aantrekkelijk houden en is daarom tegen een verhoging van de winstbelasting.",
+                    9: "Is een groot voorstander van de hypotheekrenteaftrek als middel om het eigenwoningbezit te stimuleren.",
+                    10: "Is tegen rekeningrijden omdat het automobilisten op extra kosten jaagt en de privacy kan aantasten.",
+                    11: "Ziet Schiphol als een belangrijke motor voor de economie en wil de luchtvaart verduurzamen in plaats van laten krimpen.",
+                    12: "Is tegen een gedwongen krimp van de veestapel en gelooft in technische innovatie om de stikstofuitstoot te verminderen.",
+                    13: "Vindt dat een volledig verbod op pesticiden de voedselproductie in gevaar brengt en pleit voor verantwoorde en veilige toepassing.",
+                    14: "Gelooft in het huidige zorgstelsel met gereguleerde marktwerking en concurrentie tussen verzekeraars om de zorg betaalbaar te houden.",
+                    15: "Vertrouwt op de markt en internationale samenwerking voor de levering van medicijnen en is tegen staatsproductie.",
+                    16: "De basisbeurs is teruggekeerd, maar de VVD is terughoudend over een forse verhoging om de overheidsfinanciën gezond te houden.",
+                    17: "Respecteert de autonomie van scholen en vindt dat zij zelf moeten kunnen beslissen over een vrijwillige ouderbijdrage.",
+                    18: "Is pragmatisch als het gaat om de EU: samenwerken waar het moet, maar de nationale soevereiniteit behouden waar het kan.",
+                    19: "Vindt dat ontwikkelingssamenwerking hand in hand moet gaan met het bevorderen van Nederlandse handelsbelangen.",
+                    20: "Wil de AOW betaalbaar houden voor toekomstige generaties en is daarom tegen een verlaging van de AOW-leeftijd.",
+                    21: "Gelooft in de eigen verantwoordelijkheid van mensen en is tegen een totaalverbod op gokreclames, maar voor goede voorlichting.",
+                    22: "Vindt dat de politie voldoende bevoegdheden moet hebben om de veiligheid te garanderen, ook als dit soms ten koste gaat van privacy.",
+                    23: "Is bereid om de huidige wietexperimenten te evalueren, maar is op dit moment niet voor volledige legalisering.",
+                    24: "Ziet flexibele arbeid als essentieel voor een dynamische economie en is tegen sterke beperkingen op flexcontracten.",
+                    25: "Wil de lasten op arbeid verlagen, maar is terughoudend met het fors verhogen van de belastingen op vermogen om het investeringsklimaat niet te schaden.",
+                    26: "Is voor het behoud van de vuurwerktraditie en tegen een landelijk verbod, maar pleit wel voor een strenge aanpak van illegaal vuurwerk en overlast.",
+                    27: "Ziet de bio-industrie als een belangrijke economische sector en wil deze verduurzamen door innovatie, niet door afschaffing.",
+                    28: "Vindt de aanpak van desinformatie belangrijk, maar waarschuwt voor een te grote rol van de overheid die de vrijheid van meningsuiting kan beperken.",
+                    29: "Is van mening dat de kiesleeftijd van 18 jaar een weloverwogen grens is en ziet geen reden voor verlaging.",
+                    30: "Erkent de rol van de jacht in faunabeheer en is daarom tegen een volledig verbod op de plezierjacht."
+                }
+            },
+            'JA21': {
+                logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/JA21_logo.svg/1024px-JA21_logo.svg.png",
+                standpunten: { 1: 1, 2: 1, 3: 1, 4: -1, 5: 1, 6: -1, 7: 1, 8: -1, 9: -1, 10: -1, 11: -1, 12: -1, 13: -1, 14: -1, 15: -1, 16: 0, 17: -1, 18: 1, 19: -1, 20: 0, 21: -1, 22: 1, 23: -1, 24: -1, 25: -1, 26: -1, 27: -1, 28: -1, 29: -1, 30: -1 },
+                motivatie: {
+                    1: "Wil dat de overheid een beleid ontwikkelt om bevolkingsgroei te beperken, wat de woningnood structureel moet oplossen. Geeft de markt de ruimte om te bouwen.",
+                    2: "Ziet kernenergie als de duurzame toekomst en wil een groot nationaal kernenergieoffensief starten om de energievoorziening betrouwbaar en betaalbaar te maken.",
+                    3: "Vindt dat knellende internationale verdragen de soevereiniteit ondermijnen en wil deze herzien om de migratiestromen effectief te kunnen inperken.",
+                    4: "Focust op lastenverlaging voor werkenden en ondernemers en een eenvoudiger belastingstelsel, niet op een verhoging van het minimumloon.",
+                    5: "Wil de defensie-uitgaven fors verhogen en lineair toewerken naar 5% van het BBP in 2035, en is daarmee een groot voorstander van de 3,5% norm.",
+                    6: "Wil de groei van het zorgbudget beperken en maakt de voorgenomen verlaging van het eigen risico ongedaan om de zorgkosten te beheersen.",
+                    7: "Pleitte voor de snelst mogelijke invoering van het correctief bindend referendum om burgers meer zeggenschap te geven over belangrijke dossiers.",
+                    8: "Wil de lasten voor ondernemers verlagen om de economie te stimuleren en is dus tegen een hogere winstbelasting.",
+                    9: "Wil de lasten voor huizenbezitters verlagen en is daarom tegen het verder beperken van de hypotheekrenteaftrek.",
+                    10: "Is fel tegen rekeningrijden, wat zij zien als een 'automobilistje pesten' en een inbreuk op de vrijheid.",
+                    11: "Vindt de luchtvaart van groot economisch belang en is tegen krimp van Schiphol.",
+                    12: "Is tegen een gedwongen krimp van de veestapel en wil de stikstofproblematiek oplossen met technische innovaties en een realistische aanpak.",
+                    13: "Vindt een verbod op landbouwgif onrealistisch en schadelijk voor de landbouwsector.",
+                    14: "Steunt het huidige zorgstelsel en is tegen de invoering van een publiek zorgfonds.",
+                    15: "Gelooft in de kracht van de markt en is tegen het nationaliseren van de medicijnproductie.",
+                    16: "Wil dat studeren betaalbaar blijft, maar heeft geen concrete plannen voor een forse verhoging van de basisbeurs.",
+                    17: "Vindt dat scholen de vrijheid moeten hebben om een ouderbijdrage te vragen voor extra activiteiten.",
+                    18: "Is een eurosceptische partij die pleit voor minder macht naar Brussel en meer nationale soevereiniteit.",
+                    19: "Wil het budget voor ontwikkelingssamenwerking fors verlagen en de focus leggen op noodhulp in de regio.",
+                    20: "Wil de koppeling van de AOW-leeftijd aan de levensverwachting herzien, maar pleit niet voor een directe terugkeer naar 65 jaar.",
+                    21: "Is tegen betutteling door de overheid en vindt dat mensen zelf de verantwoordelijkheid moeten nemen als het om gokken gaat.",
+                    22: "Vindt dat de politie meer bevoegdheden en middelen moet krijgen om de veiligheid te garanderen.",
+                    23: "Is tegen de legalisering van softdrugs vanwege de negatieve gevolgen voor de samenleving.",
+                    24: "Waardeert de flexibiliteit die flexcontracten bieden voor zowel werkgevers als werknemers en is tegen sterke beperkingen.",
+                    25: "Pleiten voor een algehele lastenverlaging voor burgers en bedrijven, niet voor een verschuiving van de belastingdruk.",
+                    26: "Is voor het behoud van de vuurwerktraditie en tegen een landelijk verbod.",
+                    27: "Steunt de agrarische sector en is tegen een afschaffing van de bio-industrie.",
+                    28: "Vindt dat de vrijheid van meningsuiting voorop moet staan en dat de overheid zich terughoudend moet opstellen bij het bestrijden van desinformatie.",
+                    29: "Is tegen het verlagen van de kiesleeftijd naar 16 jaar.",
+                    30: "Ziet de jacht als een belangrijk onderdeel van het Nederlandse cultuurlandschap en faunabeheer."
+                }
+            },
+            'SP': {
+                logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Socialistische_Partij_%28nl_2006%29_Logo.svg/400px-Socialistische_Partij_%28nl_2006%29_Logo.svg.png",
+                standpunten: { 1: 1, 2: -1, 3: 0, 4: 1, 5: -1, 6: 1, 7: 1, 8: 1, 9: 1, 10: -1, 11: 1, 12: 1, 13: 1, 14: 1, 15: 1, 16: 1, 17: 1, 18: 1, 19: 1, 20: 1, 21: 1, 22: -1, 23: 1, 24: 1, 25: 1, 26: 0, 27: 1, 28: 0, 29: 1, 30: 1 },
+                motivatie: {
+                    1: "Wil een Nationaal Woonfonds oprichten en 30 miljard euro investeren om één miljoen betaalbare huurwoningen te realiseren. De partij wil de regie terugpakken van de markt.",
+                    2: "Is tegen kernenergie omdat het extreem duur is, de bouw lang duurt en het kernafvalprobleem onopgelost is. De partij kiest voor zon en wind als snellere, schonere en goedkopere alternatieven.",
+                    3: "Wil het totale migratiesaldo verlagen door vooral arbeids-, kennis- en studiemigratie te beperken. Voor asielzoekers pleit de partij voor een humane opvang en snelle, rechtvaardige procedures.",
+                    4: "Wil het minimumloon direct verhogen naar €18 per uur om te zorgen dat iedereen die werkt een inkomen krijgt waar je goed van kunt leven en om de ongelijkheid te breken.",
+                    5: "Is tegen de 'Trump-norm' van forse verhoging van defensie-uitgaven, omdat dit leidt tot een wapenwedloop en bezuinigingen op zorg, onderwijs en sociale zekerheid.",
+                    6: "Wil de zorg weer collectief en toegankelijk maken. Daarom schaffen ze het eigen risico af en introduceren ze een Nationaal ZorgFonds, zodat gezondheid niet afhangt van de dikte van je portemonnee.",
+                    7: "Wil de democratie versterken door een bindend correctief referendum in te voeren op nationaal, provinciaal en lokaal niveau, zodat de bevolking de politiek kan terugfluiten.",
+                    8: "Vindt dat grote bedrijven die recordwinsten boeken, een eerlijker deel aan belasting moeten betalen.",
+                    9: "Wil de hypotheekrenteaftrek versneld afbouwen voor de hoogste inkomens om de woningmarkt eerlijker te maken.",
+                    10: "Is tegen rekeningrijden omdat dit vooral mensen met een lager inkomen treft die afhankelijk zijn van de auto.",
+                    11: "Vindt dat de luchtvaart moet krimpen om de klimaatdoelen te halen en de overlast voor omwonenden te stoppen.",
+                    12: "Pleiten voor een forse krimp van de veestapel om de natuur te beschermen en de stikstofcrisis aan te pakken.",
+                    13: "Wil een verbod op landbouwgif om de gezondheid van boeren, omwonenden en consumenten te beschermen.",
+                    14: "Het Nationaal ZorgFonds zonder eigen risico en zonder zorgverzekeraars is een kernpunt van de SP.",
+                    15: "Wil de macht van de farmaceutische industrie breken en de beschikbaarheid van medicijnen garanderen door nationale productie.",
+                    16: "Wil onderwijs volledig gratis maken, inclusief een forse verhoging van de basisbeurs en afschaffing van het collegegeld.",
+                    17: "Vindt dat onderwijs volledig publiek gefinancierd moet zijn en dat de ouderbijdrage leidt tot ongelijkheid.",
+                    18: "Is kritisch op de EU en wil de nationale soevereiniteit behouden. Pleit voor een sociale unie in plaats van een neoliberale markt.",
+                    19: "Vindt dat ontwikkelingssamenwerking gebaseerd moet zijn op solidariteit en het bestrijden van de grondoorzaken van armoede.",
+                    20: "Strijdt voor een rechtvaardig pensioen en wil de AOW-leeftijd terugbrengen naar 65 jaar.",
+                    21: "Wil een einde maken aan de gokindustrie die mensen in de problemen brengt en steunt een totaalverbod op gokreclames.",
+                    22: "Beschermt de privacy van burgers en is tegen het uitbreiden van de bevoegdheden van de politie als dit ten koste gaat van grondrechten.",
+                    23: "Wil de wietteelt reguleren om criminaliteit tegen te gaan en de kwaliteit te controleren.",
+                    24: "Wil een einde maken aan de onzekerheid van flexwerk en het vaste contract weer de norm maken.",
+                    25: "Pleiten voor een eerlijker belastingstelsel waarbij de lasten verschuiven van arbeid naar de hoogste vermogens en winsten.",
+                    26: "Is voorstander van gemeentelijke, professionele vuurwerkshows en een verbod op consumentenvuurwerk om overlast en letsel te voorkomen.",
+                    27: "Vindt de bio-industrie onhoudbaar en wil deze afschaffen ten gunste van een duurzame en diervriendelijke landbouw.",
+                    28: "Ziet de gevaren van desinformatie, maar benadrukt dat de vrijheid van meningsuiting beschermd moet worden.",
+                    29: "Wil jongeren een stem geven in hun eigen toekomst en is daarom voor het verlagen van de kiesleeftijd naar 16 jaar.",
+                    30: "Vindt dat dieren geen objecten zijn voor vermaak en wil daarom de plezierjacht verbieden."
+                }
+            },
+             'Partij voor de Dieren': {
+                logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Party_for_the_Animals_logo.svg/400px-Party_for_the_Animals_logo.svg.png",
+                standpunten: { 1: 1, 2: -1, 3: -1, 4: 1, 5: -1, 6: 1, 7: 1, 8: 1, 9: 1, 10: 1, 11: 1, 12: 1, 13: 1, 14: 1, 15: 1, 16: 1, 17: 1, 18: -1, 19: 1, 20: -1, 21: 1, 22: -1, 23: 1, 24: 1, 25: 1, 26: 1, 27: 1, 28: 1, 29: 1, 30: 1 },
+                motivatie: {
+                    1: "Wil de woningmarkt loskoppelen van de markt en ziet volkshuisvesting als een publieke taak. Pleit voor een Deltaplan Wonen om het woningtekort op te lossen, gefinancierd door een krimp van de veehouderij.",
+                    2: "Wijst kernenergie af vanwege de hoge kosten, lange bouwtijd en het onopgeloste kernafvalprobleem. De partij kiest voor 100% inzet op zon en wind.",
+                    3: "Verzet zich tegen het inperken van asielrechten en het aanpassen van internationale verdragen. Wil de grondoorzaken van migratie aanpakken en pleit voor humane opvang.",
+                    4: "Wil het minimumloon verhogen naar €18 per uur om bestaanszekerheid te garanderen en ongelijkheid te verminderen.",
+                    5: "Wijst de NAVO-norm af en wil geen 'blanco cheque' voor defensie. Investeringen moeten zorgvuldig worden afgewogen en niet ten koste gaan van klimaat, natuur of sociale zekerheid.",
+                    6: "Wil het eigen risico afschaffen om zorg voor iedereen toegankelijk te maken. Gezondheid mag niet afhangen van de portemonnee.",
+                    7: "Steunt een correctief bindend referendum voor verstrekkende besluiten en wil daarnaast meer burgerberaden om de democratie te versterken.",
+                    8: "Wil een eerlijker belastingstelsel waarbij de winsten van grote, vervuilende bedrijven zwaarder worden belast.",
+                    9: "Vindt dat de hypotheekrenteaftrek de huizenprijzen opdrijft en wil deze versneld afbouwen voor de hoogste inkomens.",
+                    10: "Is voorstander van een intelligente kilometerheffing, gedifferentieerd naar type voertuig en brandstofgebruik, om duurzaam rijgedrag te stimuleren.",
+                    11: "Pleiten voor een halvering van het aantal vluchten op Schiphol om de klimaatdoelen te halen en de leefomgeving te beschermen.",
+                    12: "Wil de veestapel met minimaal 75% krimpen als noodzakelijke stap om de stikstof-, klimaat- en biodiversiteitscrisis aan te pakken.",
+                    13: "Streeft naar een volledig gifvrije land- en tuinbouw om de natuur, dieren en de gezondheid van mensen te beschermen.",
+                    14: "Wil de marktwerking uit de zorg halen en een zorgfonds invoeren, zodat zorg een publieke voorziening wordt en geen verdienmodel.",
+                    15: "Vindt dat medicijnen toegankelijk moeten zijn voor iedereen en wil daarom de productie in publieke handen brengen.",
+                    16: "Wil de basisbeurs verhogen en de pechgeneratie ruimhartig compenseren om de toegankelijkheid van het onderwijs te garanderen.",
+                    17: "Vindt dat de ouderbijdrage leidt tot ongelijkheid en wil deze afschaffen. Onderwijs moet volledig gratis zijn.",
+                    18: "Ziet de EU als een belangrijk platform voor grensoverschrijdende problemen zoals klimaat en dierenwelzijn, en is dus voorstander van samenwerking.",
+                    19: "Vindt dat ontwikkelingssamenwerking gericht moet zijn op het welzijn van mens, dier en planeet, niet op economische belangen.",
+                    20: "Wil een flexibele pensioenleeftijd en een goede regeling voor zware beroepen, maar is tegen een generieke verlaging naar 65 jaar.",
+                    21: "Wil de samenleving beschermen tegen gokverslaving en is daarom voor een totaalverbod op reclames voor online gokken.",
+                    22: "Beschermt de privacy van burgers en is tegen het uitbreiden van de bevoegdheden van de politie als dit ten koste gaat van grondrechten.",
+                    23: "Is voorstander van de legalisering en regulering van softdrugs om de criminaliteit te ondermijnen en de kwaliteit te waarborgen.",
+                    24: "Wil meer zekerheid voor werkenden en is daarom voor het sterk beperken van flexcontracten.",
+                    25: "Pleiten voor een radicale belastingverschuiving van arbeid naar vermogen, winst en vooral vervuiling.",
+                    26: "Is een groot voorstander van een landelijk verbod op consumentenvuurwerk vanwege het dierenleed, de milieuschade en de overlast.",
+                    27: "Het beëindigen van de bio-industrie is een kernpunt van de partij, vanwege het dierenleed en de desastreuze impact op de planeet.",
+                    28: "Vindt dat de overheid en techbedrijven de verantwoordelijkheid moeten nemen om de verspreiding van desinformatie tegen te gaan.",
+                    29: "Wil jongeren een volwaardige stem geven in de politiek en is daarom voor het verlagen van de kiesleeftijd naar 16 jaar.",
+                    30: "Vindt dat dieren niet voor plezier gedood mogen worden en wil daarom een volledig verbod op de plezierjacht."
+                }
+            }
+        }
+    };
+    
+    // Variabelen voor de status van de quiz
+    let huidigeVraagIndex = 0;
+    const gebruikerAntwoorden = {};
+
+    // DOM Elementen
+    const startScherm = document.getElementById('start-scherm');
+    const vraagScherm = document.getElementById('vraag-scherm');
+    const resultaatScherm = document.getElementById('resultaat-scherm');
+    
+    const startKnop = document.getElementById('start-knop');
+    const terugKnop = document.getElementById('terug-knop');
+    const antwoordKnoppen = document.querySelectorAll('.button-group .btn');
+    const motivatieKnop = document.getElementById('motivatie-knop');
+    
+    const vraagTellerElem = document.getElementById('vraag-teller');
+    const stellingTekstElem = document.getElementById('stelling-tekst');
+    const stellingMotivatieElem = document.getElementById('stelling-motivatie');
+    const resultaatLijstElem = document.getElementById('resultaat-lijst');
+
+    // Modal Elementen
+    const motivatieModal = document.getElementById('motivatie-modal');
+    const motivatieCloseButton = document.getElementById('motivatie-close-button');
+    const modalStellingTekst = document.getElementById('modal-stelling-tekst');
+    const modalBody = document.getElementById('modal-motivatie-body');
+    
+    const overModal = document.getElementById('over-modal');
+    const overKnop = document.getElementById('over-knop');
+    const overCloseButton = document.getElementById('over-close-button');
+
+
+    // Functies
+    function startQuiz() {
+        startScherm.style.display = 'none';
+        vraagScherm.style.display = 'block';
+        huidigeVraagIndex = 0;
+        toonVraag();
+    }
+
+    function toonVraag() {
+        if (huidigeVraagIndex < data.stellingen.length) {
+            const huidigeStelling = data.stellingen[huidigeVraagIndex];
+            vraagTellerElem.textContent = `Vraag ${huidigeVraagIndex + 1} van ${data.stellingen.length}`;
+            stellingTekstElem.textContent = huidigeStelling.stelling;
+            stellingMotivatieElem.textContent = huidigeStelling.motivatie;
+            terugKnop.style.display = huidigeVraagIndex > 0 ? 'block' : 'none';
+        } else {
+            berekenEnToonResultaten();
+        }
+    }
+
+    function verwerkAntwoord(antwoord) {
+        const huidigeStellingId = data.stellingen[huidigeVraagIndex].id;
+        gebruikerAntwoorden[huidigeStellingId] = parseInt(antwoord);
+        huidigeVraagIndex++;
+        toonVraag();
+    }
+    
+    function gaTerug() {
+        if (huidigeVraagIndex > 0) {
+            huidigeVraagIndex--;
+            toonVraag();
+        }
+    }
+
+    function toonMotivaties() {
+        const huidigeStelling = data.stellingen[huidigeVraagIndex];
+        modalStellingTekst.textContent = huidigeStelling.stelling;
+        modalBody.innerHTML = '';
+
+        const standpuntTekst = {
+            '1': 'Eens',
+            '0': 'Neutraal',
+            '-1': 'Oneens'
+        };
+        const standpuntKlasse = {
+            '1': 'eens',
+            '0': 'neutraal',
+            '-1': 'oneens'
+        };
+
+        for (const partij in data.partijen) {
+            const partijData = data.partijen[partij];
+            const standpunt = partijData.standpunten[huidigeStelling.id];
+            const motivatie = partijData.motivatie[huidigeStelling.id];
+
+            const item = document.createElement('div');
+            item.className = 'motivatie-item';
+            item.innerHTML = `
+                <h4>${partij}</h4>
+                <p><span class="standpunt ${standpuntKlasse[standpunt]}">${standpuntTekst[standpunt]}</span>: ${motivatie}</p>
+            `;
+            modalBody.appendChild(item);
+        }
+
+        motivatieModal.style.display = 'block';
+    }
+
+    function berekenEnToonResultaten() {
+        vraagScherm.style.display = 'none';
+        resultaatScherm.style.display = 'block';
+
+        const scores = {};
+        const partijen = Object.keys(data.partijen);
+
+        partijen.forEach(partij => { scores[partij] = 0; });
+
+        for (const stellingId in gebruikerAntwoorden) {
+            const gebruikerAntwoord = gebruikerAntwoorden[stellingId];
+            
+            partijen.forEach(partij => {
+                const partijAntwoord = data.partijen[partij].standpunten[stellingId];
+                if (gebruikerAntwoord === partijAntwoord) {
+                    scores[partij]++;
+                }
+            });
+        }
+        
+        const gesorteerdePartijen = partijen.sort((a, b) => scores[b] - scores[a]);
+        
+        resultaatLijstElem.innerHTML = '';
+        gesorteerdePartijen.forEach(partij => {
+            const percentage = Math.round((scores[partij] / data.stellingen.length) * 100);
+            const logoUrl = data.partijen[partij].logo;
+            const li = document.createElement('li');
+            li.innerHTML = `
+                <img src="${logoUrl}" alt="${partij} Logo" class="result-logo" onerror="this.style.display='none'">
+                <span class="partij-naam">${partij}</span> 
+                <span class="percentage">${percentage}%</span>`;
+            resultaatLijstElem.appendChild(li);
+        });
+    }
+
+    // Event Listeners
+    startKnop.addEventListener('click', startQuiz);
+    terugKnop.addEventListener('click', gaTerug);
+    antwoordKnoppen.forEach(knop => {
+        knop.addEventListener('click', () => verwerkAntwoord(knop.dataset.antwoord));
+    });
+
+    // Modal listeners
+    motivatieKnop.addEventListener('click', toonMotivaties);
+    document.getElementById('motivatie-close-button').addEventListener('click', () => { motivatieModal.style.display = 'none'; });
+    
+    overKnop.addEventListener('click', () => { overModal.style.display = 'block'; });
+    overCloseButton.addEventListener('click', () => { overModal.style.display = 'none'; });
+
+    window.addEventListener('click', (event) => {
+        if (event.target == motivatieModal) {
+            motivatieModal.style.display = 'none';
+        }
+        if (event.target == overModal) {
+            overModal.style.display = 'none';
+        }
+    });
+
+</script>
+</body>
+</html>
