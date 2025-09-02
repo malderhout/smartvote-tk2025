@@ -135,7 +135,7 @@
                 <p>SmartVote is gemaakt voor de komende Tweede Kamerverkiezingen op 29 oktober 2025.</p>
                 
                 <h3 class="font-semibold text-lg pt-2">Hoe worden de stellingen gemaakt?</h3>
-                <p>De verkiezingsprogramma’s van de partijen die nu in de Tweede Kamer zitten, worden zorgvuldig doorgenomen. Daaruit halen we de belangrijkste thema’s en onderwerpen die bij meerdere partijen terugkomen. Op basis daarvan stellen we 30 duidelijke stellingen op.</p>
+                <p>De verkiezingsprogramma’s van de deelnemende politieke partijen worden zorgvuldig doorgenomen. Daaruit halen we de belangrijkste thema’s en onderwerpen die bij meerdere partijen terugkomen. Op basis daarvan stellen we 30 duidelijke stellingen op.</p>
                 
                 <h3 class="font-semibold text-lg pt-2">Hoe worden de partijstandpunten bepaald?</h3>
                 <p>De standpunten van partijen zijn rechtstreeks gebaseerd op hun verkiezingsprogramma’s voor de Tweede Kamerverkiezingen van 2025. Er wordt niets toegevoegd, aangepast of geïnterpreteerd: we nemen de standpunten zo neutraal mogelijk over.</p>
@@ -153,7 +153,7 @@
                 <p>SmartVote verwerkt of bewaart geen persoonlijke gegevens. Uw antwoorden blijven volledig bij u.</p>
                 
                 <h3 class="font-semibold text-lg pt-2">Gebruikte bronnen</h3>
-                <p>Verkiezingsprogramma’s van de partijen die momenteel in de Tweede Kamer zitten (2025). Partijlogo’s afkomstig van Wikipedia.</p>
+                <p>Verkiezingsprogramma’s van de deelnemende partijen voor de Tweede Kamerverkiezingen (2025). Partijlogo’s afkomstig van Wikipedia.</p>
                 
                 <h3 class="font-semibold text-lg pt-2">Kloppen er zaken niet of is er sprake van onjuiste informatie?</h3>
                 <p>Mail naar <a href="mailto:contact@smartvote.nl" class="text-blue-600 hover:underline">contact@smartvote.nl</a></p>
@@ -165,7 +165,7 @@
     </div>
 
     <script>
-        // Data voor de stellingen en partijstandpunten
+        // Data for de stellingen en partijstandpunten
         const stellingen = [
             // Thema 1: Klimaat en Energie
             {
@@ -185,7 +185,8 @@
                     'Volt': { antwoord: 'Eens', motivatie: 'Volt ziet kernenergie als een cruciale, stabiele en CO2-vrije energiebron voor de toekomst.' },
                     'BBB': { antwoord: 'Eens', motivatie: 'BBB wil inzetten op een energiemix waarin kernenergie een belangrijke rol speelt voor een betrouwbare energievoorziening.'},
                     'FVD': { antwoord: 'Eens', motivatie: 'FVD wil zo snel mogelijk nieuwe, moderne kerncentrales bouwen voor een betaalbare en betrouwbare energievoorziening.'},
-                    'SGP': { antwoord: 'Eens', motivatie: 'De SGP wil dat er werk wordt gemaakt van de bouw van nieuwe kerncentrales.'}
+                    'SGP': { antwoord: 'Eens', motivatie: 'De SGP wil dat er werk wordt gemaakt van de bouw van nieuwe kerncentrales.'},
+                    'Vrij Verbond': { antwoord: 'Eens', motivatie: 'Kernenergie is de schoonste en meest efficiënte energiebron die we kennen.'}
                 }
             },
             {
@@ -205,7 +206,8 @@
                     'Volt': { antwoord: 'Oneens', motivatie: 'Volt wil de woningcrisis voor iedereen oplossen door massaal te bouwen, niet door groepen tegen elkaar op te zetten.' },
                     'BBB': { antwoord: 'Eens', motivatie: 'Onze eigen mensen eerst. De voorrangsregeling voor statushouders moet worden afgeschaft.'},
                     'FVD': { antwoord: 'Eens', motivatie: 'De voorrangspositie van statushouders op de woningmarkt schaffen we af. Nederlanders eerst.'},
-                    'SGP': { antwoord: 'Eens', motivatie: 'De voorrangspositie van statushouders bij de toewijzing van sociale huurwoningen wordt beëindigd.'}
+                    'SGP': { antwoord: 'Eens', motivatie: 'De voorrangspositie van statushouders bij de toewijzing van sociale huurwoningen wordt beëindigd.'},
+                    'Vrij Verbond': { antwoord: 'Eens', motivatie: 'Iedereen is welkom, maar niemand krijgt voorrang. We stoppen met het verstrekken van sociale huurwoningen aan statushouders.'}
                 }
             },
             {
@@ -225,7 +227,8 @@
                     'Volt': { antwoord: 'Eens', motivatie: 'Volt wil de Europese klimaatdoelen halen en een verbod op de verkoop van nieuwe fossiele auto\'s is daar een essentieel onderdeel van.' },
                     'BBB': { antwoord: 'Oneens', motivatie: 'BBB is tegen betutteling en verplichte transities. De consument moet keuzevrijheid houden.'},
                     'FVD': { antwoord: 'Oneens', motivatie: 'FVD verwerpt het klimaatbeleid en wil de automobilist juist de vrijheid geven om te rijden wat hij wil.'},
-                    'SGP': { antwoord: 'Oneens', motivatie: 'De SGP is tegen een verbod op de verbrandingsmotor en wil de keuzevrijheid van de consument respecteren.'}
+                    'SGP': { antwoord: 'Oneens', motivatie: 'De SGP is tegen een verbod op de verbrandingsmotor en wil de keuzevrijheid van de consument respecteren.'},
+                    'Vrij Verbond': { antwoord: 'Oneens', motivatie: 'Dit is betutteling. We stoppen met klimaatbeleid dat de burger op kosten jaagt.'}
                 }
             },
             // Thema 2: Economie en Werk
@@ -246,7 +249,8 @@
                     'Volt': { antwoord: 'Eens', motivatie: 'Volt wil een Europees minimumloon dat een fatsoenlijke levensstandaard garandeert. Een verhoging in Nederland is een stap in de goede richting.' },
                     'BBB': { antwoord: 'Neutraal', motivatie: 'Werken moet lonen, maar een te snelle verhoging kan MKB-bedrijven schaden. We verlagen liever de lasten op arbeid.'},
                     'FVD': { antwoord: 'Oneens', motivatie: 'FVD wil de lasten voor ondernemers verlagen, niet verhogen. Een forse verhoging van het minimumloon schaadt het MKB.'},
-                    'SGP': { antwoord: 'Oneens', motivatie: 'Een forse verhoging van het wettelijk minimumloon is niet de oplossing. De SGP kiest voor een verhoging van de arbeidskorting.'}
+                    'SGP': { antwoord: 'Oneens', motivatie: 'Een forse verhoging van het wettelijk minimumloon is niet de oplossing. De SGP kiest voor een verhoging van de arbeidskorting.'},
+                    'Vrij Verbond': { antwoord: 'Oneens', motivatie: 'Het minimumloon wordt afgeschaft. Werk moet lonen door een radicale belastingverlaging, niet door overheidsingrijpen.'}
                 }
             },
             {
@@ -266,7 +270,8 @@
                     'Volt': { antwoord: 'Eens', motivatie: 'Volt wil een eerlijker belastingstelsel, waarbij grote bedrijven een eerlijke bijdrage leveren en belastingontwijking op Europees niveau wordt aangepakt.' },
                     'BBB': { antwoord: 'Oneens', motivatie: 'Een concurrerend vestigingsklimaat is essentieel. We moeten bedrijven niet wegjagen met hogere belastingen.'},
                     'FVD': { antwoord: 'Oneens', motivatie: 'FVD wil de belastingen voor bedrijven juist fors verlagen om het vestigingsklimaat te verbeteren.'},
-                    'SGP': { antwoord: 'Oneens', motivatie: 'Een goed ondernemersklimaat is gebaat bij lagere lasten. De SGP is voor een verlaging van de vennootschapsbelasting.'}
+                    'SGP': { antwoord: 'Oneens', motivatie: 'Een goed ondernemersklimaat is gebaat bij lagere lasten. De SGP is voor een verlaging van de vennootschapsbelasting.'},
+                    'Vrij Verbond': { antwoord: 'Oneens', motivatie: 'We verlagen de winstbelasting juist om het vestigingsklimaat te verbeteren.'}
                 }
             },
              {
@@ -286,28 +291,30 @@
                     'Volt': { antwoord: 'Eens', motivatie: 'Volt wil een toekomstbestendige arbeidsmarkt met meer zekerheid voor werkenden en een einde aan schijnzelfstandigheid.' },
                     'BBB': { antwoord: 'Eens', motivatie: 'BBB wil een betere balans tussen vast en flex. De doorgeslagen flexibilisering moet worden aangepakt.'},
                     'FVD': { antwoord: 'Oneens', motivatie: 'FVD is voor een vrije markt en minder regulering, ook op de arbeidsmarkt.'},
-                    'SGP': { antwoord: 'Eens', motivatie: 'Een vast contract moet weer het uitgangspunt zijn om de zekerheid van werknemers te vergroten.'}
+                    'SGP': { antwoord: 'Eens', motivatie: 'Een vast contract moet weer het uitgangspunt zijn om de zekerheid van werknemers te vergroten.'},
+                    'Vrij Verbond': { antwoord: 'Oneens', motivatie: 'We versoepelen juist het ontslagrecht en verminderen de regeldruk voor ondernemers.'}
                 }
             },
             // Thema 3: Wonen
             {
                 thema: "Wonen",
-                stelling: "De overheid moet de bouw van 100.000 nieuwe woningen per jaar afdwingen, waarvan een groot deel sociale huur.",
-                motivatie: "De woningnood is nijpend. De vraag is in hoeverre de overheid de regie moet nemen in de bouwproductie en de verdeling tussen sociale huur en koop.",
+                stelling: "De 30%-regeling voor expats, een belastingvoordeel voor kenniswerkers uit het buitenland, moet worden afgeschaft.",
+                motivatie: "Deze regeling is bedoeld om talent aan te trekken, maar critici vinden de regeling oneerlijk ten opzichte van Nederlandse werknemers en te kostbaar.",
                 antwoorden: {
-                    'VVD': { antwoord: 'Eens', motivatie: 'De VVD wil bouwen, bouwen, bouwen. We bouwen 30 nieuwe grootschalige woonwijken.' },
-                    'GroenLinks-PvdA': { antwoord: 'Eens', motivatie: 'We komen met een ambitieus investeringsprogramma voor de bouw van betaalbare woningen, 100.000 per jaar.' },
-                    'PVV': { antwoord: 'Eens', motivatie: 'De PVV wil een nationaal crisisplan voor voldoende woningen.' },
-                    'JA21': { antwoord: 'Eens', motivatie: 'De woningnood is een van de grootste problemen en vraagt om grootschalige bouw.' },
-                    'ChristenUnie': { antwoord: 'Eens', motivatie: 'We bouwen 100.000 woningen per jaar, waarvan ten minste tweederde goed te betalen is.' },
-                    'PvdD': { antwoord: 'Neutraal', motivatie: 'Woningbouw mag niet ten koste gaan van de natuur. We moeten slimmer bouwen en bestaande bebouwing beter benutten.' },
-                    'NSC': { antwoord: 'Eens', motivatie: 'Het is nodig om jaarlijks 100.000 woningen te bouwen (waarvan 30% sociaal en 2/3de betaalbaar).' },
-                    'SP': { antwoord: 'Eens', motivatie: 'Wij bouwen één miljoen betaalbare huurwoningen, met een maximale huur van 800 euro.' },
-                    'CDA': { antwoord: 'Eens', motivatie: 'We moeten bouwen, bouwen, bouwen. 100.000 woningen per jaar is de ambitie, met een eerlijke verdeling.' },
-                    'Volt': { antwoord: 'Eens', motivatie: 'Volt wil de regie terugpakken op de volkshuisvesting en grootschalig investeren in duurzame en betaalbare woningen.' },
-                    'BBB': { antwoord: 'Eens', motivatie: 'Er moeten 100.000 woningen per jaar bijgebouwd worden, met oog voor de leefbaarheid in stad en platteland.'},
-                    'FVD': { antwoord: 'Eens', motivatie: 'FVD wil massaal bouwen om de woningnood op te lossen, die is veroorzaakt door massa-immigratie.'},
-                    'SGP': { antwoord: 'Eens', motivatie: 'Er moeten jaarlijks 100.000 woningen worden bijgebouwd om de woningnood aan te pakken.'}
+                    'VVD': { antwoord: 'Oneens', motivatie: 'Een aantrekkelijk vestigingsklimaat is cruciaal, en het aantrekken van internationaal talent hoort daarbij.' },
+                    'GroenLinks-PvdA': { antwoord: 'Eens', motivatie: 'We schaffen de fiscale voordelen voor expats af.' },
+                    'PVV': { antwoord: 'Eens', motivatie: 'De PVV stopt met de oneerlijke expatregeling.' },
+                    'JA21': { antwoord: 'Eens', motivatie: 'De 30%-regeling is doorgeschoten en moet worden afgeschaft.' },
+                    'ChristenUnie': { antwoord: 'Neutraal', motivatie: 'We versoberen de 30%-regeling voor expats, maar schaffen deze niet volledig af.' },
+                    'PvdD': { antwoord: 'Eens', motivatie: 'De 30%-regeling voor expats wordt afgeschaft.' },
+                    'NSC': { antwoord: 'Neutraal', motivatie: 'We versoberen de regelingen die kennismigranten fiscaal bevoordelen.' },
+                    'SP': { antwoord: 'Eens', motivatie: 'Wij schaffen de belastingkorting voor expats af.' },
+                    'CDA': { antwoord: 'Neutraal', motivatie: 'De 30%-regeling voor expats wordt versoberd.' },
+                    'Volt': { antwoord: 'Oneens', motivatie: 'Om internationaal concurrerend te blijven, moeten we het voor Europees talent makkelijk maken om in Nederland te werken.' },
+                    'BBB': { antwoord: 'Neutraal', motivatie: 'De 30%-regeling wordt versoberd.' },
+                    'FVD': { antwoord: 'Eens', motivatie: 'De expat-regeling wordt afgeschaft.'},
+                    'SGP': { antwoord: 'Neutraal', motivatie: 'De 30%-regeling voor expats wordt verder versoberd.'},
+                    'Vrij Verbond': { antwoord: 'Eens', motivatie: 'We schaffen alle subsidies en fiscale voordelen af, dus ook de 30%-regeling.'}
                 }
             },
             {
@@ -327,7 +334,8 @@
                     'Volt': { antwoord: 'Eens', motivatie: 'Volt wil het belastingstelsel hervormen en subsidies die de prijzen opdrijven, zoals de hypotheekrenteaftrek, afbouwen.' },
                     'BBB': { antwoord: 'Oneens', motivatie: 'Laat de hypotheekrenteaftrek met rust. Dit geeft zekerheid aan huizenbezitters.'},
                     'FVD': { antwoord: 'Oneens', motivatie: 'De hypotheekrenteaftrek blijft wat FVD betreft onaangetast.'},
-                    'SGP': { antwoord: 'Oneens', motivatie: 'De SGP is tegen het verder versoberen van de hypotheekrenteaftrek om de zekerheid voor huizenbezitters te borgen.'}
+                    'SGP': { antwoord: 'Oneens', motivatie: 'De SGP is tegen het verder versoberen van de hypotheekrenteaftrek om de zekerheid voor huizenbezitters te borgen.'},
+                    'Vrij Verbond': { antwoord: 'Eens', motivatie: 'We schaffen de hypotheekrenteaftrek af, omdat deze de huizenprijzen opdrijft en de ongelijkheid vergroot.'}
                 }
             },
             // Thema 4: Zorg
@@ -348,7 +356,8 @@
                     'Volt': { antwoord: 'Oneens', motivatie: 'Het eigen risico blijft bestaan.' },
                     'BBB': { antwoord: 'Neutraal', motivatie: 'BBB wil het eigen risico hervormen naar een maximumbedrag per behandeling om zorgmijding te voorkomen, maar schaft het niet volledig af.'},
                     'FVD': { antwoord: 'Oneens', motivatie: 'Het eigen risico wordt verlaagd naar €200, niet volledig afgeschaft.'},
-                    'SGP': { antwoord: 'Oneens', motivatie: 'Het eigen risico blijft bestaan, maar wordt hervormd naar een eigen bijdrage per behandeling om zorgmijding te voorkomen.'}
+                    'SGP': { antwoord: 'Oneens', motivatie: 'Het eigen risico blijft bestaan, maar wordt hervormd naar een eigen bijdrage per behandeling om zorgmijding te voorkomen.'},
+                    'Vrij Verbond': { antwoord: 'Eens', motivatie: 'We schaffen het eigen risico af om zorg voor iedereen toegankelijk te maken.'}
                 }
             },
             {
@@ -368,7 +377,8 @@
                     'Volt': { antwoord: 'Eens', motivatie: 'Zorg is een publiek goed, geen markt. Volt wil de marktwerking in de zorg afbouwen.' },
                     'BBB': { antwoord: 'Eens', motivatie: 'De menselijke maat moet terug in de zorg. Marktwerking en bureaucratie moeten worden teruggedrongen.'},
                     'FVD': { antwoord: 'Eens', motivatie: 'De macht van zorgverzekeraars moet worden gebroken. De zorg moet weer over mensen gaan, niet over geld.'},
-                    'SGP': { antwoord: 'Eens', motivatie: 'De SGP wil de marktwerking in de zorg beteugelen. Zorg is geen marktproduct.'}
+                    'SGP': { antwoord: 'Eens', motivatie: 'De SGP wil de marktwerking in de zorg beteugelen. Zorg is geen marktproduct.'},
+                    'Vrij Verbond': { antwoord: 'Oneens', motivatie: 'We stimuleren juist concurrentie en keuzevrijheid in de zorg voor betere kwaliteit en lagere prijzen.'}
                 }
             },
             // Thema 5: Migratie & Asiel
@@ -389,7 +399,8 @@
                     'Volt': { antwoord: 'Oneens', motivatie: 'Volt staat voor een humaan en solidair Europees asielbeleid. Een asielstop is in strijd met internationale verdragen.' },
                     'BBB': { antwoord: 'Eens', motivatie: 'Er moet een tijdelijke asielstop komen om de vastgelopen opvang en integratie vlot te trekken.'},
                     'FVD': { antwoord: 'Eens', motivatie: 'Een onmiddellijke, volledige en permanente immigratiestop.'},
-                    'SGP': { antwoord: 'Oneens', motivatie: 'De SGP wil een streng, maar rechtvaardig asielbeleid. Een volledige stop is niet realistisch, maar de instroom moet drastisch omlaag.'}
+                    'SGP': { antwoord: 'Oneens', motivatie: 'De SGP wil een streng, maar rechtvaardig asielbeleid. Een volledige stop is niet realistisch, maar de instroom moet drastisch omlaag.'},
+                    'Vrij Verbond': { antwoord: 'Neutraal', motivatie: 'We zijn voor open grenzen, maar stoppen met alle voorzieningen voor nieuwkomers. Een asielstop is niet de oplossing.'}
                 }
             },
             {
@@ -409,7 +420,8 @@
                     'Volt': { antwoord: 'Oneens', motivatie: 'Volt is voor een eerlijke en verplichte verdeling van asielzoekers, zowel binnen Nederland als binnen Europa.' },
                     'BBB': { antwoord: 'Eens', motivatie: 'De Spreidingswet is een dictaat uit Den Haag en moet van tafel. Gemeenten moeten zelf over de opvang gaan.'},
                     'FVD': { antwoord: 'Eens', motivatie: 'FVD is voor een totale asielstop, dus de Spreidingswet is overbodig en moet worden ingetrokken.'},
-                    'SGP': { antwoord: 'Eens', motivatie: 'De SGP is tegen de Spreidingswet, die gemeenten dwingt tot opvang en de lokale autonomie ondermijnt.'}
+                    'SGP': { antwoord: 'Eens', motivatie: 'De SGP is tegen de Spreidingswet, die gemeenten dwingt tot opvang en de lokale autonomie ondermijnt.'},
+                    'Vrij Verbond': { antwoord: 'Eens', motivatie: 'We zijn tegen dwang vanuit de overheid. Gemeenten moeten zelf beslissen over de opvang.'}
                 }
             },
             // Thema 6: Landbouw & Natuur
@@ -430,7 +442,8 @@
                     'Volt': { antwoord: 'Eens', motivatie: 'Volt wil een transitie naar duurzame landbouw, en een forse reductie van de veestapel is daar een onvermijdelijk onderdeel van.' },
                     'BBB': { antwoord: 'Oneens', motivatie: 'Geen gedwongen krimp van de veestapel. BBB gelooft in innovatie en een eerlijke toekomst voor de boer.'},
                     'FVD': { antwoord: 'Oneens', motivatie: 'FVD wil een einde aan het absurde stikstofbeleid. Onze boeren moeten met rust worden gelaten.'},
-                    'SGP': { antwoord: 'Oneens', motivatie: 'De SGP is tegen een gedwongen krimp van de veestapel en wil boeren perspectief bieden via innovatie.'}
+                    'SGP': { antwoord: 'Oneens', motivatie: 'De SGP is tegen een gedwongen krimp van de veestapel en wil boeren perspectief bieden via innovatie.'},
+                    'Vrij Verbond': { antwoord: 'Oneens', motivatie: 'We stoppen met het stikstofbeleid. Boeren zijn ondernemers, geen vervuilers die door de overheid weggepest moeten worden.'}
                 }
             },
             {
@@ -450,7 +463,8 @@
                     'Volt': { antwoord: 'Eens', motivatie: 'Volt wil toe naar een gifvrije landbouw om de biodiversiteit en de gezondheid van mens en dier te beschermen.' },
                     'BBB': { antwoord: 'Oneens', motivatie: 'Een totaalverbod is onverantwoord. BBB zet in op het verminderen van het gebruik door innovatie en precisielandbouw.'},
                     'FVD': { antwoord: 'Oneens', motivatie: 'FVD steunt onze boeren en verzet zich tegen de verstikkende en onnodige regelgeving.'},
-                    'SGP': { antwoord: 'Oneens', motivatie: 'De SGP is tegen een totaalverbod, maar wil wel inzetten op verstandig en verminderd gebruik van gewasbeschermingsmiddelen.'}
+                    'SGP': { antwoord: 'Oneens', motivatie: 'De SGP is tegen een totaalverbod, maar wil wel inzetten op verstandig en verminderd gebruik van gewasbeschermingsmiddelen.'},
+                    'Vrij Verbond': { antwoord: 'Oneens', motivatie: 'Een totaalverbod is betutteling en schaadt de landbouwsector. Innovatie is de oplossing, niet een verbod.'}
                 }
             },
             // Thema 7: Veiligheid & Justitie
@@ -471,7 +485,8 @@
                     'Volt': { antwoord: 'Oneens', motivatie: 'Volt gelooft in een rechtssysteem dat zich richt op preventie en re-integratie, niet enkel op zwaarder straffen.' },
                     'BBB': { antwoord: 'Eens', motivatie: 'Zwaarder straffen voor zware misdrijven is nodig om de veiligheid te herstellen en recht te doen aan slachtoffers.'},
                     'FVD': { antwoord: 'Eens', motivatie: 'FVD wil hogere straffen en minimumstraffen voor zware misdrijven.'},
-                    'SGP': { antwoord: 'Eens', motivatie: 'De SGP is voor de invoering van minimumstraffen voor zware geweldsmisdrijven om de rechtsorde te handhaven.'}
+                    'SGP': { antwoord: 'Eens', motivatie: 'De SGP is voor de invoering van minimumstraffen voor zware geweldsmisdrijven om de rechtsorde te handhaven.'},
+                    'Vrij Verbond': { antwoord: 'Oneens', motivatie: 'De rechter moet de vrijheid hebben om een passende straf op te leggen, zonder dwingende minimumstraffen.'}
                 }
             },
             {
@@ -491,7 +506,8 @@
                     'Volt': { antwoord: 'Oneens', motivatie: 'Volt is tegen maatregelen die kunnen leiden tot etnisch profileren en zet in op het versterken van de rechtsstaat.' },
                     'BBB': { antwoord: 'Eens', motivatie: 'De politie moet de bevoegdheden krijgen die nodig zijn om de straat veilig te houden, inclusief preventief fouilleren.'},
                     'FVD': { antwoord: 'Eens', motivatie: 'De politie moet meer bevoegdheden krijgen om de orde te handhaven en de straat veiliger te maken.'},
-                    'SGP': { antwoord: 'Eens', motivatie: 'De politie moet ruimere bevoegdheden krijgen voor preventief fouilleren om de veiligheid op straat te vergroten.'}
+                    'SGP': { antwoord: 'Eens', motivatie: 'De politie moet ruimere bevoegdheden krijgen voor preventief fouilleren om de veiligheid op straat te vergroten.'},
+                    'Vrij Verbond': { antwoord: 'Oneens', motivatie: 'Preventief fouilleren is een inbreuk op de privacy en mag alleen bij een concrete verdenking.'}
                 }
             },
             // Thema 8: Democratie & Bestuur
@@ -512,7 +528,8 @@
                     'Volt': { antwoord: 'Eens', motivatie: 'Volt wil de democratie versterken met meer burgerparticipatie, waaronder de mogelijkheid van een correctief referendum.' },
                     'BBB': { antwoord: 'Eens', motivatie: 'Meer directe democratie is nodig. BBB is voor de invoering van een bindend referendum.'},
                     'FVD': { antwoord: 'Eens', motivatie: 'FVD wil bindende referenda naar Zwitsers model invoeren.'},
-                    'SGP': { antwoord: 'Oneens', motivatie: 'De SGP hecht aan de representatieve democratie en is geen voorstander van (bindende) referenda.'}
+                    'SGP': { antwoord: 'Oneens', motivatie: 'De SGP hecht aan de representatieve democratie en is geen voorstander van (bindende) referenda.'},
+                    'Vrij Verbond': { antwoord: 'Eens', motivatie: 'We willen meer directe democratie en burgerinspraak via een bindend referendum.'}
                 }
             },
             {
@@ -532,7 +549,8 @@
                     'Volt': { antwoord: 'Eens', motivatie: 'Volt is voor een modernisering van de staat, wat op termijn kan leiden tot een ceremonieel koningschap of een republiek.' },
                     'BBB': { antwoord: 'Oneens', motivatie: 'BBB staat voor het behoud van de monarchie en onze Nederlandse tradities.'},
                     'FVD': { antwoord: 'Oneens', motivatie: 'FVD is voor het behoud van de monarchie als symbool van nationale eenheid en traditie.'},
-                    'SGP': { antwoord: 'Oneens', motivatie: 'De SGP is een warm voorstander van de monarchie in haar huidige, constitutionele vorm.'}
+                    'SGP': { antwoord: 'Oneens', motivatie: 'De SGP is een warm voorstander van de monarchie in haar huidige, constitutionele vorm.'},
+                    'Vrij Verbond': { antwoord: 'Eens', motivatie: 'We schaffen de monarchie af en kiezen voor een republiek met een gekozen staatshoofd.'}
                 }
             },
             // Thema 9: Europa
@@ -553,7 +571,8 @@
                     'Volt': { antwoord: 'Eens', motivatie: 'Volt is een pan-Europese partij en gelooft in een sterker en meer verenigd Europa om gezamenlijke uitdagingen aan te gaan.' },
                     'BBB': { antwoord: 'Oneens', motivatie: 'Minder macht naar Brussel, meer zeggenschap voor Nederland. De EU moet terug naar de basis: economische samenwerking.'},
                     'FVD': { antwoord: 'Oneens', motivatie: 'Wij willen een Nexit. Nederland moet weer een soeverein land worden en uit de EU stappen.'},
-                    'SGP': { antwoord: 'Oneens', motivatie: 'Niet meer macht naar Brussel, maar minder. De SGP is tegen een \'ever closer union\' en wil de nationale soevereiniteit bewaken.'}
+                    'SGP': { antwoord: 'Oneens', motivatie: 'Niet meer macht naar Brussel, maar minder. De SGP is tegen een \'ever closer union\' en wil de nationale soevereiniteit bewaken.'},
+                    'Vrij Verbond': { antwoord: 'Oneens', motivatie: 'Wij willen het EU-lidmaatschap opzeggen. Na uittreding voeren we naast de euro een nationale munt in, de neuro, om onze soevereiniteit te herwinnen.'}
                 }
             },
             {
@@ -573,7 +592,8 @@
                     'Volt': { antwoord: 'Oneens', motivatie: 'Volt is voor meer fiscale integratie in Europa, inclusief de mogelijkheid van Eurobonds voor gezamenlijke investeringen.' },
                     'BBB': { antwoord: 'Eens', motivatie: 'Geen Eurobonds en geen Europese belastingen. Landen moeten hun eigen begroting op orde houden.'},
                     'FVD': { antwoord: 'Eens', motivatie: 'Geen cent meer naar de EU. FVD is tegen elke vorm van een schulden- of transferunie.'},
-                    'SGP': { antwoord: 'Eens', motivatie: 'De SGP is tegen de invoering van Eurobonds en een Europese schuldenunie.'}
+                    'SGP': { antwoord: 'Eens', motivatie: 'De SGP is tegen de invoering van Eurobonds en een Europese schuldenunie.'},
+                    'Vrij Verbond': { antwoord: 'Eens', motivatie: 'Geen gezamenlijke Europese schulden. Elk land is verantwoordelijk voor zijn eigen begroting.'}
                 }
             },
             // Thema 10: Onderwijs
@@ -594,7 +614,8 @@
                     'Volt': { antwoord: 'Oneens', motivatie: 'Volt wil een toekomstbestendig pensioenstelsel, een generieke verlaging naar 65 is financieel onhoudbaar.' },
                     'BBB': { antwoord: 'Eens', motivatie: 'BBB wil de AOW-leeftijd bevriezen en op termijn terugbrengen naar 65, vooral voor mensen met zware beroepen.'},
                     'FVD': { antwoord: 'Oneens', motivatie: 'De AOW-leeftijd wordt verlaagd naar 66 jaar, niet 65.'},
-                    'SGP': { antwoord: 'Oneens', motivatie: 'De AOW-leeftijd moet gekoppeld blijven aan de levensverwachting om de oudedagsvoorziening betaalbaar te houden.'}
+                    'SGP': { antwoord: 'Oneens', motivatie: 'De AOW-leeftijd moet gekoppeld blijven aan de levensverwachting om de oudedagsvoorziening betaalbaar te houden.'},
+                    'Vrij Verbond': { antwoord: 'Neutraal', motivatie: 'Vrij Verbond heeft geen specifiek standpunt over het verlagen van de AOW-leeftijd naar 65 jaar.'}
                 }
             },
              {
@@ -614,7 +635,8 @@
                     'Volt': { antwoord: 'Eens', motivatie: 'Volt wil de waardering voor praktisch onderwijs vergroten en investeren in de kwaliteit van het MBO.' },
                     'BBB': { antwoord: 'Eens', motivatie: 'Vakmensen zijn de ruggengraat van onze samenleving. Het MBO moet worden opgewaardeerd en versterkt.'},
                     'FVD': { antwoord: 'Eens', motivatie: 'FVD wil een herwaardering van het beroepsonderwijs. Vakmanschap is de basis van onze economie.'},
-                    'SGP': { antwoord: 'Eens', motivatie: 'Het beroepsonderwijs verdient meer waardering en investeringen om het tekort aan vakmensen op te lossen.'}
+                    'SGP': { antwoord: 'Eens', motivatie: 'Het beroepsonderwijs verdient meer waardering en investeringen om het tekort aan vakmensen op te lossen.'},
+                    'Vrij Verbond': { antwoord: 'Neutraal', motivatie: 'We willen keuzevrijheid in het onderwijs, niet per se meer geld naar één specifieke sector.'}
                 }
             },
              // Thema 11: Defensie
@@ -635,7 +657,8 @@
                     'Volt': { antwoord: 'Eens', motivatie: 'Volt wil een Europees leger en pleit voor het halen van de NAVO-norm om de Europese veiligheid te garanderen.' },
                     'BBB': { antwoord: 'Neutraal', motivatie: 'BBB wil een sterke defensie en voldoen aan de 2% NAVO-norm. Een verhoging naar 3,5% is op dit moment niet realistisch.'},
                     'FVD': { antwoord: 'Oneens', motivatie: 'FVD wil uit de militaire structuur van de NAVO en streeft naar een defensiebudget van 2,5%, niet de NAVO-norm.'},
-                    'SGP': { antwoord: 'Neutraal', motivatie: 'De SGP wil dat Nederland voldoet aan de NAVO-norm van 2%. Een verdere verhoging moet zorgvuldig worden afgewogen.'}
+                    'SGP': { antwoord: 'Neutraal', motivatie: 'De SGP wil dat Nederland voldoet aan de NAVO-norm van 2%. Een verdere verhoging moet zorgvuldig worden afgewogen.'},
+                    'Vrij Verbond': { antwoord: 'Oneens', motivatie: 'We verhogen het defensiebudget, maar naar de NAVO-norm van 2%, niet 3.5%.'}
                 }
             },
             // Thema 12: Mobiliteit
@@ -656,7 +679,8 @@
                     'Volt': { antwoord: 'Eens', motivatie: 'Volt is voorstander van betalen naar gebruik om duurzaam vervoer te stimuleren en de lasten eerlijker te verdelen.' },
                     'BBB': { antwoord: 'Oneens', motivatie: 'Rekeningrijden is een melkkoe voor de overheid en pakt nadelig uit voor mensen op het platteland. BBB is hier fel op tegen.'},
                     'FVD': { antwoord: 'Oneens', motivatie: 'Wij zijn tegen rekeningrijden. De automobilist is geen melkkoe.'},
-                    'SGP': { antwoord: 'Oneens', motivatie: 'De SGP is tegen de invoering van rekeningrijden. De automobilist mag niet de melkkoe van de overheid worden.'}
+                    'SGP': { antwoord: 'Oneens', motivatie: 'De SGP is tegen de invoering van rekeningrijden. De automobilist mag niet de melkkoe van de overheid worden.'},
+                    'Vrij Verbond': { antwoord: 'Oneens', motivatie: 'We zijn tegen rekeningrijden. De automobilist mag geen melkkoe zijn.'}
                 }
             },
             // Thema 13: Digitalisering
@@ -677,7 +701,8 @@
                     'Volt': { antwoord: 'Eens', motivatie: 'Volt wil de macht van Big Tech breken met strenge Europese regelgeving om de democratie en gebruikers te beschermen.' },
                     'BBB': { antwoord: 'Neutraal', motivatie: 'Bescherming tegen desinformatie is belangrijk, maar we moeten waken voor censuur en het inperken van de vrijheid van meningsuiting.'},
                     'FVD': { antwoord: 'Oneens', motivatie: 'FVD is voor de vrijheid van meningsuiting en tegen censuur door Big Tech en overheden.'},
-                    'SGP': { antwoord: 'Eens', motivatie: 'De macht van Big Tech moet worden ingeperkt. Er zijn strengere regels nodig om de jeugd en de samenleving te beschermen.'}
+                    'SGP': { antwoord: 'Eens', motivatie: 'De macht van Big Tech moet worden ingeperkt. Er zijn strengere regels nodig om de jeugd en de samenleving te beschermen.'},
+                    'Vrij Verbond': { antwoord: 'Oneens', motivatie: 'We zijn voor maximale vrijheid van meningsuiting en tegen censuur en overheidsbemoeienis.'}
                 }
             },
              // Thema 14: Overig
@@ -698,7 +723,8 @@
                     'Volt': { antwoord: 'Oneens', motivatie: 'Volt ziet een sterke, onafhankelijke publieke omroep als een cruciale pijler van de democratie.' },
                     'BBB': { antwoord: 'Eens', motivatie: 'De NPO moet worden hervormd en afgeslankt, met een focus op nieuws en cultuur en minder entertainment.'},
                     'FVD': { antwoord: 'Eens', motivatie: 'De NPO moet worden geprivatiseerd en fors worden afgeslankt. Het is een propagandakanaal van het partijkartel.'},
-                    'SGP': { antwoord: 'Eens', motivatie: 'De publieke omroep moet worden hervormd en fors worden ingekrompen.'}
+                    'SGP': { antwoord: 'Eens', motivatie: 'De publieke omroep moet worden hervormd en fors worden ingekrompen.'},
+                    'Vrij Verbond': { antwoord: 'Eens', motivatie: 'We schaffen de NPO af. Media moet onafhankelijk zijn van de staat.'}
                 }
             },
              {
@@ -718,7 +744,8 @@
                     'Volt': { antwoord: 'Eens', motivatie: 'Volt wil een Europese aanpak van mobiliteit, met massale investeringen in hogesnelheidstreinen en ander duurzaam vervoer.' },
                     'BBB': { antwoord: 'Neutraal', motivatie: 'Zowel het spoor als de weg zijn belangrijk. BBB wil investeren in beide om de bereikbaarheid, ook in de regio, te verbeteren.'},
                     'FVD': { antwoord: 'Oneens', motivatie: 'Wij willen investeren in het verbreden en aanleggen van nieuwe snelwegen.'},
-                    'SGP': { antwoord: 'Neutraal', motivatie: 'Zowel de weg als het spoor zijn belangrijk voor de bereikbaarheid. Investeringen moeten in balans zijn.'}
+                    'SGP': { antwoord: 'Neutraal', motivatie: 'Zowel de weg als het spoor zijn belangrijk voor de bereikbaarheid. Investeringen moeten in balans zijn.'},
+                    'Vrij Verbond': { antwoord: 'Neutraal', motivatie: 'We investeren in zowel het spoor als de weg om de bereikbaarheid te verbeteren.'}
                 }
             },
             {
@@ -738,7 +765,8 @@
                     'Volt': { antwoord: 'Eens', motivatie: 'Volt staat voor zelfbeschikking en ondersteunt de mogelijkheid van een waardig levenseinde.' },
                     'BBB': { antwoord: 'Oneens', motivatie: 'BBB is terughoudend met verdere verruiming van de euthanasiewetgeving en hecht aan de beschermwaardigheid van het leven.'},
                     'FVD': { antwoord: 'Oneens', motivatie: 'FVD is tegen een verdere verruiming van de euthanasiewet en hecht aan de beschermwaardigheid van het leven.'},
-                    'SGP': { antwoord: 'Oneens', motivatie: 'De SGP is principieel tegen euthanasie en zeker tegen een wet voor voltooid leven. Het leven is een geschenk van God.'}
+                    'SGP': { antwoord: 'Oneens', motivatie: 'De SGP is principieel tegen euthanasie en zeker tegen een wet voor voltooid leven. Het leven is een geschenk van God.'},
+                    'Vrij Verbond': { antwoord: 'Eens', motivatie: 'Wij staan voor maximale individuele vrijheid en zelfbeschikking, ook bij het levenseinde.'}
                 }
             },
             {
@@ -758,7 +786,8 @@
                     'Volt': { antwoord: 'Eens', motivatie: 'Volt wil investeren in de ontwikkeling van kinderen en de arbeidsparticipatie van ouders door kinderopvang toegankelijker en betaalbaarder te maken.' },
                     'BBB': { antwoord: 'Oneens', motivatie: 'BBB wil kinderopvang betaalbaarder maken, maar niet volledig gratis. Er blijft een eigen bijdrage voor ouders.'},
                     'FVD': { antwoord: 'Oneens', motivatie: 'FVD wil een belastingvrije kinderopvangtoelage direct aan ouders geven, in plaats van gratis staatsopvang.'},
-                    'SGP': { antwoord: 'Oneens', motivatie: 'Ouders zijn primair zelf verantwoordelijk voor de opvoeding. De overheid kan ondersteunen, maar opvang moet niet gratis zijn. De SGP kiest voor een kindgebonden budget.'}
+                    'SGP': { antwoord: 'Oneens', motivatie: 'Ouders zijn primair zelf verantwoordelijk voor de opvoeding. De overheid kan ondersteunen, maar opvang moet niet gratis zijn. De SGP kiest voor een kindgebonden budget.'},
+                    'Vrij Verbond': { antwoord: 'Oneens', motivatie: 'We schaffen de toeslagen af en geven ouders een kindgebonden budget, zodat ze zelf de keuze kunnen maken.'}
                 }
             },
             {
@@ -778,7 +807,8 @@
                     'Volt': { antwoord: 'Eens', motivatie: 'Volt wil de transitie naar een duurzaam voedselsysteem versnellen, waarin geen plaats is voor de bio-industrie.' },
                     'BBB': { antwoord: 'Oneens', motivatie: 'De term "bio-industrie" is misleidend. BBB staat voor een duurzame veehouderij met oog voor dierenwelzijn en een goede boterham voor de boer.'},
                     'FVD': { antwoord: 'Oneens', motivatie: 'FVD steunt onze boeren en de Nederlandse veehouderij.'},
-                    'SGP': { antwoord: 'Oneens', motivatie: 'De SGP staat voor een verantwoorde veehouderij met oog voor dierenwelzijn en is tegen een gedwongen afschaffing.'}
+                    'SGP': { antwoord: 'Oneens', motivatie: 'De SGP staat voor een verantwoorde veehouderij met oog voor dierenwelzijn en is tegen een gedwongen afschaffing.'},
+                    'Vrij Verbond': { antwoord: 'Oneens', motivatie: 'We verminderen de regels en laten dierenwelzijn meer over aan de keuze van de consument en de markt.'}
                 }
             }
         ];
@@ -797,7 +827,8 @@
             'SP': { logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Socialistische_Partij_%28nl_2006%29_Logo.svg/400px-Socialistische_Partij_%28nl_2006%29_Logo.svg.png', website: 'https://www.sp.nl/' },
             'CDA': { logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/CDA_logo_2021.svg/1024px-CDA_logo_2021.svg.png?2021011180241', website: 'https://www.cda.nl/' },
             'Volt': { logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Logo_of_Volt.svg/2880px-Logo_of_Volt.svg.png', website: 'https://voltnederland.org/' },
-            'BBB': { logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/BoerBurgerBeweging_logo.svg/500px-BoerBurgerBeweging_logo.svg.png', website: 'https://boerburgerbeweging.nl/' }
+            'BBB': { logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/BoerBurgerBeweging_logo.svg/500px-BoerBurgerBeweging_logo.svg.png', website: 'https://boerburgerbeweging.nl/' },
+            'Vrij Verbond': { logo: 'https://vrijverbond.nl/wp-content/themes/vrijverbond/resources/assets/vvnl-vignet.svg', website: 'https://vrijverbond.nl/' }
         };
 
         // Applicatie status
