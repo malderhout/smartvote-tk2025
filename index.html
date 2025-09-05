@@ -88,9 +88,14 @@
                     <button onclick="antwoord('Oneens', this)" data-choice="Oneens" class="btn-answer flex-1 sm:w-auto bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-10 rounded-lg">Oneens</button>
                 </div>
 
-                <!-- Knop om partijstandpunten te tonen -->
-                <div class="text-center mb-6">
+                <!-- Acties & Navigatie (Boven) -->
+                <div class="flex justify-between items-center mb-6">
+                    <button onclick="vorigeStelling()" id="vorige-btn-top" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-6 rounded-lg transition-colors">Vorige</button>
                     <button onclick="toonPartijStandpunten()" id="toon-standpunten-btn" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-6 rounded-lg">Toon Partijstandpunten</button>
+                    <div class="text-right">
+                        <button onclick="slaStellingOver()" id="overslaan-btn-top" class="text-blue-600 hover:text-blue-800 font-medium">Stelling overslaan →</button>
+                        <button onclick="volgendeStelling()" id="volgende-btn-top" class="hidden bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg">Volgende →</button>
+                    </div>
                 </div>
 
                 <!-- Partijstandpunten (verborgen tot knopklik) -->
@@ -99,12 +104,12 @@
                     <div id="party-answers-list" class="space-y-3"></div>
                 </div>
 
-                <!-- Navigatie -->
-                <div class="flex justify-between items-center mt-8">
-                    <button onclick="vorigeStelling()" id="vorige-btn" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-6 rounded-lg transition-colors">Vorige</button>
-                    <div class="flex-grow text-right">
-                        <button onclick="slaStellingOver()" id="overslaan-btn" class="text-blue-600 hover:text-blue-800 font-medium">Stelling overslaan →</button>
-                        <button onclick="volgendeStelling()" id="volgende-btn" class="hidden bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg">Volgende →</button>
+                <!-- Navigatie (Onder) -->
+                <div id="bottom-nav-container" class="flex justify-between items-center mt-8 pt-6 border-t border-gray-200 hidden">
+                    <button onclick="vorigeStelling()" id="vorige-btn-bottom" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-6 rounded-lg transition-colors">Vorige</button>
+                    <div class="text-right">
+                        <button onclick="slaStellingOver()" id="overslaan-btn-bottom" class="text-blue-600 hover:text-blue-800 font-medium">Stelling overslaan →</button>
+                        <button onclick="volgendeStelling()" id="volgende-btn-bottom" class="hidden bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg">Volgende →</button>
                     </div>
                 </div>
             </div>
@@ -875,6 +880,7 @@
 
             // UI state resetten voor de nieuwe stelling
             document.getElementById('party-answer-container').classList.add('hidden');
+            document.getElementById('bottom-nav-container').classList.add('hidden'); // Ensure bottom nav is hidden initially
             
             const userAnswer = gebruikersAntwoorden[huidigeStellingIndex];
             
@@ -887,18 +893,23 @@
                 }
             });
 
+            const showVorige = huidigeStellingIndex > 0;
+            document.getElementById('vorige-btn-top').style.display = showVorige ? 'inline-block' : 'none';
+            document.getElementById('vorige-btn-bottom').style.display = showVorige ? 'inline-block' : 'none';
+
             if (userAnswer) {
-                document.getElementById('toon-standpunten-btn').classList.remove('hidden');
-                document.getElementById('overslaan-btn').classList.add('hidden');
-                document.getElementById('volgende-btn').classList.remove('hidden');
+                document.getElementById('overslaan-btn-top').classList.add('hidden');
+                document.getElementById('volgende-btn-top').classList.remove('hidden');
+                document.getElementById('overslaan-btn-bottom').classList.add('hidden');
+                document.getElementById('volgende-btn-bottom').classList.remove('hidden');
             } else {
-                document.getElementById('toon-standpunten-btn').classList.remove('hidden');
-                document.getElementById('overslaan-btn').classList.remove('hidden');
-                document.getElementById('volgende-btn').classList.add('hidden');
+                document.getElementById('overslaan-btn-top').classList.remove('hidden');
+                document.getElementById('volgende-btn-top').classList.add('hidden');
+                document.getElementById('overslaan-btn-bottom').classList.remove('hidden');
+                document.getElementById('volgende-btn-bottom').classList.add('hidden');
             }
             
             updateProgress();
-            document.getElementById('vorige-btn').style.display = huidigeStellingIndex > 0 ? 'inline-block' : 'none';
         }
         
         // Functie om een antwoord te verwerken
@@ -907,8 +918,10 @@
             if (element.classList.contains('selected')) {
                 gebruikersAntwoorden[huidigeStellingIndex] = null;
                 element.classList.remove('selected');
-                document.getElementById('overslaan-btn').classList.remove('hidden');
-                document.getElementById('volgende-btn').classList.add('hidden');
+                document.getElementById('overslaan-btn-top').classList.remove('hidden');
+                document.getElementById('volgende-btn-top').classList.add('hidden');
+                 document.getElementById('overslaan-btn-bottom').classList.remove('hidden');
+                document.getElementById('volgende-btn-bottom').classList.add('hidden');
             } else {
                 // Anders, selecteer de nieuwe keuze
                 gebruikersAntwoorden[huidigeStellingIndex] = keuze;
@@ -919,7 +932,15 @@
         }
 
         function toonPartijStandpunten() {
-            document.getElementById('party-answer-container').classList.toggle('hidden');
+            const container = document.getElementById('party-answer-container');
+            const bottomNav = document.getElementById('bottom-nav-container');
+            container.classList.toggle('hidden');
+
+            if (container.classList.contains('hidden')) {
+                bottomNav.classList.add('hidden');
+            } else {
+                bottomNav.classList.remove('hidden');
+            }
         }
 
         function volgendeStelling() {
