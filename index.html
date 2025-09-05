@@ -89,10 +89,10 @@
                 </div>
 
                 <!-- Acties & Navigatie (Boven) -->
-                <div class="flex justify-between items-center mb-6">
+                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 mb-6">
                     <button onclick="vorigeStelling()" id="vorige-btn-top" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-6 rounded-lg transition-colors">Vorige</button>
                     <button onclick="toonPartijStandpunten()" id="toon-standpunten-btn" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-6 rounded-lg">Toon Partijstandpunten</button>
-                    <div class="text-right">
+                    <div class="text-center sm:text-right">
                         <button onclick="slaStellingOver()" id="overslaan-btn-top" class="text-blue-600 hover:text-blue-800 font-medium">Stelling overslaan →</button>
                         <button onclick="volgendeStelling()" id="volgende-btn-top" class="hidden bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg">Volgende →</button>
                     </div>
@@ -105,9 +105,9 @@
                 </div>
 
                 <!-- Navigatie (Onder) -->
-                <div id="bottom-nav-container" class="flex justify-between items-center mt-8 pt-6 border-t border-gray-200 hidden">
+                <div id="bottom-nav-container" class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 mt-8 pt-6 border-t border-gray-200 hidden">
                     <button onclick="vorigeStelling()" id="vorige-btn-bottom" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-6 rounded-lg transition-colors">Vorige</button>
-                    <div class="text-right">
+                    <div class="text-center sm:text-right">
                         <button onclick="slaStellingOver()" id="overslaan-btn-bottom" class="text-blue-600 hover:text-blue-800 font-medium">Stelling overslaan →</button>
                         <button onclick="volgendeStelling()" id="volgende-btn-bottom" class="hidden bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg">Volgende →</button>
                     </div>
