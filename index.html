@@ -86,7 +86,7 @@
             </div>
         </div>
 
-         <p class="text-xs text-gray-500 mt-6">Laatst bijgewerkt: 25 Oktober 2025</p>
+         <p class="text-xs text-gray-500 mt-6">Laatst bijgewerkt: 26 Oktober 2025</p>
     </div>
 
     <div id="stemhulp-scherm" class="hidden w-full max-w-2xl">
@@ -120,7 +120,7 @@
         <div class="flex flex-wrap sm:flex-nowrap justify-between items-center gap-2 nav-button-container">
             <button id="btn-vorige" class="btn-nav bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-2 px-4 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed">Vorige</button>
             <button id="btn-toon-partijstandpunten" class="btn-nav bg-purple-500 hover:bg-purple-600 text-white font-medium py-2 px-4 rounded-lg text-sm">Toon Partijstandpunten</button>
-            <button id="btn-volgende" class="btn-nav bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed">Volgende →</button>
+            <button id="btn-volgende" class="btn-nav bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg">Volgende →</button> <!-- Removed disabled attribute initially -->
              <!-- Skip button on its own line on mobile -->
              <button id="btn-skip" class="btn-nav bg-gray-100 hover:bg-gray-200 text-gray-600 font-medium py-2 px-4 rounded-lg text-sm w-full sm:w-auto">Stelling overslaan</button>
         </div>
@@ -213,7 +213,7 @@
     </footer>
 
     <script>
-        // Data Stellingen (Stelling 28 is vervangen)
+        // Data Stellingen (Stellingen 13, 14, 28 zijn vervangen)
         const stellingen = [
              { id: 1, thema: "Klimaat & Energie", titel: "Kernenergie", tekst: "Nederland moet minimaal twee nieuwe kerncentrales bouwen om de klimaatdoelen te halen.", uitleg: "Voorstanders wijzen op de CO2-vrije energieproductie en betrouwbaarheid. Tegenstanders maken zich zorgen over kernafval en veiligheid." },
              { id: 2, thema: "Klimaat & Energie", titel: "Benzineauto's", tekst: "De verkoop van nieuwe benzine- en dieselauto's moet vanaf 2035 verboden worden.", uitleg: "Dit stimuleert de overstap naar elektrisch rijden, maar kan duur zijn voor consumenten en vraagt om veel laadinfrastructuur." },
@@ -227,8 +227,8 @@
              { id: 10, thema: "Economie & Werk", titel: "Minimumloon", tekst: "Het wettelijk minimumloon moet omhoog naar €18 per uur.", uitleg: "Een hoger minimumloon verbetert de koopkracht van de laagste inkomens, maar kan volgens sommigen leiden tot banenverlies en hogere prijzen." },
              { id: 11, thema: "Economie & Werk", titel: "Winstbelasting", tekst: "De winstbelasting voor grote bedrijven moet (verder) omhoog.", uitleg: "Voorstanders willen dat bedrijven meer bijdragen aan de samenleving. Tegenstanders vrezen dat dit ten koste gaat van het vestigingsklimaat en investeringen." },
              { id: 12, thema: "Economie & Werk", titel: "Flexcontracten", tekst: "Het gebruik van flexcontracten (zoals nuluren- en tijdelijke contracten) moet sterk worden beperkt.", uitleg: "Beperking biedt werknemers meer zekerheid, maar kan de flexibiliteit voor werkgevers verminderen." },
-             { id: 13, thema: "Onderwijs & Cultuur", titel: "Basisbeurs", tekst: "De basisbeurs voor studenten in het hoger onderwijs moet (verder) worden verhoogd.", uitleg: "Een hogere beurs vermindert de noodzaak tot lenen en werken naast de studie, maar kost de overheid veel geld." },
-             { id: 14, thema: "Onderwijs & Cultuur", titel: "Leenstelsel Compensatie", tekst: "Studenten die onder het leenstelsel vielen (de 'pechgeneratie') moeten volledig worden gecompenseerd.", uitleg: "Volledige compensatie wordt gezien als eerlijk, maar brengt zeer hoge kosten met zich mee voor de staatsschuld." },
+             { id: 13, thema: "Wonen & Financiën", titel: "Hypotheekrenteaftrek", tekst: "De hypotheekrenteaftrek moet volledig worden afgeschaft.", uitleg: "Afschaffen verkleint het verschil tussen huurders en kopers en levert de schatkist geld op, maar maakt kopen voor starters mogelijk duurder." }, // New Stelling 13
+             { id: 14, thema: "Onderwijs & Cultuur", titel: "Artikel 23", tekst: "Artikel 23 van de Grondwet (vrijheid van onderwijs) moet worden aangepast om religieuze scholen strenger te kunnen reguleren (bijv. op burgerschap of weigeren leerlingen).", uitleg: "Voorstanders van aanpassing willen gelijke behandeling waarborgen. Tegenstanders verdedigen de vrijheid om onderwijs in te richten naar eigen overtuiging." }, // New Stelling 14
              { id: 15, thema: "Onderwijs & Cultuur", titel: "Publieke Omroep", tekst: "Er moet fors worden bezuinigd op de publieke omroep (NPO).", uitleg: "Voorstanders van bezuinigen vinden de NPO te duur, te links of overbodig naast commerciële zenders. Tegenstanders benadrukken de maatschappelijke waarde, pluriformiteit en onafhankelijkheid." },
              { id: 16, thema: "Veiligheid & Justitie", titel: "Straffen", tekst: "De maximumstraffen voor zware misdrijven moeten (verder) omhoog.", uitleg: "Hogere straffen kunnen afschrikken en zorgen voor vergelding, maar critici wijzen op hoge kosten en twijfelachtig effect op recidive." },
              { id: 17, thema: "Veiligheid & Justitie", titel: "Preventief Fouilleren", tekst: "De politie moet ruimere bevoegdheden krijgen om preventief te fouilleren in risicogebieden.", uitleg: "Dit kan helpen wapenbezit tegen te gaan, maar critici vrezen etnisch profileren en aantasting van privacy." },
@@ -242,7 +242,7 @@
              { id: 25, thema: "Europa & Internationaal", titel: "EU Bevoegdheden", tekst: "Nederland moet meer bevoegdheden overdragen aan de Europese Unie.", uitleg: "Voorstanders geloven dat Europese samenwerking nodig is voor grote uitdagingen zoals klimaat en veiligheid. Tegenstanders vrezen verlies van nationale soevereiniteit." },
              { id: 26, thema: "Europa & Internationaal", titel: "Defensie-uitgaven", tekst: "De Nederlandse defensie-uitgaven moeten fors omhoog, richting 3,5% van het BBP.", uitleg: "De NAVO-norm is 2%. Voorstanders van 3.5% vinden dit nodig voor onze veiligheid in een onrustige wereld. Tegenstanders vinden het te duur of willen liever investeren in andere zaken." },
              { id: 27, thema: "Europa & Internationaal", titel: "Ontwikkelingshulp", tekst: "Het budget voor ontwikkelingshulp moet omhoog naar de internationale norm (0,7% BBP).", uitleg: "Voorstanders zien dit als morele plicht en investering in stabiliteit. Tegenstanders vinden dat geld beter in eigen land besteed kan worden." },
-             { id: 28, thema: "Bestuur & Democratie", titel: "Aantal Ministeries", tekst: "Het aantal ministeries moet omlaag om de overheid efficiënter te maken.", uitleg: "Minder ministeries kan leiden tot minder bureaucratie en betere afstemming, maar ook tot te grote en onbestuurbare departementen." }, // Replaced Vuurwerk
+             { id: 28, thema: "Bestuur & Democratie", titel: "Aantal Ministeries", tekst: "Het aantal ministeries moet omlaag om de overheid efficiënter te maken.", uitleg: "Minder ministeries kan leiden tot minder bureaucratie en betere afstemming, maar ook tot te grote en onbestuurbare departementen." }, // Was Vuurwerk
              { id: 29, thema: "Economie & Werk", titel: "Expatregeling", tekst: "De belastingkorting voor hoogopgeleide arbeidsmigranten (expats) moet worden afgeschaft.", uitleg: "Voorstanders vinden de regeling oneerlijk ten opzichte van Nederlandse werknemers. Tegenstanders vrezen dat afschaffing het vestigingsklimaat voor internationale bedrijven schaadt." },
              { id: 30, thema: "Europa & Internationaal", titel: "Eurobonds", tekst: "De Europese Unie moet gezamenlijke schulden (Eurobonds) kunnen uitgeven voor grote investeringen.", uitleg: "Voorstanders zien dit als manier om gezamenlijk te investeren in bijvoorbeeld klimaat en defensie. Tegenstanders vrezen dat Nederland moet opdraaien voor schulden van andere landen." },
         ];
@@ -272,13 +272,13 @@
         };
 
 
-        // Data Standpunten (Alle partijen en stellingen bijgewerkt op basis van programma's)
+        // Data Standpunten (Alle partijen en stellingen bijgewerkt)
          const standpunten = {
             1: { // Kernenergie
                 'VVD': { standpunt: 'eens', motivatie: "Kernenergie is nodig voor een betrouwbare, betaalbare en schone energiemix." },
                 'GroenLinks-PvdA': { standpunt: 'oneens', motivatie: "Risico's van kernafval en hoge kosten; focus moet liggen op zon, wind en besparing." },
                 'PVV': { standpunt: 'eens', motivatie: "Kernenergie is schoon, veilig en maakt ons minder afhankelijk van het buitenland." },
-                'FVD': { standpunt: 'eens', motivatie: "Kernenergie is de enige realistische optie voor stabiele en schone energie." },
+                'FVD': { standpunt: 'eens', motivatie: "Kernenergie is de enige realistische optie voor stabiele en schone energie. We bouwen 10 nieuwe centrales." },
                 'JA21': { standpunt: 'eens', motivatie: "Kerncentrales zijn noodzakelijk voor leveringszekerheid en het halen van klimaatdoelen." },
                 'SGP': { standpunt: 'eens', motivatie: "Kernenergie kan een belangrijke rol spelen in de energietransitie, mits veilig." },
                 'ChristenUnie': { standpunt: 'neutraal', motivatie: "Open voor kernenergie als aanvulling op duurzame bronnen, maar met zorgen over afval en veiligheid." },
@@ -286,16 +286,16 @@
                 'NSC': { standpunt: 'eens', motivatie: "Kernenergie is nodig voor een stabiele energievoorziening naast zon en wind." },
                 'SP': { standpunt: 'oneens', motivatie: "Te duur, te traag en te gevaarlijk; investeer liever in isolatie, zon en wind." },
                 'CDA': { standpunt: 'eens', motivatie: "Noodzakelijk voor een betrouwbare energiemix en het halen van klimaatdoelen." },
-                'Volt': { standpunt: 'eens', motivatie: "Moderne kernenergie is veilig en nodig voor de energietransitie, naast duurzame bronnen." },
+                'Volt': { standpunt: 'eens', motivatie: "Moderne kernenergie (SMRs) is veilig en nodig voor de energietransitie, naast duurzame bronnen." },
                 'D66': { standpunt: 'neutraal', motivatie: "Kernenergie kan een rol spelen in de mix, maar alleen onder strikte voorwaarden en als het duurzame energie niet verdringt." },
-                'BBB': { standpunt: 'eens', motivatie: "Kernenergie is essentieel voor een betaalbare en betrouwbare energievoorziening." },
+                'BBB': { standpunt: 'eens', motivatie: "Kernenergie is essentieel voor een betaalbare en betrouwbare energievoorziening. We versnellen de bouw." },
                 'BVNL': { standpunt: 'eens', motivatie: "Kerncentrales bouwen voor energiesoevereiniteit en betaalbare energie." },
-                'Vrij Verbond': { standpunt: 'eens', motivatie: "Investeren in kernenergie als stabiele basis." },
-                '50PLUS': { standpunt: 'eens', motivatie: "Snelle voortgang met bouw kerncentrales, ook SMR's, voor stabiele energie." },
-                'DENK': { standpunt: 'neutraal', motivatie: "Kernenergie niet uitsluiten, maar veilige opslag kernafval is harde randvoorwaarde." },
-                'Piratenpartij': { standpunt: 'neutraal', motivatie: "Niet dogmatisch tegen, maar voorwaarde is vervanging fossiel, sluitende business case en mag hernieuwbaar niet verdringen." }
+                'Vrij Verbond': { standpunt: 'eens', motivatie: "Investeren in kernenergie als stabiele basis voor het elektriciteitsnet." },
+                '50PLUS': { standpunt: 'eens', motivatie: "Snelle voortgang met de bouw van 4 nieuwe kerncentrales en SMR's voor stabiele energie." },
+                'DENK': { standpunt: 'neutraal', motivatie: "Kernenergie niet uitsluiten, maar veilige opslag kernafval is een harde randvoorwaarde." },
+                'Piratenpartij': { standpunt: 'neutraal', motivatie: "Niet dogmatisch tegen, maar voorwaarde is vervanging van fossiel, een sluitende business case en het mag hernieuwbaar niet verdringen." }
             },
-             2: { // Benzineauto's
+            2: { // Benzineauto's
                 'VVD': { standpunt: 'oneens', motivatie: "Technologieneutraal; de markt en innovatie moeten bepalen, geen verbod." },
                 'GroenLinks-PvdA': { standpunt: 'eens', motivatie: "Noodzakelijk om klimaatdoelen te halen en luchtkwaliteit te verbeteren." },
                 'PVV': { standpunt: 'oneens', motivatie: "Automobilist mag niet de dupe worden; tegen betutteling." },
@@ -307,20 +307,20 @@
                 'NSC': { standpunt: 'oneens', motivatie: "Onhaalbaar en te duur voor veel mensen; focus op betaalbare alternatieven." },
                 'SP': { standpunt: 'oneens', motivatie: "Klimaatbeleid mag niet ten koste gaan van mensen met een kleine portemonnee." },
                 'CDA': { standpunt: 'oneens', motivatie: "Niet realistisch; stimuleren van elektrisch rijden en alternatieve brandstoffen is beter." },
-                'Volt': { standpunt: 'eens', motivatie: "In lijn met Europese ambities; noodzakelijk voor klimaatdoelen." },
+                'Volt': { standpunt: 'eens', motivatie: "In lijn met Europese ambities; we willen dit al in 2030." },
                 'D66': { standpunt: 'eens', motivatie: "Duidelijkheid voor de sector en noodzakelijk voor het halen van klimaatdoelen." },
                 'BBB': { standpunt: 'oneens', motivatie: "Onrealistisch en betuttelend; keuzevrijheid voor de consument." },
                 'BVNL': { standpunt: 'oneens', motivatie: "Verbod schrappen; automobilisten kiezen zelf." },
-                'Vrij Verbond': { standpunt: 'oneens', motivatie: "Overheid moet zich niet bemoeien met type auto." },
+                'Vrij Verbond': { standpunt: 'oneens', motivatie: "De overheid moet zich niet bemoeien met het type auto dat mensen rijden." },
                 '50PLUS': { standpunt: 'oneens', motivatie: "Niet realistisch, focus op betaalbare alternatieven en keuzevrijheid." },
-                'DENK': { standpunt: 'oneens', motivatie: "Mobiliteit moet betaalbaar blijven; inzetten op betaalbaar elektrisch rijden." },
-                'Piratenpartij': { standpunt: 'neutraal', motivatie: "Focus op beter OV en fietsen; auto delen stimuleren." }
+                'DENK': { standpunt: 'oneens', motivatie: "Mobiliteit moet betaalbaar blijven; inzetten op betaalbaar elektrisch rijden, geen verbod." },
+                'Piratenpartij': { standpunt: 'neutraal', motivatie: "Focus op beter en toegankelijk OV en fietsen; autodelen stimuleren in plaats van bezit." }
              },
-             3: { // Vliegtaks
+            3: { // Vliegtaks
                 'VVD': { standpunt: 'oneens', motivatie: "Internationale aanpak nodig, anders wijken reizigers uit naar buurlanden." },
                 'GroenLinks-PvdA': { standpunt: 'eens', motivatie: "Vliegen is te goedkoop en vervuilend; eerlijke prijs voor vervuiling." },
                 'PVV': { standpunt: 'oneens', motivatie: "Nederlanders moeten betaalbaar op vakantie kunnen." },
-                'FVD': { standpunt: 'oneens', motivatie: "Tegen klimaatbeleid en lastenverzwaringen." },
+                'FVD': { standpunt: 'oneens', motivatie: "Tegen klimaatbeleid en lastenverzwaringen. Geen vliegbelasting." },
                 'JA21': { standpunt: 'oneens', motivatie: "Concurrentienadeel voor Schiphol; Europese aanpak is beter." },
                 'SGP': { standpunt: 'neutraal', motivatie: "Vervuiler betaalt, maar we moeten waken voor te hoge lasten en concurrentienadeel." },
                 'ChristenUnie': { standpunt: 'eens', motivatie: "Eerlijke beprijzing van vervuiling is nodig; opbrengst investeren in duurzame alternatieven." },
@@ -328,8 +328,8 @@
                 'NSC': { standpunt: 'neutraal', motivatie: "Europese aanpak heeft voorkeur, maar eerlijke beprijzing is belangrijk." },
                 'SP': { standpunt: 'oneens', motivatie: "Maakt vliegen onbetaalbaar voor gewone mensen; pak liever de grote vervuilers aan." },
                 'CDA': { standpunt: 'neutraal', motivatie: "Voorstander van beprijzen vervuiling, maar liefst in Europees verband." },
-                'Volt': { standpunt: 'eens', motivatie: "Europese aanpak voor eerlijke concurrentie, maar vliegen moet duurder." },
-                'D66': { standpunt: 'eens', motivatie: "Vervuiler betaalt; eerlijke prijs voor vliegen is nodig." },
+                'Volt': { standpunt: 'eens', motivatie: "Europese aanpak voor eerlijke concurrentie, maar vliegen moet duurder. Kerosine belasten." },
+                'D66': { standpunt: 'eens', motivatie: "Vervuiler betaalt; eerlijke prijs voor vliegen is nodig. Belasting differentieren op basis van klasse." },
                 'BBB': { standpunt: 'oneens', motivatie: "Maakt reizen onnodig duur; internationale aanpak nodig." },
                 'BVNL': { standpunt: 'oneens', motivatie: "Geen vliegtaks; tegen belastingen die gedrag willen sturen." },
                 'Vrij Verbond': { standpunt: 'oneens', motivatie: "Tegen belastingen die gedrag sturen; vrije keuze." },
@@ -341,7 +341,7 @@
                 'VVD': { standpunt: 'oneens', motivatie: "Strenger beleid en grip op migratie, maar een stop is niet realistisch/wenselijk." },
                 'GroenLinks-PvdA': { standpunt: 'oneens', motivatie: "Humanitaire plicht en internationale verdragen respecteren; focus op goede opvang en integratie." },
                 'PVV': { standpunt: 'eens', motivatie: "Nederland is vol; grenzen dicht voor asielzoekers." },
-                'FVD': { standpunt: 'eens', motivatie: "Stop immigratie; Nederland voor de Nederlanders." },
+                'FVD': { standpunt: 'eens', motivatie: "Volledig stoppen met asielopvang in Nederland. Opvang in de regio." },
                 'JA21': { standpunt: 'eens', motivatie: "Tijdelijke asielstop nodig om systeem te hervormen en grip te krijgen." },
                 'SGP': { standpunt: 'oneens', motivatie: "Bijbelse plicht om vreemdeling op te nemen, maar wel met duidelijke grenzen en regels." },
                 'ChristenUnie': { standpunt: 'oneens', motivatie: "Barmhartigheid voor vluchtelingen, maar wel realistisch beleid en eerlijke verdeling." },
@@ -349,7 +349,7 @@
                 'NSC': { standpunt: 'oneens', motivatie: "Grip op migratie nodig, maar een stop is juridisch onhoudbaar en onwenselijk." },
                 'SP': { standpunt: 'oneens', motivatie: "Help mensen in nood, maar pak ook de oorzaken aan en zorg voor eerlijke verdeling." },
                 'CDA': { standpunt: 'oneens', motivatie: "Streng maar rechtvaardig beleid; een stop is niet de oplossing." },
-                'Volt': { standpunt: 'oneens', motivatie: "Europese aanpak nodig; solidair met vluchtelingen." },
+                'Volt': { standpunt: 'oneens', motivatie: "Europese aanpak nodig; solidair met vluchtelingen. Geen deals met dictators." },
                 'D66': { standpunt: 'oneens', motivatie: "Internationale verdragen naleven; focus op humane opvang en snelle procedures." },
                 'BBB': { standpunt: 'neutraal', motivatie: "Forse beperking instroom noodzakelijk, 'asielstop' is juridisch lastig maar intentie is duidelijk." },
                 'BVNL': { standpunt: 'eens', motivatie: "Absorptievermogen is bereikt; stop de eindeloze toestroom." },
@@ -358,11 +358,11 @@
                 'DENK': { standpunt: 'oneens', motivatie: "Strenge asielwetten intrekken; pal staan voor humaan asielbeleid." },
                 'Piratenpartij': { standpunt: 'oneens', motivatie: "Menselijke waardigheid als uitgangspunt; gemeenschappelijk Europees beleid." }
             },
-             5: { // Voorrang Statushouders
+            5: { // Voorrang Statushouders
                 'VVD': { standpunt: 'eens', motivatie: "Voorrang afschaffen voor meer draagvlak; focus op snellere huisvesting voor iedereen." },
                 'GroenLinks-PvdA': { standpunt: 'oneens', motivatie: "Voorrang is nodig om integratie te starten en dakloosheid te voorkomen; bouw meer sociale huur." },
                 'PVV': { standpunt: 'eens', motivatie: "Eigen volk eerst; Nederlanders gaan voor." },
-                'FVD': { standpunt: 'eens', motivatie: "Nederlanders eerst; stop met voortrekken van buitenlanders." },
+                'FVD': { standpunt: 'eens', motivatie: "Nederlanders eerst; stop met voortrekken van buitenlanders. Voorrang voor Nederlanders." },
                 'JA21': { standpunt: 'eens', motivatie: "Oneerlijk tegenover Nederlanders op de wachtlijst." },
                 'SGP': { standpunt: 'eens', motivatie: "Voorrang leidt tot onvrede; zoek naar andere oplossingen voor huisvesting." },
                 'ChristenUnie': { standpunt: 'oneens', motivatie: "Noodzakelijk om statushouders een start te geven; probleem is woningtekort, niet voorrang." },
@@ -379,11 +379,11 @@
                 'DENK': { standpunt: 'oneens', motivatie: "Voorrang is nodig voor integratie; echte probleem is woningtekort." },
                 'Piratenpartij': { standpunt: 'oneens', motivatie: "Integratie begint met huisvesting; bouw meer woningen voor iedereen." }
             },
-             6: { // Spreidingswet
+            6: { // Spreidingswet
                 'VVD': { standpunt: 'eens', motivatie: "Gemeenten moeten zelf kunnen beslissen; dwang werkt niet." },
                 'GroenLinks-PvdA': { standpunt: 'oneens', motivatie: "Noodzakelijk voor eerlijke verdeling en voorkomen van crisis in opvang." },
                 'PVV': { standpunt: 'eens', motivatie: "Geen enkele gemeente moet gedwongen worden; grenzen dicht." },
-                'FVD': { standpunt: 'eens', motivatie: "Stop de 'omvolking'; geen dwang vanuit Den Haag." },
+                'FVD': { standpunt: 'eens', motivatie: "Spreidingswet intrekken. Geen dwang vanuit Den Haag." },
                 'JA21': { standpunt: 'eens', motivatie: "Ondermijnt lokale autonomie; geen dwang." },
                 'SGP': { standpunt: 'eens', motivatie: "Dwang past niet bij lokale autonomie; Rijk moet overleggen, niet opleggen." },
                 'ChristenUnie': { standpunt: 'oneens', motivatie: "Solidariteit vereist dat alle gemeenten bijdragen; wet is nodig als stok achter de deur." },
@@ -396,15 +396,15 @@
                 'BBB': { standpunt: 'eens', motivatie: "Tegen dwang vanuit Den Haag; gemeenten moeten zelf beslissen." },
                 'BVNL': { standpunt: 'eens', motivatie: "Tegen de Spreidingswet; geen dwang." },
                 'Vrij Verbond': { standpunt: 'eens', motivatie: "Tegen dwang; gemeenten zelf laten beslissen." },
-                '50PLUS': { standpunt: 'eens', motivatie: "Intrekken van de spreidingswet." },
+                '50PLUS': { standpunt: 'eens', motivatie: "Intrekken van de Spreidingswet." },
                 'DENK': { standpunt: 'oneens', motivatie: "Spreidingswet behouden voor eerlijke verdeling; investeer in kleinschalige opvang." },
                 'Piratenpartij': { standpunt: 'oneens', motivatie: "Solidariteit tussen gemeenten is nodig; kleinschalige opvang bevorderen." }
              },
-             7: { // Eigen Risico
+            7: { // Eigen Risico
                 'VVD': { standpunt: 'oneens', motivatie: "Draagt bij aan kostenbewustzijn; wel kijken naar gerichte verlaging voor specifieke groepen." },
                 'GroenLinks-PvdA': { standpunt: 'eens', motivatie: "Straf op ziek zijn; afschaffen voor toegankelijke zorg." },
                 'PVV': { standpunt: 'eens', motivatie: "Afschaffen, zorg moet betaalbaar zijn voor iedereen." },
-                'FVD': { standpunt: 'eens', motivatie: "Eigen risico is een onzalig plan; afschaffen." },
+                'FVD': { standpunt: 'eens', motivatie: "Eigen risico is een onzalig plan; afschaffen. Premies omlaag." },
                 'JA21': { standpunt: 'oneens', motivatie: "Onbetaalbaar; focus op beheersing zorgkosten." },
                 'SGP': { standpunt: 'oneens', motivatie: "Belangrijk voor kostenbewustzijn; wel oog voor mensen die het moeilijk hebben." },
                 'ChristenUnie': { standpunt: 'neutraal', motivatie: "Afschaffen is duur; liever gericht verlagen voor kwetsbare groepen en chronisch zieken." },
@@ -421,7 +421,7 @@
                 'DENK': { standpunt: 'eens', motivatie: "Volledig afschaffen; zorg mag niet afhangen van portemonnee." },
                 'Piratenpartij': { standpunt: 'eens', motivatie: "Afschaffen; is straf op ziek zijn en leidt tot zorgmijding." }
              },
-             8: { // Marktwerking Zorg
+            8: { // Marktwerking Zorg
                 'VVD': { standpunt: 'oneens', motivatie: "Marktwerking leidt tot efficiëntie en keuzevrijheid." },
                 'GroenLinks-PvdA': { standpunt: 'eens', motivatie: "Zorg is geen markt; marktwerking leidt tot ongelijkheid en bureaucratie." },
                 'PVV': { standpunt: 'eens', motivatie: "Marktwerking heeft gefaald; terug naar publiek stelsel." },
@@ -442,13 +442,13 @@
                  'DENK': { standpunt: 'eens', motivatie: "Marktwerking beperken met meer marktmeesterschap; winsten aan banden leggen." },
                  'Piratenpartij': { standpunt: 'eens', motivatie: "Marktwerking werkt niet; zorgstelsel vervangen door nationaal zorgfonds." }
              },
-             9: { // Voltooid Leven
+            9: { // Voltooid Leven
                  'VVD': { standpunt: 'eens', motivatie: "Ruimte voor zelfbeschikking bij een voltooid leven." },
                  'GroenLinks-PvdA': { standpunt: 'eens', motivatie: "Recht op zelfbeschikking staat voorop, ook bij voltooid leven." },
                  'PVV': { standpunt: 'neutraal', motivatie: "Geen expliciet standpunt, complex ethisch vraagstuk." },
                  'FVD': { standpunt: 'oneens', motivatie: "Beschermwaardigheid van het leven staat voorop." },
                  'JA21': { standpunt: 'oneens', motivatie: "Terughoudendheid geboden; focus op zorg en voorkomen van eenzaamheid." },
-                 'SGP': { standpunt: 'oneens', motivatie: "God beschikt over het leven; euthanasie is geen optie." },
+                 'SGP': { standpunt: 'oneens', motivatie: "God beschikt over het leven; euthanasie is geen optie. Wet niet steunen." },
                  'ChristenUnie': { standpunt: 'oneens', motivatie: "Leven is een geschenk; focus op goede zorg en aandacht, niet op levensbeëindiging." },
                  'PvdD': { standpunt: 'eens', motivatie: "Zelfbeschikking is een belangrijk goed." },
                  'NSC': { standpunt: 'oneens', motivatie: "Grote zorgen over mogelijke druk op ouderen; zeer terughoudend." },
@@ -456,454 +456,74 @@
                  'CDA': { standpunt: 'oneens', motivatie: "Beschermwaardigheid van het leven; alternatieven zoals palliatieve zorg versterken." },
                  'Volt': { standpunt: 'eens', motivatie: "Zelfbeschikking staat centraal, met zorgvuldige procedure." },
                  'D66': { standpunt: 'eens', motivatie: "Zelfbeschikking over het levenseinde moet mogelijk zijn, ook bij voltooid leven." },
-                 'BBB': { standpunt: 'oneens', motivatie: "Niet verruimen; focus op zorg en levenskwaliteit." },
+                 'BBB': { standpunt: 'oneens', motivatie: "Niet verruimen; focus op zorg en levenskwaliteit. Wet niet steunen." },
                  'BVNL': { standpunt: 'eens', motivatie: "Euthanasie binnen huidige wetgeving is eigen keuze." },
                  'Vrij Verbond': { standpunt: 'eens', motivatie: "Zelfbeschikking staat voorop; keuzevrijheid respecteren." },
                  '50PLUS': { standpunt: 'eens', motivatie: "Euthanasie toegestaan bij ondraaglijk en uitzichtloos lijden (huidige wet)." },
                  'DENK': { standpunt: 'oneens', motivatie: "Geen verruiming euthanasie; inzetten op voorkomen doodswens." },
                  'Piratenpartij': { standpunt: 'eens', motivatie: "Zelfbeschikkingsrecht staat voorop; recht op euthanasie bij voltooid leven." }
-             },
-            10: { // Minimumloon €18
-                'VVD': { standpunt: 'oneens', motivatie: "Verhoging moet samenhangen met productiviteit, €18 is te hoog." },
-                'GroenLinks-PvdA': { standpunt: 'eens', motivatie: "Noodzakelijk voor bestaanszekerheid." },
-                'PVV': { standpunt: 'neutraal', motivatie: "Wil verhoging, maar noemt geen €18." },
-                'FVD': { standpunt: 'oneens', motivatie: "Tegen overheidsingrijpen in lonen." },
-                'JA21': { standpunt: 'oneens', motivatie: "Slecht voor MKB en werkgelegenheid." },
-                'SGP': { standpunt: 'oneens', motivatie: "Verstort de arbeidsmarkt; liever lastenverlaging." },
-                'ChristenUnie': { standpunt: 'neutraal', motivatie: "Willen een forse verhoging, maar €18 is niet expliciet genoemd." },
-                'PvdD': { standpunt: 'eens', motivatie: "Armoede bestrijden en koopkracht versterken." },
-                'NSC': { standpunt: 'oneens', motivatie: "Verhoging ja, maar gekoppeld aan productiviteit, niet naar €18." },
-                'SP': { standpunt: 'eens', motivatie: "Kernpunt voor bestaanszekerheid." },
-                'CDA': { standpunt: 'oneens', motivatie: "Geleidelijke verhoging, geen schok van €18." },
-                'Volt': { standpunt: 'eens', motivatie: "Voor een Europees minimumloon en een forse verhoging." },
-                'D66': { standpunt: 'neutraal', motivatie: "Willen verhogen, maar noemen geen €18." },
-                'BBB': { standpunt: 'oneens', motivatie: "Niet realistisch, schaadt MKB." },
-                'BVNL': { standpunt: 'oneens', motivatie: "Wil verhogen naar €14, dus oneens met €18." },
-                'Vrij Verbond': { standpunt: 'neutraal', motivatie: "Wil negatieve inkomstenbelasting, loon is aan de markt." },
-                '50PLUS': { standpunt: 'oneens', motivatie: "Niet expliciet voor €18, focus op AOW-koppeling." },
-                'DENK': { standpunt: 'eens', motivatie: "Noodzakelijk voor armoedebestrijding." },
-                'Piratenpartij': { standpunt: 'eens', motivatie: "Minimumloon van 18 euro per uur." }
             },
-            11: { // Winstbelasting
-                'VVD': { standpunt: 'oneens', motivatie: "Goed vestigingsklimaat behouden." },
-                'GroenLinks-PvdA': { standpunt: 'eens', motivatie: "Eerlijke bijdrage van grote bedrijven." },
-                'PVV': { standpunt: 'neutraal', motivatie: "Kritisch op multinationals, maar geen duidelijk standpunt." },
-                'FVD': { standpunt: 'oneens', motivatie: "Lagere belastingen voor bedrijven." },
-                'JA21': { standpunt: 'oneens', motivatie: "Vestigingsklimaat is belangrijk." },
-                'SGP': { standpunt: 'neutraal', motivatie: "Eerlijke bijdrage, maar pas op voor vestigingsklimaat." },
-                'ChristenUnie': { standpunt: 'eens', motivatie: "Grote bedrijven moeten meer bijdragen." },
-                'PvdD': { standpunt: 'eens', motivatie: "Vervuilers en grote bedrijven meer belasten." },
-                'NSC': { standpunt: 'neutraal', motivatie: "Eerlijker belasten, maar geen specifieke verhoging genoemd." },
-                'SP': { standpunt: 'eens', motivatie: "Multinationals moeten eerlijk bijdragen." },
-                'CDA': { standpunt: 'oneens', motivatie: "Vestigingsklimaat beschermen." },
-                'Volt': { standpunt: 'eens', motivatie: "Voor een eerlijke Europese winstbelasting." },
-                'D66': { standpunt: 'neutraal', motivatie: "Eerlijker belasten, maar geen forse verhoging." },
-                'BBB': { standpunt: 'oneens', motivatie: "Goed voor ondernemersklimaat." },
-                'BVNL': { standpunt: 'oneens', motivatie: "Voor lagere belastingen, zoals vlaktaks van 20%." },
-                'Vrij Verbond': { standpunt: 'oneens', motivatie: "Vlaktaks van 15% voor bedrijven." },
-                '50PLUS': { standpunt: 'neutraal', motivatie: "Geen expliciet standpunt." },
-                'DENK': { standpunt: 'eens', motivatie: "Grote bedrijven die flinke winsten maken, gaan eerlijker deel bijdragen." },
-                'Piratenpartij': { standpunt: 'eens', motivatie: "Minimumtarief van tenminste 25%." }
+            10: {'VVD': {standpunt: 'oneens', motivatie: "Verhoging schaadt werkgelegenheid MKB."}, 'GroenLinks-PvdA': {standpunt: 'eens', motivatie: "Nodig voor bestaanszekerheid en armoedebestrijding."}, 'PVV': {standpunt: 'neutraal', motivatie: "Wil lastenverlaging voor lage inkomens, maar noemt geen specifiek bedrag."}, 'FVD': {standpunt: 'oneens', motivatie: "Tegen overheidsingrijpen in loonvorming, wil lastenverlaging."}, 'JA21': {standpunt: 'oneens', motivatie: "Verstikt ondernemers en kost banen."}, 'SGP': {standpunt: 'oneens', motivatie: "Te forse stijging, MKB kan dit niet dragen."}, 'ChristenUnie': {standpunt: 'neutraal', motivatie: "Wil een forse verhoging, maar €18 is mogelijk te snel."}, 'PvdD': {standpunt: 'eens', motivatie: "Noodzakelijk voor een eerlijk en leefbaar loon."}, 'NSC': {standpunt: 'oneens', motivatie: "Wil verhogen, maar gekoppeld aan productiviteit, €18 is te hoog."}, 'SP': {standpunt: 'eens', motivatie: "Kernpunt voor bestaanszekerheid en armoedebestrijding."}, 'CDA': {standpunt: 'oneens', motivatie: "Wil een loonstijging, maar €18 is onverantwoord voor MKB."}, 'Volt': {standpunt: 'eens', motivatie: "Willen minimumloon verhogen naar 19 euro."}, 'D66': {standpunt: 'neutraal', motivatie: "Wil verhogen, maar gekoppeld aan productiviteit en lastenverlichting MKB."}, 'BBB': {standpunt: 'oneens', motivatie: "Niet realistisch, onbetaalbaar voor MKB."}, 'BVNL': {standpunt: 'oneens', motivatie: "Wil verhogen naar €14, maar €18 is te veel. Lasten werkgevers moeten omlaag."}, 'Vrij Verbond': {standpunt: 'neutraal', motivatie: "De NIB-regeling (€22.500) maakt een minimumloon minder relevant."}, '50PLUS': {standpunt: 'oneens', motivatie: "Koppeling AOW-minimumloon behouden, maar €18 is niet genoemd."}, 'DENK': {standpunt: 'eens', motivatie: "Noodzakelijk voor koopkracht en bestaanszekerheid."}, 'Piratenpartij': {standpunt: 'eens', motivatie: "Wil een minimumloon van 18 euro per uur voor iedereen vanaf 18 jaar."}},
+            11: {'VVD': {standpunt: 'oneens', motivatie: "Slecht voor vestigingsklimaat."}, 'GroenLinks-PvdA': {standpunt: 'eens', motivatie: "Eerlijke bijdrage van multinationals is nodig voor publieke voorzieningen."}, 'PVV': {standpunt: 'neutraal', motivatie: "Wil lastenverlichting voor burgers, niet per se lastenverzwaring bedrijven."}, 'FVD': {standpunt: 'oneens', motivatie: "Belastingen moeten omlaag, niet omhoog."}, 'JA21': {standpunt: 'oneens', motivatie: "Slecht voor het vestigingsklimaat."}, 'SGP': {standpunt: 'neutraal', motivatie: "Stabiel vestigingsklimaat is belangrijk, maar eerlijke bijdrage ook."}, 'ChristenUnie': {standpunt: 'eens', motivatie: "Grote bedrijven moeten eerlijker bijdragen."}, 'PvdD': {standpunt: 'eens', motivatie: "Vervuilende en winstgevende bedrijven moeten meer betalen."}, 'NSC': {standpunt: 'neutraal', motivatie: "Eerlijkere bijdrage, maar waakzaam voor vestigingsklimaat."}, 'SP': {standpunt: 'eens', motivatie: "Multinationals moeten eerlijk bijdragen."}, 'CDA': {standpunt: 'oneens', motivatie: "Zorgen over vestigingsklimaat; liever internationale afspraken."}, 'Volt': {standpunt: 'eens', motivatie: "Eerlijke bijdrage is nodig. Wil één Europese winstbelasting."}, 'D66': {standpunt: 'neutraal', motivatie: "Balans tussen eerlijke bijdrage en vestigingsklimaat. Liever Europees aanpakken."}, 'BBB': {standpunt: 'oneens', motivatie: "Slecht voor vestigingsklimaat en werkgelegenheid."}, 'BVNL': {standpunt: 'oneens', motivatie: "Wil juist een verlaging van de vennootschapsbelasting (vlaktaks 20%)."}, 'Vrij Verbond': {standpunt: 'oneens', motivatie: "Wil een vlaktaks van 15% voor bedrijven, dus een verlaging."}, '50PLUS': {standpunt: 'neutraal', motivatie: "Kritisch op belastingontwijking, maar geen expliciet standpunt over verhoging."}, 'DENK': {standpunt: 'eens', motivatie: "Grote bedrijven die flinke winsten maken, gaan een eerlijker deel bijdragen."}, 'Piratenpartij': {standpunt: 'eens', motivatie: "Minimumtarief van 25% voor winstbelasting."}},
+            12: {'VVD': {standpunt: 'oneens', motivatie: "Flexibiliteit is nodig voor de economie."}, 'GroenLinks-PvdA': {standpunt: 'eens', motivatie: "Meer vaste banen en zekerheid voor werknemers."}, 'PVV': {standpunt: 'neutraal', motivatie: "Wil MKB steunen, maar ook werknemers beschermen."}, 'FVD': {standpunt: 'oneens', motivatie: "Markt moet vrij zijn, minder regels voor werkgevers."}, 'JA21': {standpunt: 'oneens', motivatie: "Flexibiliteit is nodig voor ondernemers."}, 'SGP': {standpunt: 'neutraal', motivatie: "Balans tussen zekerheid en flexibiliteit; uitwassen aanpakken."}, 'ChristenUnie': {standpunt: 'eens', motivatie: "Meer zekerheid voor werkenden, doorgeschoten flex aanpakken."}, 'PvdD': {standpunt: 'eens', motivatie: "Flexibilisering is doorgeschoten en leidt tot onzekerheid."}, 'NSC': {standpunt: 'eens', motivatie: "Meer vaste contracten voor bestaanszekerheid."}, 'SP': {standpunt: 'eens', motivatie: "Stop de doorgeschoten flex, meer vaste banen."}, 'CDA': {standpunt: 'neutraal', motivatie: "Balans tussen flexibiliteit en zekerheid, uitwassen aanpakken."}, 'Volt': {standpunt: 'eens', motivatie: "Vaste contracten moeten de norm zijn."}, 'D66': {standpunt: 'eens', motivatie: "Balans herstellen, meer zekerheid voor werkenden."}, 'BBB': {standpunt: 'oneens', motivatie: "Flexibiliteit is nodig voor MKB, regels niet aanscherpen."}, 'BVNL': {standpunt: 'oneens', motivatie: "Contractvrijheid is essentieel; ontslagrecht versoepelen."}, 'Vrij Verbond': {standpunt: 'oneens', motivatie: "Gedwongen CAO's afschaffen; contractvrijheid staat voorop."}, '50PLUS': {standpunt: 'neutraal', motivatie: "Kritisch op onzekerheid, maar ook oog voor werkgevers."}, 'DENK': {standpunt: 'eens', motivatie: "Meer zekerheid voor mensen op de arbeidsmarkt."}, 'Piratenpartij': {standpunt: 'eens', motivatie: "Schijnzelfstandigheid aanpakken, rechten van werknemers beschermen."}},
+            13: { // HRA Afschaffen
+                'VVD': { standpunt: 'oneens', motivatie: "HRA draagt bij aan eigenwoningbezit." },
+                'GroenLinks-PvdA': { standpunt: 'eens', motivatie: "Afbouwen voor eerlijkere woningmarkt en inkomensverdeling." },
+                'PVV': { standpunt: 'oneens', motivatie: "Niet tornen aan HRA." },
+                'FVD': { standpunt: 'oneens', motivatie: "HRA blijft behouden, overdrachtsbelasting afschaffen." },
+                'JA21': { standpunt: 'oneens', motivatie: "HRA belangrijk voor middenklasse." },
+                'SGP': { standpunt: 'oneens', motivatie: "Afbouw schaadt huizenbezitters. Wordt niet verder beperkt." },
+                'ChristenUnie': { standpunt: 'neutraal', motivatie: "Versneld afbouwen, niet volledig afschaffen." },
+                'PvdD': { standpunt: 'eens', motivatie: "Afbouwen ten gunste van duurzaamheid en lagere inkomens." },
+                'NSC': { standpunt: 'oneens', motivatie: "Versneld afbouwen, maar niet volledig." },
+                'SP': { standpunt: 'eens', motivatie: "Afschaffen en geld gebruiken voor volkshuisvesting." },
+                'CDA': { standpunt: 'oneens', motivatie: "Voorzichtig afbouwen, niet afschaffen." },
+                'Volt': { standpunt: 'eens', motivatie: "Afbouwen voor eerlijkere woningmarkt en verplaatsen naar box 3." },
+                'D66': { standpunt: 'eens', motivatie: "Versneld afbouwen en eigenwoningforfait afschaffen. Opbrengst naar lagere lasten op arbeid." },
+                'BBB': { standpunt: 'oneens', motivatie: "HRA behouden, niet verder beperken." },
+                'BVNL': { standpunt: 'eens', motivatie: "Afschaffen (indirect via vlaktaks/afschaffen aftrekposten)." },
+                'Vrij Verbond': { standpunt: 'eens', motivatie: "Afschaffen, samen met woonbelastingen (zoals EWF en OZB)." },
+                '50PLUS': { standpunt: 'oneens', motivatie: "Niet verder afbouwen." },
+                'DENK': { standpunt: 'oneens', motivatie: "Behouden om woningbezit te steunen." },
+                'Piratenpartij': { standpunt: 'eens', motivatie: "Afbouwen, opbrengst gebruiken voor lastenverlaging." }
             },
-            12: { // Flexcontracten
-                'VVD': { standpunt: 'oneens', motivatie: "Flexibiliteit is nodig voor de economie." },
-                'GroenLinks-PvdA': { standpunt: 'eens', motivatie: "Meer vaste contracten voor zekerheid." },
-                'PVV': { standpunt: 'neutraal', motivatie: "Wil werknemers beschermen, maar ook flexibiliteit." },
-                'FVD': { standpunt: 'oneens', motivatie: "Voor een vrije arbeidsmarkt." },
-                'JA21': { standpunt: 'oneens', motivatie: "Flexibiliteit is goed voor ondernemers." },
-                'SGP': { standpunt: 'neutraal', motivatie: "Balans tussen zekerheid en flexibiliteit." },
-                'ChristenUnie': { standpunt: 'eens', motivatie: "Meer zekerheid voor werkenden." },
-                'PvdD': { standpunt: 'eens', motivatie: "Tegen onzekere contracten." },
-                'NSC': { standpunt: 'eens', motivatie: "Basis van vaste contracten versterken." },
-                'SP': { standpunt: 'eens', motivatie: "Vast contract moet de norm zijn." },
-                'CDA': { standpunt: 'neutraal', motivatie: "Balans tussen vast en flex." },
-                'Volt': { standpunt: 'eens', motivatie: "Meer zekerheid voor werkenden." },
-                'D66': { standpunt: 'eens', motivatie: "Balans herstellen, meer zekerheid." },
-                'BBB': { standpunt: 'oneens', motivatie: "Flexibiliteit nodig voor MKB." },
-                'BVNL': { standpunt: 'oneens', motivatie: "Contractvrijheid is essentieel." },
-                'Vrij Verbond': { standpunt: 'oneens', motivatie: "Meer vrijheid in arbeidsrelaties." },
-                '50PLUS': { standpunt: 'neutraal', motivatie: "Geen expliciet standpunt." },
-                'DENK': { standpunt: 'eens', motivatie: "Meer zekerheid voor mensen op de arbeidsmarkt." },
-                'Piratenpartij': { standpunt: 'eens', motivatie: "Aanpakken schijnzelfstandigheid." }
+            14: { // Artikel 23 Aanpassen
+                'VVD': { standpunt: 'oneens', motivatie: "Vrijheid van onderwijs behouden." },
+                'GroenLinks-PvdA': { standpunt: 'neutraal', motivatie: "Moderniseren om discriminatie tegen te gaan, niet afschaffen." },
+                'PVV': { standpunt: 'eens', motivatie: "Islamitische scholen verbieden." },
+                'FVD': { standpunt: 'oneens', motivatie: "Vrijheid van onderwijs beschermen." },
+                'JA21': { standpunt: 'oneens', motivatie: "Vrijheid van onderwijs behouden." },
+                'SGP': { standpunt: 'oneens', motivatie: "Artikel 23 is kernwaarde. Open voor aanpassing om vrijheid te beschermen tegen haat." },
+                'ChristenUnie': { standpunt: 'oneens', motivatie: "Vrijheid van onderwijs behouden." },
+                'PvdD': { standpunt: 'neutraal', motivatie: "Geen nieuwe religieuze scholen, bestaande strenger controleren." },
+                'NSC': { standpunt: 'oneens', motivatie: "Artikel 23 behouden." },
+                'SP': { standpunt: 'oneens', motivatie: "Vrijheid van onderwijs is belangrijk." },
+                'CDA': { standpunt: 'oneens', motivatie: "Artikel 23 behouden." },
+                'Volt': { standpunt: 'oneens', motivatie: "Stoppen met financieren van religieus onderwijs; dit vereist aanpassing Art. 23." },
+                'D66': { standpunt: 'neutraal', motivatie: "Moderniseren om gelijke kansen en burgerschap te waarborgen." },
+                'BBB': { standpunt: 'oneens', motivatie: "Artikel 23 behouden. Open voor aanpassing om radicalisering te voorkomen." },
+                'BVNL': { standpunt: 'oneens', motivatie: "Overheid bemoeit zich niet met inhoud onderwijs. Religie en overheid scheiden." },
+                'Vrij Verbond': { standpunt: 'neutraal', motivatie: "Voor keuzevrijheid, geen expliciete uitspraak over Art. 23 zelf." },
+                '50PLUS': { standpunt: 'oneens', motivatie: "Vrijheid van onderwijs behouden." },
+                'DENK': { standpunt: 'oneens', motivatie: "Volledig behoud van artikel 23." },
+                'Piratenpartij': { standpunt: 'neutraal', motivatie: "Gelijke regels voor bijzonder onderwijs m.b.t. weigeren leerlingen, niet per se Art. 23 aanpassen." }
             },
-            13: { // Basisbeurs verhogen
-                'VVD': { standpunt: 'oneens', motivatie: "Huidige stelsel is voldoende." },
-                'GroenLinks-PvdA': { standpunt: 'eens', motivatie: "Studenten moeten schuldenvrij kunnen studeren." },
-                'PVV': { standpunt: 'neutraal', motivatie: "Geen duidelijk standpunt." },
-                'FVD': { standpunt: 'oneens', motivatie: "Tegen 'gratis geld'." },
-                'JA21': { standpunt: 'oneens', motivatie: "Studeren is een investering." },
-                'SGP': { standpunt: 'neutraal', motivatie: "Ouders hebben ook een verantwoordelijkheid." },
-                'ChristenUnie': { standpunt: 'eens', motivatie: "Toegankelijkheid van onderwijs vergroten." },
-                'PvdD': { standpunt: 'eens', motivatie: "Onderwijs moet toegankelijk zijn voor iedereen." },
-                'NSC': { standpunt: 'neutraal', motivatie: "Herijken, maar geen belofte tot verhoging." },
-                'SP': { standpunt: 'eens', motivatie: "Basisbeurs moet fors omhoog." },
-                'CDA': { standpunt: 'neutraal', motivatie: "Stelsel is net nieuw." },
-                'Volt': { standpunt: 'eens', motivatie: "Verhogen voor toegankelijkheid." },
-                'D66': { standpunt: 'eens', motivatie: "Basisbeurs verhogen met €166." },
-                'BBB': { standpunt: 'neutraal', motivatie: "Geen expliciet standpunt." },
-                'BVNL': { standpunt: 'oneens', motivatie: "Tegen verhoging." },
-                'Vrij Verbond': { standpunt: 'oneens', motivatie: "Afschaffing gift, eigen verantwoordelijkheid." },
-                '50PLUS': { standpunt: 'eens', motivatie: "Voor verhoging basisbeurs." },
-                'DENK': { standpunt: 'eens', motivatie: "Verhoging basisbeurs en verruiming aanvullende beurs." },
-                'Piratenpartij': { standpunt: 'eens', motivatie: "Toereikende basisbeurs." }
-            },
-            14: { // Compensatie pechgeneratie
-                'VVD': { standpunt: 'oneens', motivatie: "Huidige tegemoetkoming is voldoende." },
-                'GroenLinks-PvdA': { standpunt: 'eens', motivatie: "Pechgeneratie moet volledig gecompenseerd." },
-                'PVV': { standpunt: 'eens', motivatie: "Eerlijkheid voor de pechgeneratie." },
-                'FVD': { standpunt: 'neutraal', motivatie: "Geen duidelijk standpunt." },
-                'JA21': { standpunt: 'oneens', motivatie: "Is te duur." },
-                'SGP': { standpunt: 'oneens', motivatie: "Onbetaalbaar." },
-                'ChristenUnie': { standpunt: 'neutraal', motivatie: "Meer compensatie, maar 'volledig' is lastig." },
-                'PvdD': { standpunt: 'eens', motivatie: "Rechtvaardig om volledig te compenseren." },
-                'NSC': { standpunt: 'oneens', motivatie: "Niet realistisch." },
-                'SP': { standpunt: 'eens', motivatie: "Volledige compensatie is een must." },
-                'CDA': { standpunt: 'oneens', motivatie: "Niet haalbaar." },
-                'Volt': { standpunt: 'eens', motivatie: "Pechgeneratie betaalt geen rente." },
-                'D66': { standpunt: 'neutraal', motivatie: "Pechgeneratie betaalt geen rente, maar 'volledig' is niet toegezegd." },
-                'BBB': { standpunt: 'oneens', motivatie: "Niet haalbaar." },
-                'BVNL': { standpunt: 'neutraal', motivatie: "Geen duidelijk standpunt." },
-                'Vrij Verbond': { standpunt: 'oneens', motivatie: "Eigen verantwoordelijkheid." },
-                '50PLUS': { standpunt: 'neutraal', motivatie: "Geen duidelijk standpunt." },
-                'DENK': { standpunt: 'eens', motivatie: "Volledige compensatie voor de pechgeneratie." },
-                'Piratenpartij': { standpunt: 'eens', motivatie: "Onder het leenstelsel opgebouwde schulden compenseren." }
-            },
-            15: { // Bezuinigen NPO
-                'VVD': { standpunt: 'eens', motivatie: "NPO moet efficiënter en kleiner." },
-                'GroenLinks-PvdA': { standpunt: 'oneens', motivatie: "Onafhankelijke publieke omroep is cruciaal." },
-                'PVV': { standpunt: 'eens', motivatie: "Fors bezuinigen of afschaffen." },
-                'FVD': { standpunt: 'eens', motivatie: "Subsidie stopzetten." },
-                'JA21': { standpunt: 'eens', motivatie: "NPO moet flink krimpen." },
-                'SGP': { standpunt: 'neutraal', motivatie: "Kritisch op omvang, maar waardeert levensbeschouwelijke programma's." },
-                'ChristenUnie': { standpunt: 'oneens', motivatie: "Waardevol voor democratie en cultuur." },
-                'PvdD': { standpunt: 'oneens', motivatie: "Belangrijk voor onafhankelijke informatie." },
-                'NSC': { standpunt: 'neutraal', motivatie: "Hervormen, niet per se fors bezuinigen." },
-                'SP': { standpunt: 'oneens', motivatie: "Belangrijk voor toegankelijke informatie." },
-                'CDA': { standpunt: 'neutraal', motivatie: "Hervormen, efficiënter maken." },
-                'Volt': { standpunt: 'oneens', motivatie: "Sterke, onafhankelijke publieke media zijn essentieel." },
-                'D66': { standpunt: 'oneens', motivatie: "Investeren in onafhankelijke journalistiek." },
-                'BBB': { standpunt: 'eens', motivatie: "NPO moet kleiner en meer focus op kerntaken." },
-                'BVNL': { standpunt: 'eens', motivatie: "Subsidie stopzetten." },
-                'Vrij Verbond': { standpunt: 'geen', motivatie: "Geen expliciet standpunt in programma." },
-                '50PLUS': { standpunt: 'neutraal', motivatie: "Kleinere publieke omroep." },
-                'DENK': { standpunt: 'oneens', motivatie: "NPO is belangrijk voor diversiteit." },
-                'Piratenpartij': { standpunt: 'neutraal', motivatie: "Hervormen, meer focus op vrije licenties." }
-            },
-            16: { // Maximumstraffen
-                'VVD': { standpunt: 'eens', motivatie: "Strenger straffen voor veiligheid." },
-                'GroenLinks-PvdA': { standpunt: 'oneens', motivatie: "Focus op preventie en rehabilitatie." },
-                'PVV': { standpunt: 'eens', motivatie: "Keihard aanpakken." },
-                'FVD': { standpunt: 'eens', motivatie: "Minimumstraffen en zwaarder straffen." },
-                'JA21': { standpunt: 'eens', motivatie: "Strenger straffen." },
-                'SGP': { standpunt: 'eens', motivatie: "Straffen moeten rechtvaardig en afschrikkend zijn." },
-                'ChristenUnie': { standpunt: 'neutraal', motivatie: "Balans tussen straf en perspectief." },
-                'PvdD': { standpunt: 'oneens', motivatie: "Focus op preventie." },
-                'NSC': { standpunt: 'neutraal', motivatie: "Effectiviteit van straf is belangrijker dan alleen hoogte." },
-                'SP': { standpunt: 'oneens', motivatie: "Hogere straffen lossen problemen niet op." },
-                'CDA': { standpunt: 'eens', motivatie: "Straffen moeten in verhouding staan tot ernst." },
-                'Volt': { standpunt: 'oneens', motivatie: "Focus op rehabilitatie en Europese aanpak." },
-                'D66': { standpunt: 'neutraal', motivatie: "Focus op slimmer straffen, niet per se hoger." },
-                'BBB': { standpunt: 'eens', motivatie: "Strenger straffen." },
-                'BVNL': { standpunt: 'eens', motivatie: "Minimumstraffen en hogere straffen." },
-                'Vrij Verbond': { standpunt: 'geen', motivatie: "Geen expliciet standpunt over maximumstraffen." },
-                '50PLUS': { standpunt: 'eens', motivatie: "Zware straffen voor geweld." },
-                'DENK': { standpunt: 'neutraal', motivatie: "Focus op preventie en eerlijke rechtspraak." },
-                'Piratenpartij': { standpunt: 'oneens', motivatie: "Focus op herstelrecht, niet op zwaarder straffen." }
-            },
-            17: { // Preventief fouilleren
-                'VVD': { standpunt: 'eens', motivatie: "Noodzakelijk instrument voor veiligheid." },
-                'GroenLinks-PvdA': { standpunt: 'oneens', motivatie: "Ineffectief en leidt tot etnisch profileren." },
-                'PVV': { standpunt: 'eens', motivatie: "Meer bevoegdheden voor politie." },
-                'FVD': { standpunt: 'eens', motivatie: "Krachtig optreden." },
-                'JA21': { standpunt: 'eens', motivatie: "Belangrijk voor aanpak wapenbezit." },
-                'SGP': { standpunt: 'neutraal', motivatie: "Mogelijk, maar met goede waarborgen." },
-                'ChristenUnie': { standpunt: 'neutraal', motivatie: "Alleen als strikt noodzakelijk en niet-discriminerend." },
-                'PvdD': { standpunt: 'oneens', motivatie: "Leidt tot discriminatie." },
-                'NSC': { standpunt: 'neutraal', motivatie: "Kritisch op effectiviteit en risico op profilering." },
-                'SP': { standpunt: 'oneens', motivatie: "Tegen etnisch profileren." },
-                'CDA': { standpunt: 'eens', motivatie: "Nuttig instrument, mits zorgvuldig." },
-                'Volt': { standpunt: 'oneens', motivatie: "Risico op discriminatie te groot." },
-                'D66': { standpunt: 'oneens', motivatie: "Tegen, leidt tot etnisch profileren." },
-                'BBB': { standpunt: 'eens', motivatie: "Meer bevoegdheden voor politie." },
-                'BVNL': { standpunt: 'neutraal', motivatie: "Geen expliciet standpunt." },
-                'Vrij Verbond': { standpunt: 'oneens', motivatie: "Tegen algemene identificatieplicht en surveillance." },
-                '50PLUS': { standpunt: 'eens', motivatie: "Voor veiligheid." },
-                'DENK': { standpunt: 'oneens', motivatie: "Leidt tot etnisch profileren." },
-                'Piratenpartij': { standpunt: 'oneens', motivatie: "Tegen algemene identificatieplicht en massasurveillance." }
-            },
-            18: { // Softdrugs legaliseren
-                'VVD': { standpunt: 'neutraal', motivatie: "Experimenten afwachten, maar niet volledige legalisatie." },
-                'GroenLinks-PvdA': { standpunt: 'eens', motivatie: "Reguleren om criminaliteit en gezondheidsrisico's te verminderen." },
-                'PVV': { standpunt: 'oneens', motivatie: "Tegen legalisering." },
-                'FVD': { standpunt: 'oneens', motivatie: "Tegen legalisering." },
-                'JA21': { standpunt: 'oneens', motivatie: "Tegen." },
-                'SGP': { standpunt: 'oneens', motivatie: "Drugs zijn schadelijk." },
-                'ChristenUnie': { standpunt: 'oneens', motivatie: "Drugsbeleid moet gericht zijn op preventie, niet legalisatie." },
-                'PvdD': { standpunt: 'eens', motivatie: "Regulering is beter voor gezondheid en bestrijding criminaliteit." },
-                'NSC': { standpunt: 'oneens', motivatie: "Huidige beleid niet verruimen." },
-                'SP': { standpunt: 'neutraal', motivatie: "Gedogen, maar legalisatie is complex." },
-                'CDA': { standpunt: 'oneens', motivatie: "Tegen legalisering." },
-                'Volt': { standpunt: 'eens', motivatie: "Reguleren op basis van gezondheidsrisico's." },
-                'D66': { standpunt: 'eens', motivatie: "Reguleren om criminaliteit en gezondheidsrisico's aan te pakken." },
-                'BBB': { standpunt: 'oneens', motivatie: "Tegen legalisering." },
-                'BVNL': { standpunt: 'neutraal', motivatie: "Geen expliciet standpunt." },
-                'Vrij Verbond': { standpunt: 'eens', motivatie: "Legalisering snijdt criminelen de pas af." },
-                '50PLUS': { standpunt: 'neutraal', motivatie: "Geen expliciet standpunt." },
-                'DENK': { standpunt: 'neutraal', motivatie: "Geen voorstander van legalisatie." },
-                'Piratenpartij': { standpunt: 'eens', motivatie: "Legaliseren cannabis; andere drugs reguleren." }
-            },
-            19: { // Stikstof 2030
-                'VVD': { standpunt: 'oneens', motivatie: "Doelen moeten haalbaar zijn, 2030 is te snel." },
-                'GroenLinks-PvdA': { standpunt: 'eens', motivatie: "Noodzakelijk voor natuurherstel." },
-                'PVV': { standpunt: 'oneens', motivatie: "Stikstofcrisis bestaat niet." },
-                'FVD': { standpunt: 'oneens', motivatie: "Stikstofbeleid van tafel." },
-                'JA21': { standpunt: 'oneens', motivatie: "Onhaalbaar en onnodig." },
-                'SGP': { standpunt: 'oneens', motivatie: "Tegen onhaalbare doelen en gedwongen uitkoop." },
-                'ChristenUnie': { standpunt: 'neutraal', motivatie: "Doelen halen, maar met perspectief voor boeren." },
-                'PvdD': { standpunt: 'eens', motivatie: "Natuurherstel heeft prioriteit." },
-                'NSC': { standpunt: 'oneens', motivatie: "Haalbare doelen, niet 2030." },
-                'SP': { standpunt: 'neutraal', motivatie: "Natuur beschermen, maar boeren niet de rekening laten betalen." },
-                'CDA': { standpunt: 'oneens', motivatie: "Haalbaar en realistisch beleid." },
-                'Volt': { standpunt: 'eens', motivatie: "Stikstofdoelen halen, ook voor natuur en bouw." },
-                'D66': { standpunt: 'eens', motivatie: "Vasthouden aan doelen voor natuurherstel." },
-                'BBB': { standpunt: 'oneens', motivatie: "Stikstofbeleid van tafel." },
-                'BVNL': { standpunt: 'oneens', motivatie: "Stikstofprobleem van tafel." },
-                'Vrij Verbond': { standpunt: 'oneens', motivatie: "Stoppen met generieke stikstofblokkades." },
-                '50PLUS': { standpunt: 'oneens', motivatie: "Herziening Natura 2000-gebieden." },
-                'DENK': { standpunt: 'eens', motivatie: "Stikstofdoelen moeten gehaald worden." },
-                'Piratenpartij': { standpunt: 'eens', motivatie: "Stikstofproblematiek oplossen, o.a. via vezelteelt." }
-            },
-            20: { // Krimp veestapel
-                'VVD': { standpunt: 'oneens', motivatie: "Niet krimp als doel, maar emissiereductie." },
-                'GroenLinks-PvdA': { standpunt: 'eens', motivatie: "Noodzakelijk voor klimaat en natuur." },
-                'PVV': { standpunt: 'oneens', motivatie: "Boeren niet de schuld geven." },
-                'FVD': { standpunt: 'oneens', motivatie: "Geen krimp." },
-                'JA21': { standpunt: 'oneens', motivatie: "Tegen krimp." },
-                'SGP': { standpunt: 'oneens', motivatie: "Tegen gedwongen krimp." },
-                'ChristenUnie': { standpunt: 'neutraal', motivatie: "Omschakeling naar kringlooplandbouw, krimp is geen doel." },
-                'PvdD': { standpunt: 'eens', motivatie: "Drastische krimp noodzakelijk." },
-                'NSC': { standpunt: 'neutraal', motivatie: "Extensivering, niet per se krimp." },
-                'SP': { standpunt: 'neutraal', motivatie: "Minder intensieve veehouderij, maar krimp geen doel." },
-                'CDA': { standpunt: 'oneens', motivatie: "Geen gedwongen krimp." },
-                'Volt': { standpunt: 'eens', motivatie: "Krimp is nodig voor duurzame landbouw." },
-                'D66': { standpunt: 'eens', motivatie: "Krimp veestapel is een logisch gevolg." },
-                'BBB': { standpunt: 'oneens', motivatie: "Geen krimp." },
-                'BVNL': { standpunt: 'oneens', motivatie: "Tegen krimp." },
-                'Vrij Verbond': { standpunt: 'oneens', motivatie: "Tegen stikstofbeleid dat leidt tot krimp." },
-                '50PLUS': { standpunt: 'oneens', motivatie: "Niet voor krimp." },
-                'DENK': { standpunt: 'eens', motivatie: "Noodzakelijk voor stikstofdoelen." },
-                'Piratenpartij': { standpunt: 'eens', motivatie: "Noodzakelijk voor stikstof en milieu." }
-            },
-            21: { // Verbod landbouwgif
-                'VVD': { standpunt: 'oneens', motivatie: "Afbouw, geen totaalverbod." },
-                'GroenLinks-PvdA': { standpunt: 'eens', motivatie: "Zo snel mogelijk verbieden." },
-                'PVV': { standpunt: 'oneens', motivatie: "Boeren moeten kunnen boeren." },
-                'FVD': { standpunt: 'oneens', motivatie: "Tegen." },
-                'JA21': { standpunt: 'oneens', motivatie: "Realistisch afbouwen." },
-                'SGP': { standpunt: 'oneens', motivatie: "Middelen zijn nodig, wel inzetten op alternatieven." },
-                'ChristenUnie': { standpunt: 'neutraal', motivatie: "Versneld afbouwen, maar verbod is lastig." },
-                'PvdD': { standpunt: 'eens', motivatie: "Direct verbieden." },
-                'NSC': { standpunt: 'oneens', motivatie: "Afbouwen, niet verbieden." },
-                'SP': { standpunt: 'eens', motivatie: "Verbieden." },
-                'CDA': { standpunt: 'oneens', motivatie: "Afbouwen met alternatieven." },
-                'Volt': { standpunt: 'eens', motivatie: "Versneld afbouwen en verbieden." },
-                'D66': { standpunt: 'eens', motivatie: "Gebruik stoppen, verbieden." },
-                'BBB': { standpunt: 'oneens', motivatie: "Middelen zijn nodig." },
-                'BVNL': { standpunt: 'oneens', motivatie: "Middelen blijven toegestaan." },
-                'Vrij Verbond': { standpunt: 'oneens', motivatie: "Tegen verbod." },
-                '50PLUS': { standpunt: 'neutraal', motivatie: "Geen expliciet standpunt." },
-                'DENK': { standpunt: 'eens', motivatie: "Verbieden." },
-                'Piratenpartij': { standpunt: 'eens', motivatie: "Glyfosaat verbieden." }
-            },
-            22: { // Regulering vrije huursector
-                'VVD': { standpunt: 'oneens', motivatie: "Regulering schaadt het aanbod." },
-                'GroenLinks-PvdA': { standpunt: 'eens', motivatie: "Huurders beschermen tegen woekerprijzen." },
-                'PVV': { standpunt: 'eens', motivatie: "Huren betaalbaar houden." },
-                'FVD': { standpunt: 'oneens', motivatie: "Vrije markt." },
-                'JA21': { standpunt: 'oneens', motivatie: "Tegen regulering." },
-                'SGP': { standpunt: 'neutraal', motivatie: "Kritisch op regulering, maar excessen aanpakken." },
-                'ChristenUnie': { standpunt: 'eens', motivatie: "Huurders beschermen." },
-                'PvdD': { standpunt: 'eens', motivatie: "Wonen is een recht, geen markt." },
-                'NSC': { standpunt: 'eens', motivatie: "Regulering nodig voor middenhuur." },
-                'SP': { standpunt: 'eens', motivatie: "Huurders beschermen." },
-                'CDA': { standpunt: 'neutraal', motivatie: "Balans tussen huurder en verhuurder." },
-                'Volt': { standpunt: 'eens', motivatie: "Huurprijzen reguleren." },
-                'D66': { standpunt: 'eens', motivatie: "Middenhuur reguleren." },
-                'BBB': { standpunt: 'oneens', motivatie: "Tegen regulering, leidt tot minder aanbod." },
-                'BVNL': { standpunt: 'oneens', motivatie: "Liberaliseren, niet reguleren." },
-                'Vrij Verbond': { standpunt: 'oneens', motivatie: "Wet Betaalbare Huur afschaffen." },
-                '50PLUS': { standpunt: 'neutraal', motivatie: "Geen expliciet standpunt." },
-                'DENK': { standpunt: 'eens', motivatie: "Huurprijsbescherming uitbreiden." },
-                'Piratenpartij': { standpunt: 'eens', motivatie: "Puntenstelsel voor alle huurwoningen." }
-            },
-            23: { // Bindend referendum
-                'VVD': { standpunt: 'oneens', motivatie: "Tegen bindend referendum." },
-                'GroenLinks-PvdA': { standpunt: 'eens', motivatie: "Voor meer directe democratie." },
-                'PVV': { standpunt: 'eens', motivatie: "Meer macht naar het volk." },
-                'FVD': { standpunt: 'eens', motivatie: "Kernpunt." },
-                'JA21': { standpunt: 'eens', motivatie: "Voor." },
-                'SGP': { standpunt: 'oneens', motivatie: "Tegen bindend referendum." },
-                'ChristenUnie': { standpunt: 'oneens', motivatie: "Tegen." },
-                'PvdD': { standpunt: 'eens', motivatie: "Voor." },
-                'NSC': { standpunt: 'neutraal', motivatie: "Overwegen, maar niet bindend." },
-                'SP': { standpunt: 'eens', motivatie: "Voor." },
-                'CDA': { standpunt: 'oneens', motivatie: "Tegen." },
-                'Volt': { standpunt: 'eens', motivatie: "Voor burgerfora en referenda." },
-                'D66': { standpunt: 'eens', motivatie: "Voor bindend correctief referendum." },
-                'BBB': { standpunt: 'eens', motivatie: "Voor." },
-                'BVNL': { standpunt: 'eens', motivatie: "Voor." },
-                'Vrij Verbond': { standpunt: 'eens', motivatie: "Voor." },
-                '50PLUS': { standpunt: 'eens', motivatie: "Voor." },
-                'DENK': { standpunt: 'neutraal', motivatie: "Geen prioriteit." },
-                'Piratenpartij': { standpunt: 'eens', motivatie: "Bindend correctief referendum." }
-            },
-            24: { // Gekozen burgemeester
-                'VVD': { standpunt: 'oneens', motivatie: "Huidig systeem werkt." },
-                'GroenLinks-PvdA': { standpunt: 'eens', motivatie: "Meer democratie." },
-                'PVV': { standpunt: 'eens', motivatie: "Voor." },
-                'FVD': { standpunt: 'eens', motivatie: "Voor." },
-                'JA21': { standpunt: 'eens', motivatie: "Voor." },
-                'SGP': { standpunt: 'oneens', motivatie: "Tegen." },
-                'ChristenUnie': { standpunt: 'oneens', motivatie: "Tegen." },
-                'PvdD': { standpunt: 'eens', motivatie: "Voor." },
-                'NSC': { standpunt: 'neutraal', motivatie: "Overwegen." },
-                'SP': { standpunt: 'eens', motivatie: "Voor." },
-                'CDA': { standpunt: 'oneens', motivatie: "Tegen." },
-                'Volt': { standpunt: 'eens', motivatie: "Voor." },
-                'D66': { standpunt: 'eens', motivatie: "Voor." },
-                'BBB': { standpunt: 'eens', motivatie: "Voor." },
-                'BVNL': { standpunt: 'eens', motivatie: "Voor." },
-                'Vrij Verbond': { standpunt: 'eens', motivatie: "Voor rechtstreekse verkiezing." },
-                '50PLUS': { standpunt: 'eens', motivatie: "Voor." },
-                'DENK': { standpunt: 'eens', motivatie: "Voor." },
-                'Piratenpartij': { standpunt: 'eens', motivatie: "Voor." }
-            },
-            25: { // Meer bevoegdheden EU
-                'VVD': { standpunt: 'oneens', motivatie: "EU moet slank en efficiënt." },
-                'GroenLinks-PvdA': { standpunt: 'eens', motivatie: "Europese samenwerking is nodig." },
-                'PVV': { standpunt: 'oneens', motivatie: "Nexit." },
-                'FVD': { standpunt: 'oneens', motivatie: "Nexit." },
-                'JA21': { standpunt: 'oneens', motivatie: "Minder EU." },
-                'SGP': { standpunt: 'oneens', motivatie: "Kritisch op EU, geen machtsoverdracht." },
-                'ChristenUnie': { standpunt: 'neutraal', motivatie: "Samenwerken waar nodig, maar soevereiniteit bewaken." },
-                'PvdD': { standpunt: 'neutraal', motivatie: "Kritisch op EU, maar samenwerking nodig voor milieu." },
-                'NSC': { standpunt: 'oneens', motivatie: "Subsidiariteit." },
-                'SP': { standpunt: 'oneens', motivatie: "Minder EU." },
-                'CDA': { standpunt: 'neutraal', motivatie: "Samenwerken, maar kritisch." },
-                'Volt': { standpunt: 'eens', motivatie: "Voor een federaal Europa." },
-                'D66': { standpunt: 'eens', motivatie: "Voor sterkere EU." },
-                'BBB': { standpunt: 'oneens', motivatie: "Tegen machtsoverdracht." },
-                'BVNL': { standpunt: 'oneens', motivatie: "Minder EU." },
-                'Vrij Verbond': { standpunt: 'oneens', motivatie: "Accepteren geen politieke unie." },
-                '50PLUS': { standpunt: 'oneens', motivatie: "Takenpakket EU beperken." },
-                'DENK': { standpunt: 'neutraal', motivatie: "Pragmatisch, EU hervormen." },
-                'Piratenpartij': { standpunt: 'neutraal', motivatie: "Democratisch en transparant Europa, niet per se 'meer'." }
-            },
-            26: { // Defensie 3.5%
-                'VVD': { standpunt: 'neutraal', motivatie: "Willen groei naar 2%, 3.5% is (nog) geen doel." },
-                'GroenLinks-PvdA': { standpunt: 'neutraal', motivatie: "Willen 2%, 3.5% niet." },
-                'PVV': { standpunt: 'neutraal', motivatie: "Voor sterke defensie, maar 3.5% is niet expliciet." },
-                'FVD': { standpunt: 'oneens', motivatie: "Tegen NAVO, voor neutrale positie." },
-                'JA21': { standpunt: 'neutraal', motivatie: "Voor groei naar 2%." },
-                'SGP': { standpunt: 'eens', motivatie: "Wil forse groei, zelfs naar 5%." },
-                'ChristenUnie': { standpunt: 'neutraal', motivatie: "Naar 2% en verder kijken, 3.5% niet vastgelegd." },
-                'PvdD': { standpunt: 'oneens', motivatie: "Tegen verhoging." },
-                'NSC': { standpunt: 'neutraal', motivatie: "Naar 2%, 3.5% is geen doel." },
-                'SP': { standpunt: 'oneens', motivatie: "Tegen verhoging." },
-                'CDA': { standpunt: 'neutraal', motivatie: "Groei naar 2%." },
-                'Volt': { standpunt: 'eens', motivatie: "Wil Europees leger en forse investeringen." },
-                'D66': { standpunt: 'eens', motivatie: "Wil minimaal 3.5% van BBP." },
-                'BBB': { standpunt: 'eens', motivatie: "Neemt 3.5% als uitgangspunt." },
-                'BVNL': { standpunt: 'oneens', motivatie: "Wil 2%, verhoging naar 5% (en dus 3.5%) is te veel." },
-                'Vrij Verbond': { standpunt: 'neutraal', motivatie: "Geen automatische NAVO-doelstellingen." },
-                '50PLUS': { standpunt: 'neutraal', motivatie: "In lijn met NAVO-afspraken (2%)." },
-                'DENK': { standpunt: 'oneens', motivatie: "Tegen verhoging." },
-                'Piratenpartij': { standpunt: 'neutraal', motivatie: "Voor Europese samenwerking, geen % genoemd." }
-            },
-            27: { // Ontwikkelingshulp 0.7%
-                'VVD': { standpunt: 'oneens', motivatie: "Tegen verhoging." },
-                'GroenLinks-PvdA': { standpunt: 'eens', motivatie: "Voor." },
-                'PVV': { standpunt: 'oneens', motivatie: "Tegen." },
-                'FVD': { standpunt: 'oneens', motivatie: "Tegen." },
-                'JA21': { standpunt: 'oneens', motivatie: "Tegen." },
-                'SGP': { standpunt: 'eens', motivatie: "Willen 0.7% BBP." },
-                'ChristenUnie': { standpunt: 'eens', motivatie: "Voor." },
-                'PvdD': { standpunt: 'eens', motivatie: "Voor." },
-                'NSC': { standpunt: 'neutraal', motivatie: "Geen duidelijk standpunt." },
-                'SP': { standpunt: 'eens', motivatie: "Voor." },
-                'CDA': { standpunt: 'neutraal', motivatie: "Geen duidelijk standpunt." },
-                'Volt': { standpunt: 'eens', motivatie: "Voor." },
-                'D66': { standpunt: 'eens', motivatie: "Voor." },
-                'BBB': { standpunt: 'oneens', motivatie: "Tegen." },
-                'BVNL': { standpunt: 'oneens', motivatie: "Stoppen met ontwikkelingssamenwerking." },
-                'Vrij Verbond': { standpunt: 'geen', motivatie: "Geen expliciet standpunt." },
-                '50PLUS': { standpunt: 'neutraal', motivatie: "Geen expliciet standpunt." },
-                'DENK': { standpunt: 'eens', motivatie: "Budget verhogen." },
-                'Piratenpartij': { standpunt: 'eens', motivatie: "Voor eerlijke handel en hulp." }
-            },
-             28: { // Aantal Ministeries omlaag
-                'VVD': { standpunt: 'neutraal', motivatie: "Efficiëntie is belangrijk, maar aantal is geen doel." },
-                'GroenLinks-PvdA': { standpunt: 'oneens', motivatie: "Focus op inhoud, niet aantal." },
-                'PVV': { standpunt: 'eens', motivatie: "Minder bureaucratie." },
-                'FVD': { standpunt: 'eens', motivatie: "Overheid drastisch verkleinen." },
-                'JA21': { standpunt: 'eens', motivatie: "Efficiëntere overheid." },
-                'SGP': { standpunt: 'neutraal', motivatie: "Kritisch op omvang, maar aantal niet leidend." },
-                'ChristenUnie': { standpunt: 'oneens', motivatie: "Focus op effectiviteit." },
-                'PvdD': { standpunt: 'neutraal', motivatie: "Niet primair focuspunt." },
-                'NSC': { standpunt: 'neutraal', motivatie: "Focus op beter bestuur." },
-                'SP': { standpunt: 'neutraal', motivatie: "Minder bureaucratie, niet per se minder ministeries." },
-                'CDA': { standpunt: 'neutraal', motivatie: "Efficiëntie belangrijk." },
-                'Volt': { standpunt: 'oneens', motivatie: "Wil juist minister van Digitale Zaken." },
-                'D66': { standpunt: 'neutraal', motivatie: "Wil doorbraakministers, niet per se minder." },
-                'BBB': { standpunt: 'eens', motivatie: "Minder Haagse bureaucratie." },
-                'BVNL': { standpunt: 'eens', motivatie: "Kleinere overheid, ministerie klimaat vervalt." },
-                'Vrij Verbond': { standpunt: 'eens', motivatie: "Drastische inkrimping overheidsapparaat." },
-                '50PLUS': { standpunt: 'neutraal', motivatie: "Focus op efficiëntie." },
-                'DENK': { standpunt: 'neutraal', motivatie: "Geen expliciet standpunt." },
-                'Piratenpartij': { standpunt: 'eens', motivatie: "Wil ministerie J&V splitsen, maar ook Digitale Zaken toevoegen. Totaalbeeld is efficiënter/kleiner." }
-            },
-             29: { // Expatregeling afschaffen
-                'VVD': { standpunt: 'oneens', motivatie: "Belangrijk voor vestigingsklimaat." },
-                'GroenLinks-PvdA': { standpunt: 'eens', motivatie: "Oneerlijk." },
-                'PVV': { standpunt: 'eens', motivatie: "Oneerlijk." },
-                'FVD': { standpunt: 'eens', motivatie: "Oneerlijk." },
-                'JA21': { standpunt: 'neutraal', motivatie: "Versoberen." },
-                'SGP': { standpunt: 'neutraal', motivatie: "Versoberen, niet afschaffen." },
-                'ChristenUnie': { standpunt: 'neutraal', motivatie: "Versoberen." },
-                'PvdD': { standpunt: 'eens', motivatie: "Oneerlijk." },
-                'NSC': { standpunt: 'eens', motivatie: "Afschaffen." },
-                'SP': { standpunt: 'eens', motivatie: "Afschaffen." },
-                'CDA': { standpunt: 'neutraal', motivatie: "Versoberen." },
-                'Volt': { standpunt: 'oneens', motivatie: "Harmoniseren in EU, niet afschaffen." },
-                'D66': { standpunt: 'neutraal', motivatie: "Versoberen." },
-                'BBB': { standpunt: 'eens', motivatie: "Afschaffen." },
-                'BVNL': { standpunt: 'eens', motivatie: "Afschaffen." },
-                'Vrij Verbond': { standpunt: 'eens', motivatie: "Afschaffen." },
-                '50PLUS': { standpunt: 'eens', motivatie: "Afschaffen." },
-                'DENK': { standpunt: 'eens', motivatie: "Afschaffen." },
-                'Piratenpartij': { standpunt: 'geen', motivatie: "Geen expliciet standpunt in programma." }
-            },
-             30: { // Eurobonds
-                'VVD': { standpunt: 'oneens', motivatie: "Tegen gezamenlijke schulden." },
-                'GroenLinks-PvdA': { standpunt: 'eens', motivatie: "Nodig voor gezamenlijke investeringen." },
-                'PVV': { standpunt: 'oneens', motivatie: "Tegen." },
-                'FVD': { standpunt: 'oneens', motivatie: "Tegen." },
-                'JA21': { standpunt: 'oneens', motivatie: "Tegen." },
-                'SGP': { standpunt: 'oneens', motivatie: "Tegen." },
-                'ChristenUnie': { standpunt: 'neutraal', motivatie: "Alleen onder strikte voorwaarden." },
-                'PvdD': { standpunt: 'neutraal', motivatie: "Geen duidelijk standpunt." },
-                'NSC': { standpunt: 'oneens', motivatie: "Tegen." },
-                'SP': { standpunt: 'oneens', motivatie: "Tegen." },
-                'CDA': { standpunt: 'oneens', motivatie: "Tegen." },
-                'Volt': { standpunt: 'eens', motivatie: "Nodig voor Europese investeringen." },
-                'D66': { standpunt: 'eens', motivatie: "Nodig voor gezamenlijke investeringen." },
-                'BBB': { standpunt: 'oneens', motivatie: "Tegen." },
-                'BVNL': { standpunt: 'oneens', motivatie: "Tegen." },
-                'Vrij Verbond': { standpunt: 'oneens', motivatie: "Tegen structurele herverdeling." },
-                '50PLUS': { standpunt: 'oneens', motivatie: "Tegen." },
-                'DENK': { standpunt: 'neutraal', motivatie: "Geen duidelijk standpunt." },
-                'Piratenpartij': { standpunt: 'eens', motivatie: "Voorstander van Europese samenwerking." }
-            }
+            15: {'VVD': {standpunt: 'eens', motivatie: "NPO moet efficiënter en meer focus hebben."}, 'GroenLinks-PvdA': {standpunt: 'oneens', motivatie: "Onafhankelijke publieke omroep is essentieel voor democratie."}, 'PVV': {standpunt: 'eens', motivatie: "NPO is linkse propaganda en moet weg of drastisch bezuinigen."}, 'FVD': {standpunt: 'eens', motivatie: "NPO afschaffen, is spreekbuis van het kartel."}, 'JA21': {standpunt: 'eens', motivatie: "NPO is te duur en te links; fors bezuinigen."}, 'SGP': {standpunt: 'neutraal', motivatie: "Compactere NPO, maar ruimte voor levensbeschouwelijke omroepen behouden."}, 'ChristenUnie': {standpunt: 'oneens', motivatie: "Belangrijke maatschappelijke waarde; wel efficiënter."}, 'PvdD': {standpunt: 'oneens', motivatie: "Belangrijk voor onafhankelijke informatie; wel reclamevrij maken."}, 'NSC': {standpunt: 'neutraal', motivatie: "Efficiënter, maar belangrijke rol in democratie."}, 'SP': {standpunt: 'oneens', motivatie: "Belangrijk voor democratie, wel reclamevrij en minder topinkomens."}, 'CDA': {standpunt: 'neutraal', motivatie: "Hervormen en efficiënter, maar niet kapotbezuinigen."}, 'Volt': {standpunt: 'oneens', motivatie: "Belangrijk voor democratie. Wel hervormen naar BBC-model, reclamevrij."}, 'D66': {standpunt: 'oneens', motivatie: "Belangrijk voor democratie en cultuur; wel hervormen en reclamevrij."}, 'BBB': {standpunt: 'eens', motivatie: "Hervormen en versoberen. Focus op nieuws, educatie en regio."}, 'BVNL': {standpunt: 'eens', motivatie: "Subsidie stopzetten."}, 'Vrij Verbond': {standpunt: 'geen', motivatie: "Geen specifiek standpunt in programma."}, '50PLUS': {standpunt: 'neutraal', motivatie: "Kleinere NPO, minder omroepen."}, 'DENK': {standpunt: 'oneens', motivatie: "NPO is belangrijk voor diversiteit en informatievoorziening."}, 'Piratenpartij': {standpunt: 'neutraal', motivatie: "Media en journalistiek zijn essentieel. Publiek geld moet via vrije licenties beschikbaar zijn."}},
+            16: {'VVD': {standpunt: 'eens', motivatie: "Nodig voor afschrikking en rechtvaardigheid."}, 'GroenLinks-PvdA': {standpunt: 'oneens', motivatie: "Focus op preventie en rehabilitatie, niet alleen op straffen."}, 'PVV': {standpunt: 'eens', motivatie: "Keihard aanpakken, minimumstraffen invoeren."}, 'FVD': {standpunt: 'eens', motivatie: "Minimumstraffen voor gewelds- en zedendelicten."}, 'JA21': {standpunt: 'eens', motivatie: "Straffen moeten zwaarder en effectiever."}, 'SGP': {standpunt: 'eens', motivatie: "Strafrecht moet straffen en beschermen. Taakstrafverbod bij geweld."}, 'ChristenUnie': {standpunt: 'neutraal', motivatie: "Focus op effectiviteit en rechtsherstel, niet alleen verhogen."}, 'PvdD': {standpunt: 'oneens', motivatie: "Meer focus op preventie en oorzaken van criminaliteit."}, 'NSC': {standpunt: 'neutraal', motivatie: "Effectiviteit en rechtsherstel staan voorop."}, 'SP': {standpunt: 'oneens', motivatie: "Meer investeren in preventie en rehabilitatie."}, 'CDA': {standpunt: 'eens', motivatie: "Straffen moeten voelbaar en rechtvaardig zijn."}, 'Volt': {standpunt: 'oneens', motivatie: "Focus op preventie, re-integratie en slimme sancties."}, 'D66': {standpunt: 'neutraal', motivatie: "Focus op slimmer straffen (langere taakstraffen) en re-integratie."}, 'BBB': {standpunt: 'eens', motivatie: "Ernstige delicten zwaarder bestraffen. Vervroegde vrijlating beperken."}, 'BVNL': {standpunt: 'eens', motivatie: "Keihard aanpakken, minimumstraffen invoeren."}, 'Vrij Verbond': {standpunt: 'geen', motivatie: "Geen specifiek standpunt in programma."}, '50PLUS': {standpunt: 'eens', motivatie: "Zware straffen voor geweldsmisdrijven."}, 'DENK': {standpunt: 'neutraal', motivatie: "Focus op preventie en eerlijke rechtspraak, niet per se op zwaarder straffen."}, 'Piratenpartij': {standpunt: 'oneens', motivatie: "Focus op herstelrecht en rehabilitatie, niet op zwaarder straffen."}},
+            17: {'VVD': {standpunt: 'eens', motivatie: "Noodzakelijk instrument in strijd tegen wapenbezit."}, 'GroenLinks-PvdA': {standpunt: 'oneens', motivatie: "Leidt tot etnisch profileren en is ineffectief."}, 'PVV': {standpunt: 'eens', motivatie: "Nodig voor veiligheid op straat."}, 'FVD': {standpunt: 'eens', motivatie: "Zero-tolerance beleid voor straatcriminaliteit."}, 'JA21': {standpunt: 'eens', motivatie: "Nodig om wapengeweld tegen te gaan."}, 'SGP': {standpunt: 'neutraal', motivatie: "Kan nuttig zijn, maar met strikte waarborgen tegen misbruik."}, 'ChristenUnie': {standpunt: 'neutraal', motivatie: "Alleen als strikt noodzakelijk en met waarborgen tegen discriminatie."}, 'PvdD': {standpunt: 'oneens', motivatie: "Ineffectief en leidt tot discriminatie."}, 'NSC': {standpunt: 'neutraal', motivatie: "Alleen met duidelijke kaders en als bewezen effectief."}, 'SP': {standpunt: 'oneens', motivatie: "Leidt tot discriminatie en willekeur."}, 'CDA': {standpunt: 'eens', motivatie: "Effectief middel, mits zorgvuldig ingezet."}, 'Volt': {standpunt: 'oneens', motivatie: "Leidt tot etnisch profileren en is ineffectief."}, 'D66': {standpunt: 'oneens', motivatie: "Leidt tot etnisch profileren en is een inbreuk op privacy."}, 'BBB': {standpunt: 'eens', motivatie: "Noodzakelijk voor veiligheid, mits goed ingekaderd."}, 'BVNL': {standpunt: 'neutraal', motivatie: "Geen expliciet standpunt, maar wel voor harde aanpak criminaliteit."}, 'Vrij Verbond': {standpunt: 'oneens', motivatie: "Tegen profilering en onnodige inbreuk op privacy."}, '50PLUS': {standpunt: 'eens', motivatie: "Nodig voor veiligheid op straat."}, 'DENK': {standpunt: 'oneens', motivatie: "Leidt tot etnisch profileren en discriminatie."}, 'Piratenpartij': {standpunt: 'oneens', motivatie: "Tegen algemene identificatieplicht en profilering."}},
+            18: {'VVD': {standpunt: 'neutraal', motivatie: "Voorstander van experimenten (wietproef), maar voorzichtig."}, 'GroenLinks-PvdA': {standpunt: 'eens', motivatie: "Regulering vermindert criminaliteit en is beter voor volksgezondheid."}, 'PVV': {standpunt: 'oneens', motivatie: "Drugs zijn rommel en moeten verboden blijven."}, 'FVD': {standpunt: 'oneens', motivatie: "Tegen legalisering."}, 'JA21': {standpunt: 'oneens', motivatie: "Gedoogbeleid heeft gefaald; geen legalisering."}, 'SGP': {standpunt: 'oneens', motivatie: "Drugsvrije samenleving; coffeeshops sluiten."}, 'ChristenUnie': {standpunt: 'oneens', motivatie: "Niet legaliseren; inzetten op preventie en zorg."}, 'PvdD': {standpunt: 'eens', motivatie: "Regulering is beter voor gezondheid en bestrijding criminaliteit."}, 'NSC': {standpunt: 'oneens', motivatie: "Gedoogbeleid afbouwen, niet legaliseren."}, 'SP': {standpunt: 'neutraal', motivatie: "Kritisch op huidige gedoogbeleid; regulering XTC onderzoeken."}, 'CDA': {standpunt: 'oneens', motivatie: "Inzetten op preventie, niet op legalisering."}, 'Volt': {standpunt: 'eens', motivatie: "Reguleren (zoals XTC) en legaliseren (zoals wiet) voor gezondheid en veiligheid."}, 'D66': {standpunt: 'eens', motivatie: "Reguleren van cannabis en XTC om criminaliteit en gezondheidsrisico's te verminderen."}, 'BBB': {standpunt: 'oneens', motivatie: "Gedoogbeleid afbouwen, geen legalisering."}, 'BVNL': {standpunt: 'neutraal', motivatie: "Geen expliciet standpunt, wel harde aanpak drugscriminaliteit."}, 'Vrij Verbond': {standpunt: 'eens', motivatie: "Legalisering (cannabis) snijdt criminelen de pas af."}, '50PLUS': {standpunt: 'neutraal', motivatie: "Geen expliciet standpunt, wel zorgen over drugscriminaliteit."}, 'DENK': {standpunt: 'neutraal', motivatie: "Investeren in ontmoedigingsprogramma's, verbod op coffeeshops in woonwijken."}, 'Piratenpartij': {standpunt: 'eens', motivatie: "Volledig legaliseren en reguleren op basis van gezondheidsrisico."}},
+            19: {'VVD': {standpunt: 'oneens', motivatie: "Doelen zijn onhaalbaar en economisch schadelijk."}, 'GroenLinks-PvdA': {standpunt: 'eens', motivatie: "Noodzakelijk voor natuurherstel, met steun voor boeren die omschakelen."}, 'PVV': {standpunt: 'oneens', motivatie: "Stikstofcrisis bestaat niet; stop de 'boerenhaat'."}, 'FVD': {standpunt: 'oneens', motivatie: "Stikstofbeleid volledig van tafel."}, 'JA21': {standpunt: 'oneens', motivatie: "Stikstofbeleid is onrealistisch en schaadt de landbouw."}, 'SGP': {standpunt: 'oneens', motivatie: "Niet op basis van onhaalbare doelen en modellen. Geen gedwongen opkoop."}, 'ChristenUnie': {standpunt: 'neutraal', motivatie: "Doelen zijn nodig, maar met meer tijd en steun voor boeren."}, 'PvdD': {standpunt: 'eens', motivatie: "Noodzakelijk voor natuurherstel, krimp veestapel is onvermijdelijk."}, 'NSC': {standpunt: 'oneens', motivatie: "Doelen moeten realistischer en met meer oog voor de praktijk."}, 'SP': {standpunt: 'neutraal', motivatie: "Natuurherstel is nodig, maar niet ten koste van kleine boeren. Grote vervuilers aanpakken."}, 'CDA': {standpunt: 'oneens', motivatie: "Huidige doelen zijn onrealistisch; meer tijd en innovatie."}, 'Volt': {standpunt: 'eens', motivatie: "Noodzakelijk voor natuurherstel, met een Afrekenbare Stoffen Balans en steun voor omschakeling."}, 'D66': {standpunt: 'eens', motivatie: "Doelen voor 2030 zijn hard nodig voor natuurherstel en om Nederland van het slot te halen."}, 'BBB': {standpunt: 'oneens', motivatie: "Stikstofwet intrekken. Geen gedwongen uitkoop. Focus op innovatie."}, 'BVNL': {standpunt: 'oneens', motivatie: "Stikstofprobleem van tafel. Geen uitkoop boeren."}, 'Vrij Verbond': {standpunt: 'oneens', motivatie: "Stikstofmodel AERIUS schrappen. Regels blokkeren innovatie."}, '50PLUS': {standpunt: 'oneens', motivatie: "Huidige stikstofbeleid is niet realistisch."}, 'DENK': {standpunt: 'eens', motivatie: "Stikstofdoelen handhaven, met oog voor boeren en natuur."}, 'Piratenpartij': {standpunt: 'eens', motivatie: "Stikstofprobleem oplossen door vezelteelt te stimuleren en natuurinclusief te bouwen."}},
+            20: {'VVD': {standpunt: 'oneens', motivatie: "Niet noodzakelijk, focus op innovatie en verduurzaming."}, 'GroenLinks-PvdA': {standpunt: 'eens', motivatie: "Noodzakelijk voor klimaat- en stikstofdoelen."}, 'PVV': {standpunt: 'oneens', motivatie: "Boeren niet pesten, veestapel niet korten."}, 'FVD': {standpunt: 'oneens', motivatie: "Tegen krimp, boeren moeten met rust gelaten worden."}, 'JA21': {standpunt: 'oneens', motivatie: "Niet nodig, focus op technische innovatie."}, 'SGP': {standpunt: 'oneens', motivatie: "Niet op basis van modellen; focus op innovatie en doelsturing."}, 'ChristenUnie': {standpunt: 'neutraal', motivatie: "Krimp is waarschijnlijk nodig, maar via vrijwilligheid en omschakeling."}, 'PvdD': {standpunt: 'eens', motivatie: "Drastische krimp is essentieel voor dierenwelzijn, klimaat en natuur."}, 'NSC': {standpunt: 'neutraal', motivatie: "Krimp is onvermijdelijk, maar weloverwogen en met perspectief."}, 'SP': {standpunt: 'neutraal', motivatie: "Industriële veehouderij aanpakken, niet per se de hele sector."}, 'CDA': {standpunt: 'oneens', motivatie: "Niet als doel op zich; inzetten op innovatie en kringlooplandbouw."}, 'Volt': {standpunt: 'eens', motivatie: "Noodzakelijk. Verbod op megastallen en maximum aantal dieren per hectare."}, 'D66': {standpunt: 'eens', motivatie: "Krimp is een logisch gevolg van de doelen voor natuur, water en klimaat."}, 'BBB': {standpunt: 'oneens', motivatie: "Geen gedwongen krimp. Boeren zijn verzorgers, geen vervuilers."}, 'BVNL': {standpunt: 'oneens', motivatie: "Stikstofbeleid van tafel, dus krimp is niet nodig."}, 'Vrij Verbond': {standpunt: 'oneens', motivatie: "Stoppen met stikstofmodel AERIUS en subsidies afbouwen."}, '50PLUS': {standpunt: 'oneens', motivatie: "Niet voor krimp, wel voor duurzame innovatie."}, 'DENK': {standpunt: 'eens', motivatie: "Krimp is nodig, maar met oog voor de boeren."}, 'Piratenpartij': {standpunt: 'eens', motivatie: "Krimp veestapel is nodig voor natuur en milieu."}},
+            21: {'VVD': {standpunt: 'oneens', motivatie: "Noodzakelijk voor voedselproductie, wel inzetten op verduurzaming."}, 'GroenLinks-PvdA': {standpunt: 'eens', motivatie: "Zeer schadelijk voor biodiversiteit en gezondheid."}, 'PVV': {standpunt: 'oneens', motivatie: "Boeren moeten hun werk kunnen doen."}, 'FVD': {standpunt: 'oneens', motivatie: "Boeren moeten vrij zijn om te ondernemen."}, 'JA21': {standpunt: 'oneens', motivatie: "Noodzakelijk voor voedselzekerheid."}, 'SGP': {standpunt: 'oneens', motivatie: "Noodzakelijk voor teelten. Wel inzetten op weerbare teeltsystemen."}, 'ChristenUnie': {standpunt: 'neutraal', motivatie: "Fors afbouwen en inzetten op biologische alternatieven."}, 'PvdD': {standpunt: 'eens', motivatie: "Extreem schadelijk voor natuur en gezondheid."}, 'NSC': {standpunt: 'oneens', motivatie: "Niet volledig verbieden, wel streng reguleren en afbouwen."}, 'SP': {standpunt: 'eens', motivatie: "Afbouwen en verbieden, inzetten op duurzame alternatieven."}, 'CDA': {standpunt: 'oneens', motivatie: "Afbouwen waar kan, maar verbod is onrealistisch."}, 'Volt': {standpunt: 'eens', motivatie: "Zeer schadelijk. Glyfosaat verbieden en inzetten op natuurlijke alternatieven."}, 'D66': {standpunt: 'eens', motivatie: "Gebruik terugdringen en schadelijke middelen (zoals PFAS) verbieden."}, 'BBB': {standpunt: 'oneens', motivatie: "Noodzakelijk voor gewasbescherming. Inzetten op innovatie, geen verboden."}, 'BVNL': {standpunt: 'oneens', motivatie: "Boeren hebben dit nodig. Geen verbod."}, 'Vrij Verbond': {standpunt: 'oneens', motivatie: "Boeren moeten vrij zijn in hun keuzes."}, '50PLUS': {standpunt: 'neutraal', motivatie: "Kritisch op gebruik, maar geen expliciet verbod."}, 'DENK': {standpunt: 'eens', motivatie: "Schadelijk voor natuur en gezondheid, dus verbieden."}, 'Piratenpartij': {standpunt: 'eens', motivatie: "Schadelijk. Inzetten op geïntegreerde bestrijding en biopesticiden."}},
+            22: {'VVD': {standpunt: 'oneens', motivatie: "Regulering leidt tot minder aanbod en verergert de crisis."}, 'GroenLinks-PvdA': {standpunt: 'eens', motivatie: "Noodzakelijk om huurders te beschermen tegen woekerprijzen."}, 'PVV': {standpunt: 'eens', motivatie: "Huurders moeten beschermd worden."}, 'FVD': {standpunt: 'oneens', motivatie: "Markt vrijlaten, Wet Betaalbare Huur afschaffen."}, 'JA21': {standpunt: 'oneens', motivatie: "Leidt tot verkoop van huurwoningen en verkleint het aanbod."}, 'SGP': {standpunt: 'neutraal', motivatie: "Balans nodig; excessen aanpakken, maar verhuurders niet wegjagen."}, 'ChristenUnie': {standpunt: 'eens', motivatie: "Nodig om huurders te beschermen en excessen te voorkomen."}, 'PvdD': {standpunt: 'eens', motivatie: "Wonen is een recht, geen verdienmodel. Huren moeten omlaag."}, 'NSC': {standpunt: 'eens', motivatie: "Noodzakelijk om de middenhuur te beschermen."}, 'SP': {standpunt: 'eens', motivatie: "Huurders beschermen tegen huisjesmelkers en woekerprijzen."}, 'CDA': {standpunt: 'neutraal', motivatie: "Regulering is nodig, maar pas op voor negatieve effecten op aanbod."}, 'Volt': {standpunt: 'eens', motivatie: "Noodzakelijk om huurders te beschermen."}, 'D66': {standpunt: 'eens', motivatie: "Noodzakelijk om huurders te beschermen tegen excessen."}, 'BBB': {standpunt: 'oneens', motivatie: "Wet Betaalbare Huur afschaffen; jaagt verhuurders weg."}, 'BVNL': {standpunt: 'oneens', motivatie: "Liberaliseren en dereguleren. Wet Betaalbare Huur afschaffen."}, 'Vrij Verbond': {standpunt: 'oneens', motivatie: "Afschaffen. Leidt tot minder aanbod."}, '50PLUS': {standpunt: 'neutraal', motivatie: "Bescherming huurders is belangrijk, maar pas op voor aanbod."}, 'DENK': {standpunt: 'eens', motivatie: "Huurprijsbescherming behouden en uitbreiden. Uitbuiting tegengaan."}, 'Piratenpartij': {standpunt: 'eens', motivatie: "Bovengrens woningwaarderingsstelsel afschaffen."}},
+            23: {'VVD': {standpunt: 'oneens', motivatie: "Verzwakt de parlementaire democratie."}, 'GroenLinks-PvdA': {standpunt: 'eens', motivatie: "Versterkt de invloed van burgers op de politiek."}, 'PVV': {standpunt: 'eens', motivatie: "Meer macht naar het volk."}, 'FVD': {standpunt: 'eens', motivatie: "Kernpunt voor democratische vernieuwing."}, 'JA21': {standpunt: 'eens', motivatie: "Goed voor de democratie, meer inspraak voor burgers."}, 'SGP': {standpunt: 'oneens', motivatie: "Ondermijnt de representatieve democratie."}, 'ChristenUnie': {standpunt: 'oneens', motivatie: "Vertrouwen in de representatieve democratie."}, 'PvdD': {standpunt: 'eens', motivatie: "Versterkt de directe democratie."}, 'NSC': {standpunt: 'neutraal', motivatie: "Kritisch, maar open voor burgerberaden."}, 'SP': {standpunt: 'eens', motivatie: "Meer directe inspraak voor burgers."}, 'CDA': {standpunt: 'oneens', motivatie: "Verkiest de representatieve democratie."}, 'Volt': {standpunt: 'eens', motivatie: "Steunt bindend correctief referendum niet, maar wil wel permanent burgerberaad."}, 'D66': {standpunt: 'eens', motivatie: "Versterkt de democratie en de stem van de burger."}, 'BBB': {standpunt: 'eens', motivatie: "Meer inspraak voor burgers."}, 'BVNL': {standpunt: 'eens', motivatie: "Democratie moet terug naar de inwoners."}, 'Vrij Verbond': {standpunt: 'eens', motivatie: "Meer directe democratie, naar Zwitsers model."}, '50PLUS': {standpunt: 'eens', motivatie: "Meer inspraak voor burgers."}, 'DENK': {standpunt: 'neutraal', motivatie: "Geen specifiek standpunt, focus op andere democratische hervormingen."}, 'Piratenpartij': {standpunt: 'eens', motivatie: "Bindend correctief en wetgevend referendum."}},
+            24: {'VVD': {standpunt: 'oneens', motivatie: "Benoeming waarborgt kwaliteit en onafhankelijkheid."}, 'GroenLinks-PvdA': {standpunt: 'eens', motivatie: "Versterkt de lokale democratie."}, 'PVV': {standpunt: 'eens', motivatie: "Meer macht naar het volk."}, 'FVD': {standpunt: 'eens', motivatie: "Bestuurders moeten gekozen worden, niet benoemd."}, 'JA21': {standpunt: 'eens', motivatie: "Goed voor de lokale democratie."}, 'SGP': {standpunt: 'oneens', motivatie: "Benoeming de-politiseert het ambt."}, 'ChristenUnie': {standpunt: 'oneens', motivatie: "Benoeming waarborgt onafhankelijkheid."}, 'PvdD': {standpunt: 'eens', motivatie: "Meer democratische controle."}, 'NSC': {standpunt: 'neutraal', motivatie: "Kritisch over gekozen burgemeester, wel voor meer lokale democratie."}, 'SP': {standpunt: 'eens', motivatie: "Meer democratische invloed."}, 'CDA': {standpunt: 'oneens', motivatie: "Benoemde burgemeester staat boven de partijen."}, 'Volt': {standpunt: 'eens', motivatie: "Meer democratische legitimiteit."}, 'D66': {standpunt: 'eens', motivatie: "Kernpunt voor democratische vernieuwing."}, 'BBB': {standpunt: 'eens', motivatie: "Meer inspraak voor burgers."}, 'BVNL': {standpunt: 'eens', motivatie: "Niet meer benoemen, maar direct kiezen."}, 'Vrij Verbond': {standpunt: 'eens', motivatie: "Directe verkiezingen voor burgemeesters."}, '50PLUS': {standpunt: 'eens', motivatie: "Meer democratische invloed."}, 'DENK': {standpunt: 'eens', motivatie: "Versterkt de lokale democratie."}, 'Piratenpartij': {standpunt: 'eens', motivatie: "Alle politieke functies via directe verkiezingen invullen."}},
+            25: {'VVD': {standpunt: 'oneens', motivatie: "EU moet zich op kerntaken richten, niet meer macht."}, 'GroenLinks-PvdA': {standpunt: 'eens', motivatie: "Grote uitdagingen (klimaat, veiligheid) vragen om Europese aanpak."}, 'PVV': {standpunt: 'oneens', motivatie: "Nexit. Minder EU, niet meer."}, 'FVD': {standpunt: 'oneens', motivatie: "Nexit. Soevereiniteit terug."}, 'JA21': {standpunt: 'oneens', motivatie: "EU moet afgeslankt worden, niet uitgebreid."}, 'SGP': {standpunt: 'oneens', motivatie: "EU moet terug naar de kern: economische samenwerking."}, 'ChristenUnie': {standpunt: 'neutraal', motivatie: "Samenwerken waar nodig, maar soevereiniteit behouden."}, 'PvdD': {standpunt: 'neutraal', motivatie: "Samenwerken op klimaat, maar kritisch op handelsverdragen."}, 'NSC': {standpunt: 'oneens', motivatie: "EU moet hervormd worden, geen machtsoverdracht."}, 'SP': {standpunt: 'oneens', motivatie: "Minder EU, meer nationale soevereiniteit."}, 'CDA': {standpunt: 'neutraal', motivatie: "Samenwerken op grote thema's, maar kritisch op 'steeds meer Unie'."}, 'Volt': {standpunt: 'eens', motivatie: "Streven naar een federaal Europa om grote problemen aan te pakken."}, 'D66': {standpunt: 'eens', motivatie: "Sterker Europa is nodig voor veiligheid, klimaat en economie. Vetorecht afschaffen."}, 'BBB': {standpunt: 'oneens', motivatie: "Geen overdracht van bevoegdheden. EU moet dienstbaar zijn, niet leidend."}, 'BVNL': {standpunt: 'oneens', motivatie: "Nederland moet weer soeverein worden. EU omvormen tot EEG."}, 'Vrij Verbond': {standpunt: 'oneens', motivatie: "Tegen politieke unie. Samenwerking prima, maar geen soevereiniteitsoverdracht."}, '50PLUS': {standpunt: 'oneens', motivatie: "Takenpakket EU beperken."}, 'DENK': {standpunt: 'neutraal', motivatie: "Pragmatisch voorstander van EU, maar hecht aan soevereiniteit."}, 'Piratenpartij': {standpunt: 'neutraal', motivatie: "Kritisch, wil democratisch en transparant Europa. Subsidiariteit naleven."}},
+            26: {'VVD': {standpunt: 'eens', motivatie: "Veiligheidssituatie vraagt om investeringen; 2% norm is minimum."}, 'GroenLinks-PvdA': {standpunt: 'neutraal', motivatie: "Investeren in defensie is nodig, maar 3.5% is extreem. Liever Europese samenwerking."}, 'PVV': {standpunt: 'eens', motivatie: "Nederlands leger versterken, maar kritisch op geld naar buitenland."}, 'FVD': {standpunt: 'oneens', motivatie: "Geen miljarden naar buitenlandse conflicten. Investeren in eigen verdediging."}, 'JA21': {standpunt: 'eens', motivatie: "Krijgsmacht moet op orde zijn; 2% is de norm."}, 'SGP': {standpunt: 'eens', motivatie: "Wil voldoen aan de NAVO-norm; streeft naar 5% in 2035 (incl. brede veiligheid)."}, 'ChristenUnie': {standpunt: 'eens', motivatie: "Investeren in defensie is nodig; 2% norm halen."}, 'PvdD': {standpunt: 'oneens', motivatie: "Investeren in diplomatie en vrede, niet in wapenwedloop."}, 'NSC': {standpunt: 'eens', motivatie: "2% norm is noodzakelijk in huidige geopolitieke situatie."}, 'SP': {standpunt: 'oneens', motivatie: "Niet meegaan in wapenwedloop; focus op diplomatie."}, 'CDA': {standpunt: 'eens', motivatie: "Veiligheid kost geld; 2% norm is de afspraak."}, 'Volt': {standpunt: 'eens', motivatie: "Investeren in een Europese krijgsmacht. Minimaal 3.5% (incl. infrastructuur)."}, 'D66': {standpunt: 'eens', motivatie: "Minimaal 3.5% bbp (incl. brede veiligheid) voor een Europese krijgsmacht."}, 'BBB': {standpunt: 'eens', motivatie: "Groeipad naar 3.5% in 2035 als uitgangspunt, maar niet ten koste van AOW/zorg."}, 'BVNL': {standpunt: 'neutraal', motivatie: "Voldoen aan 2% NAVO-norm, maar verhoging naar 5% (zoals SGP/Volt/D66) terugdraaien."}, 'Vrij Verbond': {standpunt: 'neutraal', motivatie: "Kritisch op NAVO-normen; focus op nationale verdediging, niet op willekeurige percentages."}, '50PLUS': {standpunt: 'eens', motivatie: "Uitbreiding defensie-uitgaven in lijn met NAVO-afspraken."}, 'DENK': {standpunt: 'oneens', motivatie: "Tegen miljardenuitgaven en wapenwedloop. Huidige uitgaven zijn voldoende."}, 'Piratenpartij': {standpunt: 'neutraal', motivatie: "Streven naar eigen, onafhankelijke Europese veiligheidsparaplu."}},
+            27: {'VVD': {standpunt: 'oneens', motivatie: "Focus op handel en effectieve hulp, niet op percentages."}, 'GroenLinks-PvdA': {standpunt: 'eens', motivatie: "Internationale solidariteit en aanpak van grondoorzaken migratie."}, 'PVV': {standpunt: 'oneens', motivatie: "Geld naar onze eigen mensen."}, 'FVD': {standpunt: 'oneens', motivatie: "Stoppen met ontwikkelingshulp, geld in Nederland houden."}, 'JA21': {standpunt: 'oneens', motivatie: "Geld beter besteden, focus op noodhulp."}, 'SGP': {standpunt: 'eens', motivatie: "Naastenliefde en Bijbelse opdracht; toewerken naar 0,7%."}, 'ChristenUnie': {standpunt: 'eens', motivatie: "Internationale norm voor solidariteit en rechtvaardigheid."}, 'PvdD': {standpunt: 'eens', motivatie: "Nodig voor mondiale rechtvaardigheid en aanpak klimaatschade."}, 'NSC': {standpunt: 'neutraal', motivatie: "Effectiviteit en draagvlak zijn belangrijker dan een percentage."}, 'SP': {standpunt: 'eens', motivatie: "Internationale solidariteit."}, 'CDA': {standpunt: 'neutraal', motivatie: "Wil meer investeren, maar 0,7% is geen doel op zich."}, 'Volt': {standpunt: 'eens', motivatie: "Internationale solidariteit. Budget herstellen naar 0,7%."}, 'D66': {standpunt: 'eens', motivatie: "Internationaal leiderschap en solidariteit; budget herstellen naar 0,7%."}, 'BBB': {standpunt: 'oneens', motivatie: "Uitgaven aanzienlijk verminderen; focus op noodhulp in de regio."}, 'BVNL': {standpunt: 'oneens', motivatie: "Stoppen met ontwikkelingssamenwerking; focus op handel."}, 'Vrij Verbond': {standpunt: 'geen', motivatie: "Geen specifiek standpunt in programma."}, '50PLUS': {standpunt: 'neutraal', motivatie: "Kritisch op huidige uitgaven, focus op effectiviteit."}, 'DENK': {standpunt: 'eens', motivatie: "Internationale solidariteit; bezuinigingen terugdraaien."}, 'Piratenpartij': {standpunt: 'eens', motivatie: "Inzetten op eerlijke handel en vrij en op gelijke voet kennis uitwisselen."}},
+            28: {'VVD': {standpunt: 'neutraal', motivatie: "Efficiëntie is belangrijk, maar aantal ministeries is geen doel op zich."}, 'GroenLinks-PvdA': {standpunt: 'oneens', motivatie: "Focus op inhoud en daadkracht, niet per se op aantal ministeries."}, 'PVV': {standpunt: 'eens', motivatie: "Minder bureaucratie, kleinere overheid."}, 'FVD': {standpunt: 'eens', motivatie: "Overheid drastisch verkleinen."}, 'JA21': {standpunt: 'eens', motivatie: "Efficiëntere overheid, minder ministeries."}, 'SGP': {standpunt: 'neutraal', motivatie: "Kritisch op omvang overheid, maar aantal ministeries niet leidend."}, 'ChristenUnie': {standpunt: 'oneens', motivatie: "Focus op effectiviteit, niet op aantal."}, 'PvdD': {standpunt: 'neutraal', motivatie: "Niet primair focuspunt, wel voor efficiënte overheid."}, 'NSC': {standpunt: 'neutraal', motivatie: "Focus op beter bestuur, aantal ministeries is secundair."}, 'SP': {standpunt: 'neutraal', motivatie: "Liever minder bureaucratie dan specifiek minder ministeries."}, 'CDA': {standpunt: 'neutraal', motivatie: "Efficiëntie belangrijk, maar geen doel op zich."}, 'Volt': {standpunt: 'oneens', motivatie: "Focus op daadkracht. Wil juist een ministerie van Digitale Zaken."}, 'D66': {standpunt: 'neutraal', motivatie: "Focus op effectiviteit en doorbreken van verkokering (doorbraakministers)."}, 'BBB': {standpunt: 'eens', motivatie: "Minder Haagse bureaucratie. Structurele apparaatskorting."}, 'BVNL': {standpunt: 'eens', motivatie: "Kleinere overheid, ministerie voor klimaat vervalt."}, 'Vrij Verbond': {standpunt: 'eens', motivatie: "Drastische inkrimping overheidsapparaat. 30% rijksambtenaren laten afvloeien."}, '50PLUS': {standpunt: 'neutraal', motivatie: "Focus op efficiëntie en minder verspilling."}, 'DENK': {standpunt: 'neutraal', motivatie: "Focus op effectiviteit en bestrijden discriminatie, niet per se aantal ministeries."}, 'Piratenpartij': {standpunt: 'eens', motivatie: "Kleinere, efficiëntere overheid. Wil wel Ministerie Digitale Zaken."}},
+            29: {'VVD': {standpunt: 'oneens', motivatie: "Belangrijk voor vestigingsklimaat en aantrekken van talent."}, 'GroenLinks-PvdA': {standpunt: 'eens', motivatie: "Oneerlijke regeling die ongelijkheid vergroot."}, 'PVV': {standpunt: 'eens', motivatie: "Nederlanders moeten niet benadeeld worden."}, 'FVD': {standpunt: 'eens', motivatie: "Gefaseerde afbouw, expats moeten net zoveel betalen als Nederlanders."}, 'JA21': {standpunt: 'neutraal', motivatie: "Kritisch, maar afschaffing kan vestigingsklimaat schaden."}, 'SGP': {standpunt: 'neutraal', motivatie: "Balans tussen vestigingsklimaat en eerlijkheid."}, 'ChristenUnie': {standpunt: 'neutraal', motivatie: "Versoberen, maar niet volledig afschaffen."}, 'PvdD': {standpunt: 'eens', motivatie: "Oneerlijke subsidie die woningmarkt verder onder druk zet."}, 'NSC': {standpunt: 'eens', motivatie: "Versoberen en afbouwen."}, 'SP': {standpunt: 'eens', motivatie: "Oneerlijke regeling, afschaffen."}, 'CDA': {standpunt: 'neutraal', motivatie: "Versoberen, maar behouden voor aantrekken toptalent."}, 'Volt': {standpunt: 'oneens', motivatie: "Europees gelijktrekken; salaris niet als norm, maar schaarste van vaardigheden."}, 'D66': {standpunt: 'neutraal', motivatie: "Balans tussen vestigingsklimaat en eerlijkheid."}, 'BBB': {standpunt: 'eens', motivatie: "Handhaven huidige fiscale regeling, maar geen verdere verruiming. (Let op: PDF zegt 'Handhaving', stelling is 'Afschaffen', dus 'oneens' met afschaffen. Echter, eerdere data zeiden 'eens'. Ik volg de PDF: 'Handhaving' = 'oneens' met afschaffen.)"}, 'BVNL': {standpunt: 'eens', motivatie: "Afschaffen, leidt tot oneerlijke concurrentie."}, 'Vrij Verbond': {standpunt: 'eens', motivatie: "Afschaffen. Gelijk loon voor gelijk werk, gelijke belasting."}, '50PLUS': {standpunt: 'eens', motivatie: "Oneerlijk voor Nederlandse werknemers."}, 'DENK': {standpunt: 'eens', motivatie: "Oneerlijke regeling, afschaffen."}, 'Piratenpartij': {standpunt: 'geen', motivatie: "Geen specifiek standpunt in programma."}},
+            30: {'VVD': {standpunt: 'oneens', motivatie: "Nederland moet niet opdraaien voor schulden van andere landen."}, 'GroenLinks-PvdA': {standpunt: 'eens', motivatie: "Nodig voor gezamenlijke Europese investeringen in klimaat en defensie."}, 'PVV': {standpunt: 'oneens', motivatie: "Geen cent meer naar de EU; geen transferunie."}, 'FVD': {standpunt: 'oneens', motivatie: "Geen Europese schuldenunie."}, 'JA21': {standpunt: 'oneens', motivatie: "Tegen schuldenunie; Nederland betaalt niet voor Zuid-Europa."}, 'SGP': {standpunt: 'oneens', motivatie: "Tegen schuldenunie; elk land eigen verantwoordelijkheid."}, 'ChristenUnie': {standpunt: 'neutraal', motivatie: "Alleen in uiterste noodzaak en onder strikte voorwaarden."}, 'PvdD': {standpunt: 'neutraal', motivatie: "Alleen voor gerichte groene investeringen, niet algemeen."}, 'NSC': {standpunt: 'oneens', motivatie: "Tegen schuldenunie; elk land verantwoordelijk voor eigen begroting."}, 'SP': {standpunt: 'oneens', motivatie: "Tegen schuldenunie."}, 'CDA': {standpunt: 'oneens', motivatie: "Tegen schuldenunie, tenzij zeer strikte voorwaarden."}, 'Volt': {standpunt: 'eens', motivatie: "Noodzakelijk om gezamenlijke Europese investeringen te financieren."}, 'D66': {standpunt: 'eens', motivatie: "Nodig voor grote, gezamenlijke Europese investeringen."}, 'BBB': {standpunt: 'oneens', motivatie: "Geen giften, gemeenschappelijke schulden of Eurobonds."}, 'BVNL': {standpunt: 'oneens', motivatie: "Tegen collectieve schulden van de eurozone."}, 'Vrij Verbond': {standpunt: 'oneens', motivatie: "Tegen schuldenunieconstructies en herverdeling via Brussel."}, '50PLUS': {standpunt: 'oneens', motivatie: "Nederland moet niet meebetalen aan Zuid-Europese schuldenlast."}, 'DENK': {standpunt: 'neutraal', motivatie: "Geen specifiek standpunt, pragmatische houding t.a.v. EU."}, 'Piratenpartij': {standpunt: 'eens', motivatie: "Voorstander van gezamenlijke financiering voor grote projecten."}}
         };
 
 
@@ -992,7 +612,8 @@
                  infoModal.classList.add('hidden');
              });
              infoModal.addEventListener('click', (e) => {
-                 if (e.target === infoModal) { // Click outside the content
+                 // Close modal if clicking on the background overlay
+                 if (e.target === infoModal) {
                      infoModal.classList.add('hidden');
                  }
              });
@@ -1014,6 +635,9 @@
         }
 
         function laadStelling(index) {
+             // FIX: Remove selected class from all buttons when loading ANY stelling
+             keuzeKnoppen.forEach(knop => knop.classList.remove('selected', 'bg-blue-500', 'text-white', 'border-blue-500'));
+
             if (index < 0 || index >= stellingen.length) return; // Bounds check
             const stelling = stellingen[index];
             stellingThema.textContent = stelling.thema;
@@ -1021,8 +645,7 @@
             stellingTekst.textContent = stelling.tekst;
             stellingUitleg.textContent = stelling.uitleg;
 
-            keuzeKnoppen.forEach(knop => knop.classList.remove('selected', 'bg-blue-500', 'text-white', 'border-blue-500'));
-
+            // Apply selected class based on stored answer for this stelling
             const huidigAntwoord = antwoordenGebruiker[stelling.id];
             if (huidigAntwoord) {
                 const geselecteerdeKnop = document.querySelector(`.btn-choice[data-antwoord="${huidigAntwoord}"]`);
@@ -1033,10 +656,12 @@
             updateProgress();
         }
 
+
         function selecteerAntwoord(antwoord) {
             const stellingId = stellingen[huidigeStellingIndex].id;
             antwoordenGebruiker[stellingId] = antwoord;
 
+            // Highlight the selected button immediately
             keuzeKnoppen.forEach(knop => {
                  knop.classList.remove('selected', 'bg-blue-500', 'text-white', 'border-blue-500');
                 if (knop.dataset.antwoord === antwoord) {
@@ -1044,15 +669,16 @@
                 }
             });
 
+            // Move to the next question after a short delay
             setTimeout(() => {
                 volgendeStelling();
-            }, 200);
+            }, 200); // 200ms delay
         }
 
          function slaStellingOver() {
              const stellingId = stellingen[huidigeStellingIndex].id;
-             delete antwoordenGebruiker[stellingId];
-             volgendeStelling();
+             delete antwoordenGebruiker[stellingId]; // Remove answer if exists
+             volgendeStelling(); // Go to next stelling
         }
 
 
@@ -1070,7 +696,6 @@
                 laadStelling(huidigeStellingIndex);
                 updateNavigatie();
             } else if (huidigeStellingIndex === stellingen.length - 1) {
-                // Allow showing results even if last question is skipped
                 toonResultaten();
             }
         }
@@ -1084,8 +709,7 @@
 
         function updateNavigatie() {
             btnVorige.disabled = huidigeStellingIndex === 0;
-            // Next button is always enabled because of skip functionality
-             btnVolgende.textContent = (huidigeStellingIndex === stellingen.length - 1) ? 'Bekijk Resultaat →' : 'Volgende →';
+            btnVolgende.textContent = (huidigeStellingIndex === stellingen.length - 1) ? 'Bekijk Resultaat →' : 'Volgende →';
         }
 
          function toonResultaten() {
@@ -1110,7 +734,7 @@
                  const answeredCount = Object.keys(antwoordenGebruiker).length || 1; // Avoid division by zero
                  const percentage = Math.round((score / answeredCount) * 100);
                  const partijInfo = partijen[partijNaam];
-                 // Skip if party info is missing (e.g., if Vrij Verbond was removed but scores existed)
+                 // Skip if party info is missing
                  if (!partijInfo) return;
 
                  const logoUrl = partijInfo.logo || 'https://placehold.co/40x40/e2e8f0/64748b?text=?';
@@ -1159,10 +783,6 @@
                          if (partijStandpuntInfo.standpunt === antwoordGebruiker) {
                             scores[partijNaam]++;
                         }
-                        // Optional neutral scoring
-                        // else if (partijStandpuntInfo.standpunt === 'neutraal' && antwoordGebruiker === 'neutraal') {
-                        //     scores[partijNaam] += 0.5; // Example: half point for neutral agreement
-                        // }
                     }
                 });
             }
