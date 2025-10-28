@@ -26,6 +26,9 @@
             font-weight: 500;
         }
         .btn-choice:hover { transform: translateY(-2px); }
+        /* Mobile tap/focus tweaks to prevent sticky visual states */
+        .btn-choice { -webkit-tap-highlight-color: transparent; }
+        .btn-choice:focus { outline: none; }
 
         /* Standaard (niet-geselecteerde) stijlen */
         .btn-choice.eens-default {
@@ -525,6 +528,10 @@
                 knop.classList.remove('eens-default', 'neutraal-default', 'oneens-default', 'border-green-500', 'text-green-700', 'hover:bg-green-50', 'border-yellow-500', 'text-yellow-700', 'hover:bg-yellow-50', 'border-red-500', 'text-red-700', 'hover:bg-red-50');
                 // Voeg de juiste default stijlen opnieuw toe
                 addDefaultStyles(knop);
+                // Clear focus to avoid sticky active/focus styles on mobile
+                if (typeof knop.blur === 'function') {
+                    knop.blur();
+                }
             });
         }
 
