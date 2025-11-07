@@ -99,7 +99,7 @@
 
     </style>
 </head>
-<body class="bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 min-h-screen flex flex-col items-center p-4 pt-20"> <!-- Added pt-20 for header space -->
+<body class="bg-black min-h-screen flex flex-col items-center p-4 pt-20"> <!-- Added pt-20 for header space -->
 
     <!-- Sticky Header -->
     <header class="sticky-header w-full max-w-4xl mx-auto flex justify-between items-center mb-6">
@@ -537,6 +537,7 @@
 
 
         function laadStelling(index) {
+            console.log('laadStelling - index:', index, 'antwoordenGebruiker:', antwoordenGebruiker);
             // FIX: Reset alle knopstijlen naar de standaard (groen/geel/rood)
             resetButtonStyles();
 
@@ -564,6 +565,7 @@
 
         function selecteerAntwoord(antwoord) {
             const stellingId = stellingen[huidigeStellingIndex].id;
+            console.log('selecteerAntwoord - stellingId:', stellingId, 'antwoord:', antwoord);
             antwoordenGebruiker[stellingId] = antwoord;
 
             // Reset eerst alle knoppen naar hun standaardstijl
